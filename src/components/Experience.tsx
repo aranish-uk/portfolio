@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import experiences from "@/components/data/experience.json";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-export default function RecruiterExperience() {
+export default function Experience() {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    // Determine which items to show
+    const visibleExperiences = isExpanded ? experiences : experiences.slice(0, 2);
+
     return (
         <section className="mb-24 relative animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <div className="flex items-center gap-4 mb-12">
@@ -9,9 +15,9 @@ export default function RecruiterExperience() {
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-zinc-800 to-transparent"></div>
             </div>
 
-            <div className="space-y-12 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-800 before:to-transparent">
-                {experiences.map((exp, idx) => (
-                    <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div className={`space-y-12 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-800 before:to-transparent ${!isExpanded && experiences.length > 2 ? 'pb-8' : ''}`}>
+                {visibleExperiences.map((exp, idx) => (
+                    <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active animate-in fade-in slide-in-from-bottom-4 duration-500">
                         {/* Timeline Core Icon/Dot */}
                         <div className="flex items-center justify-center w-6 h-6 rounded-full border-4 border-[#0a0a0a] bg-zinc-700 group-hover:bg-pink-500 shadow-[0_0_0_2px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-300 z-10"></div>
 
@@ -43,6 +49,25 @@ export default function RecruiterExperience() {
                     </div>
                 ))}
             </div>
+
+            {experiences.length > 2 && (
+                <div className="mt-8 flex justify-center relative z-20">
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="group flex items-center gap-2 px-6 py-2.5 bg-zinc-900/80 backdrop-blur-md border border-white/10 hover:border-pink-500/50 rounded-full text-sm font-medium text-white transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                    >
+                        {isExpanded ? (
+                            <>
+                                Show Less <ChevronUp className="w-4 h-4 text-pink-500 group-hover:-translate-y-0.5 transition-transform" />
+                            </>
+                        ) : (
+                            <>
+                                See All Experience ({experiences.length}) <ChevronDown className="w-4 h-4 text-pink-500 group-hover:translate-y-0.5 transition-transform" />
+                            </>
+                        )}
+                    </button>
+                </div>
+            )}
         </section>
     );
 }

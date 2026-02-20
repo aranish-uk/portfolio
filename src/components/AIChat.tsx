@@ -239,10 +239,55 @@ export function AIChat() {
 
   const showingOptions = showProjectOptions || showWorkOptions;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Focus input when opened
+  useEffect(() => {
+    if (isOpen && chatBoxRef.current) {
+      chatBoxRef.current.scrollTo({
+        top: chatBoxRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [isOpen]);
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="relative w-16 h-16 rounded-full bg-neutral-900 border border-white/10 shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center group"
+        aria-label="Open Chat"
+      >
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <Image
+          src="/mrrobot.png"
+          alt="Mr. Robot"
+          width={48}
+          height={48}
+          className="object-contain drop-shadow-md"
+        />
+        <span className="absolute -top-2 -right-2 flex h-4 w-4">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-4 w-4 bg-pink-500"></span>
+        </span>
+      </button>
+    );
+  }
+
   return (
-    <div className="relative rounded-2xl bg-neutral-900 shadow-lg flex flex-col h-[450px] w-full max-w-xl overflow-visible">
+    <div className="relative rounded-2xl bg-neutral-900 shadow-2xl shadow-pink-500/10 flex flex-col h-[450px] w-full max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in slide-in-from-bottom-5">
+      {/* Header / Controls */}
+      <div className="absolute -top-14 right-0 flex gap-2">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="p-2 rounded-full bg-neutral-900 border border-white/10 hover:bg-neutral-800 text-gray-400 hover:text-white transition-colors shadow-lg"
+        >
+          ✕
+        </button>
+      </div>
+
       {/* 👾 Robot Avatar popping out */}
-      <div className="absolute -top-13 -left-17 w-22 h-22 z-0 animate-bounce-fade -rotate-45">
+      <div className="absolute -top-13 -left-17 w-22 h-22 z-0 animate-bounce-fade -rotate-45 pointer-events-none">
         <Image
           src="/mrrobot.png"
           alt="Mr. Robot"
@@ -265,8 +310,8 @@ export function AIChat() {
           >
             <div
               className={`px-4 py-2 rounded-2xl max-w-[80%] ${m.sender === "user"
-                  ? "bg-pink-500 text-white rounded-br-none"
-                  : "bg-gray-700 text-gray-100 rounded-bl-none"
+                ? "bg-pink-500 text-white rounded-br-none shadow-lg shadow-pink-500/20"
+                : "bg-white/5 backdrop-blur-md border border-white/10 text-gray-100 rounded-bl-none"
                 }`}
             >
               <span
@@ -287,14 +332,14 @@ export function AIChat() {
       </div>
 
       {/* Suggestions / Dynamic option bubbles */}
-      <div className="flex gap-2 px-3 pb-2 overflow-x-auto scrollbar-hide">
+      <div className="flex gap-2 px-3 pb-2 overflow-x-auto scrollbar-hide z-10">
         {!showingOptions &&
           suggestionActions.map((s, i) => (
             <button
               key={i}
               onClick={s.action}
               disabled={!canSend || loading}
-              className="px-2.5 py-1 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-2.5 py-1 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {s.label}
             </button>
@@ -310,7 +355,7 @@ export function AIChat() {
                 setShowProjectOptions(false);
               }}
               disabled={!canSend || loading}
-              className="px-3 py-1.5 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {o.label}
             </button>
@@ -326,7 +371,7 @@ export function AIChat() {
                 setShowWorkOptions(false);
               }}
               disabled={!canSend || loading}
-              className="px-3 py-1.5 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {o.label}
             </button>
@@ -336,7 +381,7 @@ export function AIChat() {
       {/* Input */}
       <form
         onSubmit={handleSubmit}
-        className="flex items-center gap-2 border-t border-neutral-800 p-3"
+        className="flex items-center gap-2 border-t border-white/10 p-3 bg-neutral-900/50 backdrop-blur-md rounded-b-2xl z-10"
       >
         <textarea
           rows={1}
@@ -353,12 +398,12 @@ export function AIChat() {
               }
             }
           }}
-          className="flex-1 p-2 rounded-lg bg-neutral-800 text-gray-100 border border-neutral-700 resize-none h-[42px]"
+          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-pink-500/50 transition-colors placeholder:text-zinc-500"
         />
         <button
           type="submit"
           disabled={!canSend || loading || !input.trim()}
-          className="bg-pink-500 px-4 py-2 rounded-lg text-white disabled:opacity-50"
+          className="bg-pink-500 hover:bg-pink-400 px-4 py-2 rounded-lg text-white disabled:opacity-50 transition-colors shadow-lg shadow-pink-500/20"
         >
           {loading ? "…" : "Send"}
         </button>
@@ -368,21 +413,21 @@ export function AIChat() {
           <button
             type="button"
             onClick={() => setShowMenu((v) => !v)}
-            className="p-2 rounded-lg hover:bg-neutral-800"
+            className="p-2 rounded-lg hover:bg-white/10 text-zinc-400 transition-colors"
           >
             <MoreVertical size={18} />
           </button>
           {showMenu && (
-            <div className="absolute right-0 bottom-12 bg-neutral-800 rounded-lg shadow-lg overflow-hidden">
+            <div className="absolute right-0 bottom-12 bg-neutral-800 border border-white/10 rounded-lg shadow-xl overflow-hidden min-w-[120px]">
               <button
                 onClick={downloadTxt}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-neutral-700 w-full text-sm text-gray-200"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/5 w-full text-sm text-gray-200 transition-colors"
               >
                 <FileText size={16} /> TXT
               </button>
               <button
                 onClick={downloadPdf}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-neutral-700 w-full text-sm text-gray-200"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/5 w-full text-sm text-gray-200 transition-colors"
               >
                 <FileDown size={16} /> PDF
               </button>
@@ -399,8 +444,9 @@ export function AIChat() {
                   ]);
                   setShowProjectOptions(false);
                   setShowWorkOptions(false);
+                  setShowMenu(false);
                 }}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-red-600 w-full text-sm "
+                className="flex items-center gap-2 px-4 py-2 hover:bg-red-500/20 w-full text-sm text-red-400 transition-colors"
               >
                 <Trash size={16} /> Bin
               </button>
