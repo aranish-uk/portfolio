@@ -79,7 +79,7 @@ export function AIChat() {
     "Hi, I’m Mr. Robot (Abhi's Assistant). How can I help you today?";
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = window.localStorage.getItem(STORAGE_KEY);
 
     if (saved) {
       try {
@@ -104,7 +104,7 @@ export function AIChat() {
   // persist after hydrated
   useEffect(() => {
     if (!hydrated.current) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
     chatBoxRef.current?.scrollTo({
       top: chatBoxRef.current.scrollHeight,
       behavior: "smooth",
@@ -384,7 +384,7 @@ export function AIChat() {
               </button>
               <button
                 onClick={() => {
-                  localStorage.removeItem("chatHistory");
+                  window.localStorage.removeItem("chatHistory");
                   setMessages([
                     {
                       sender: "ai",

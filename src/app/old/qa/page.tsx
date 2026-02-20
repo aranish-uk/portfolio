@@ -195,7 +195,7 @@ export default function ChatPage() {
 
   // load history or seed initial AI greeting
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = window.localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
         setMessages(JSON.parse(saved));
@@ -216,7 +216,7 @@ export default function ChatPage() {
 
   // persist history
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
   }, [messages]);
 
   // auto-scroll only if there are 4 or more messages
@@ -353,7 +353,7 @@ export default function ChatPage() {
           {messages.length > 1 && (
             <button
               onClick={() => {
-                localStorage.removeItem(STORAGE_KEY);
+                window.localStorage.removeItem(STORAGE_KEY);
                 setMessages([
                   {
                     sender: "ai",

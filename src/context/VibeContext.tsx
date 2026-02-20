@@ -15,8 +15,8 @@ export function VibeProvider({ children }: { children: React.ReactNode }) {
   const [vibe, setVibeState] = useState<Vibe>("recruiter");
 
   useEffect(() => {
-    // Load preference from localStorage on mount
-    const savedVibe = localStorage.getItem("portfolio-vibe") as Vibe;
+    // Load preference from window.localStorage on mount
+    const savedVibe = window.localStorage.getItem("portfolio-vibe") as Vibe;
     if (savedVibe && (savedVibe === "recruiter" || savedVibe === "fun")) {
       setVibeState(savedVibe);
     }
@@ -24,7 +24,7 @@ export function VibeProvider({ children }: { children: React.ReactNode }) {
 
   const setVibe = (newVibe: Vibe) => {
     setVibeState(newVibe);
-    localStorage.setItem("portfolio-vibe", newVibe);
+    window.localStorage.setItem("portfolio-vibe", newVibe);
   };
 
 
