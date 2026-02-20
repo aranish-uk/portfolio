@@ -3,20 +3,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-html, body {
+
+html,
+body {
   height: 100%;
 }
+
 /* globals.css */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
+  /* Chrome, Safari */
 }
+
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px) scale(0.9) rotate(-12deg); }
-  to   { opacity: 1; transform: translateY(0) scale(1) rotate(-12deg); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .animate-fadeIn {
@@ -24,9 +39,20 @@ html, body {
 }
 
 @keyframes bounceFade {
-  0%   { opacity: 0; transform: translateY(-20px) rotate(-12deg) scale(0.9); }
-  50%  { opacity: 1; transform: translateY(0px) rotate(-12deg) scale(1.05); }
-  100% { opacity: 1; transform: translateY(0px) rotate(-12deg) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) rotate(-12deg) scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(0px) rotate(-12deg) scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px) rotate(-12deg) scale(1);
+  }
 }
 
 .animate-bounce-fade {
@@ -34,7 +60,10 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

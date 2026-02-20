@@ -3,9 +3,6 @@ import projectsData from "@/components/data/projects.json";
 import { ExternalLink, Github, ChevronRight } from "lucide-react";
 
 export default function RecruiterProjects() {
-    // Take the top 4 projects for recruiters
-    const topProjects = projectsData.slice(0, 4);
-
     return (
         <section className="mb-24 relative animate-fadeIn" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <div className="flex items-center gap-4 mb-12">
@@ -14,7 +11,7 @@ export default function RecruiterProjects() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {topProjects.map((p, idx) => (
+                {projectsData.map((p, idx) => (
                     <div
                         key={idx}
                         className="group relative flex flex-col h-full bg-zinc-900/40 backdrop-blur-md border border-white/5 hover:border-white/20 rounded-2xl p-7 shadow-2xl transition-all duration-500 overflow-hidden"
@@ -70,18 +67,6 @@ export default function RecruiterProjects() {
                         </div>
                     </div>
                 ))}
-            </div>
-
-            <div className="mt-12 text-center">
-                <a
-                    href="https://github.com/abhinavranish"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white text-sm font-semibold border border-white/10 transition-all duration-300 group"
-                >
-                    Explore all projects on GitHub
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 group-hover:text-pink-400 transition-transform" />
-                </a>
             </div>
         </section>
     );
