@@ -9,7 +9,7 @@ export default function Experience() {
     const visibleExperiences = isExpanded ? experiences : experiences.slice(0, 2);
 
     return (
-        <section className="mb-24 relative animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+        <section id="experience" className="mb-24 relative animate-fadeIn" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             <div className="flex items-center gap-4 mb-12">
                 <h2 className="text-3xl font-bold tracking-tight text-white">Experience</h2>
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-zinc-800 to-transparent"></div>

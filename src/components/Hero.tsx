@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function RecruiterHero() {
     return (
-        <header className="mb-20 relative animate-fadeIn">
+        <header id="hero" className="mb-32 relative animate-fadeIn">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
@@ -26,10 +26,10 @@ export default function RecruiterHero() {
                         Abhinav Ranish 🚀
                     </h1>
                     <p className="mt-4 text-xl font-medium text-pink-400 tracking-wide">
-                        Software Engineer &bull; Cybersecurity Enthusiast &bull; AI Developer
+                        Coder &bull; Cyber Risk &bull; AI Developer
                     </p>
                     <p className="mt-4 text-zinc-300 max-w-4xl leading-relaxed text-lg font-light">
-                        I build high-performance, secure, and intelligent systems. Welcome to my portfolio—explore my latest projects, experience, and the technologies I work with.
+                        Welcome to the playground! I build crazy fast, highly secure, and ridiculously intelligent systems. Click around, explore some the projects, and let's make some magic. ✨
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
