@@ -21,8 +21,8 @@ export default function VibeToggle() {
                 <button
                     onClick={() => setVibe("recruiter")}
                     className={`relative px-6 py-2.5 text-sm font-semibold tracking-wide rounded-full transition-all duration-300 ${vibe === "recruiter"
-                            ? "text-white shadow-lg"
-                            : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                        ? "text-white shadow-lg"
+                        : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
                         }`}
                 >
                     {vibe === "recruiter" && (
@@ -32,14 +32,14 @@ export default function VibeToggle() {
                             transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
                     )}
-                    <span className="relative z-10">Recruiter</span>
+                    <span className="relative z-10">Professional</span>
                 </button>
 
                 <button
                     onClick={() => setVibe("fun")}
                     className={`relative px-6 py-2.5 text-sm font-semibold tracking-wide rounded-full transition-all duration-300 ${vibe === "fun"
-                            ? "text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]"
-                            : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                        ? "text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+                        : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
                         }`}
                 >
                     {vibe === "fun" && (

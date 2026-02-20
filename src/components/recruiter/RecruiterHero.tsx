@@ -22,14 +22,14 @@ export default function RecruiterHero() {
                 </div>
 
                 <div className="text-center md:text-left flex flex-col justify-center">
-                    <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-zinc-400">
-                        Abhinav Ranish
+                    <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 animate-pulse">
+                        Abhinav Ranish 🚀
                     </h1>
                     <p className="mt-4 text-xl font-medium text-pink-400 tracking-wide">
-                        Software Engineer &bull; Cybersecurity &bull; AI/ML
+                        Code Magician &bull; Cyber Ninja &bull; AI Whisperer
                     </p>
-                    <p className="mt-4 text-zinc-400 max-w-2xl leading-relaxed text-lg font-light">
-                        Building secure, intelligent systems with speed, scale, and creativity. Passionate about applying modern technologies to complex, real-world problems.
+                    <p className="mt-4 text-zinc-300 max-w-2xl leading-relaxed text-lg font-light">
+                        Welcome to the playground! I build crazy fast, highly secure, and ridiculously intelligent systems. Click around, catch the balloon kid, and let's make some magic. ✨
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
