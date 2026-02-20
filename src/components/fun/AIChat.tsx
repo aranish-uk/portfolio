@@ -79,19 +79,23 @@ export function AIChat() {
     "Hi, I’m Mr. Robot (Abhi's Assistant). How can I help you today?";
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (typeof window !== "undefined") {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
 
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved) as Message[] | unknown;
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved) as Message[] | unknown;
 
-        // Guard against bad or empty histories
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setMessages(parsed);
-        } else {
+          // Guard against bad or empty histories
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setMessages(parsed);
+          } else {
+            setMessages([{ sender: "ai", text: GREETING }]);
+          }
+        } catch {
           setMessages([{ sender: "ai", text: GREETING }]);
         }
-      } catch {
+      } else {
         setMessages([{ sender: "ai", text: GREETING }]);
       }
     } else {
@@ -104,7 +108,9 @@ export function AIChat() {
   // persist after hydrated
   useEffect(() => {
     if (!hydrated.current) return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }
     chatBoxRef.current?.scrollTo({
       top: chatBoxRef.current.scrollHeight,
       behavior: "smooth",
@@ -254,26 +260,24 @@ export function AIChat() {
         {messages.map((m, i) => (
           <div
             key={i}
-            className={`flex ${
-              m.sender === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"
+              }`}
           >
             <div
-              className={`px-4 py-2 rounded-2xl max-w-[80%] ${
-                m.sender === "user"
+              className={`px-4 py-2 rounded-2xl max-w-[80%] ${m.sender === "user"
                   ? "bg-pink-500 text-white rounded-br-none"
                   : "bg-gray-700 text-gray-100 rounded-bl-none"
-              }`}
+                }`}
             >
               <span
                 dangerouslySetInnerHTML={{
-                  __html: 
-                  m.text.replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
-                  .replace(
-                    /(https?:\/\/[^\s]+)/g,
-                    `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
-                  ),
-                  
+                  __html:
+                    m.text.replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
+                      .replace(
+                        /(https?:\/\/[^\s]+)/g,
+                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
+                      ),
+
                 }}
               />
             </div>
@@ -384,7 +388,9 @@ export function AIChat() {
               </button>
               <button
                 onClick={() => {
-                  window.localStorage.removeItem("chatHistory");
+                  if (typeof window !== "undefined") {
+                    window.localStorage.removeItem("chatHistory");
+                  }
                   setMessages([
                     {
                       sender: "ai",

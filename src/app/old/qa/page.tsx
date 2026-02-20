@@ -195,16 +195,22 @@ export default function ChatPage() {
 
   // load history or seed initial AI greeting
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        setMessages(JSON.parse(saved));
-      } catch {
+    if (typeof window !== "undefined") {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          setMessages(JSON.parse(saved));
+        } catch {
+          setMessages([
+            {
+              sender: "ai",
+              text: "Hi, I’m Mr. Robot. How can I help you today?",
+            },
+          ]);
+        }
+      } else {
         setMessages([
-          {
-            sender: "ai",
-            text: "Hi, I’m Mr. Robot. How can I help you today?",
-          },
+          { sender: "ai", text: "Hi, I’m Mr. Robot. How can I help you today?" },
         ]);
       }
     } else {
@@ -216,7 +222,9 @@ export default function ChatPage() {
 
   // persist history
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }
   }, [messages]);
 
   // auto-scroll only if there are 4 or more messages
@@ -353,7 +361,9 @@ export default function ChatPage() {
           {messages.length > 1 && (
             <button
               onClick={() => {
-                window.localStorage.removeItem(STORAGE_KEY);
+                if (typeof window !== "undefined") {
+                  window.localStorage.removeItem(STORAGE_KEY);
+                }
                 setMessages([
                   {
                     sender: "ai",
@@ -446,9 +456,8 @@ export default function ChatPage() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`flex gap-2 ${
-                  m.sender === "user" ? "justify-end" : "justify-start"
-                }`}
+                className={`flex gap-2 ${m.sender === "user" ? "justify-end" : "justify-start"
+                  }`}
               >
                 {m.sender === "ai" && (
                   <img

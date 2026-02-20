@@ -15,16 +15,20 @@ export function VibeProvider({ children }: { children: React.ReactNode }) {
   const [vibe, setVibeState] = useState<Vibe>("recruiter");
 
   useEffect(() => {
-    // Load preference from window.localStorage on mount
-    const savedVibe = window.localStorage.getItem("portfolio-vibe") as Vibe;
-    if (savedVibe && (savedVibe === "recruiter" || savedVibe === "fun")) {
-      setVibeState(savedVibe);
+    // Load preference from window.localStorage on mount safely
+    if (typeof window !== "undefined") {
+      const savedVibe = window.localStorage.getItem("portfolio-vibe") as Vibe;
+      if (savedVibe && (savedVibe === "recruiter" || savedVibe === "fun")) {
+        setVibeState(savedVibe);
+      }
     }
   }, []);
 
   const setVibe = (newVibe: Vibe) => {
     setVibeState(newVibe);
-    window.localStorage.setItem("portfolio-vibe", newVibe);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("portfolio-vibe", newVibe);
+    }
   };
 
 
