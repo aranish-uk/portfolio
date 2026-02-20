@@ -4,6 +4,7 @@ import { Hero } from "@/components/fun/Hero";
 import Experience from "@/components/fun/Experience";
 import Projects from "@/components/fun/Projects";
 import Contact from "@/components/fun/Contact";
+import { RunningBoyPlayer } from "@/components/fun/remotion/RunningBoyPlayer";
 
 export default function FunPath() {
     return (
@@ -30,8 +31,13 @@ export default function FunPath() {
             </section>
 
             {/* Contact */}
-            <section id="contact" className="min-h-screen w-full snap-start">
+            <section id="contact" className="min-h-screen w-full snap-start relative">
                 <Contact />
+
+                {/* Remotion Running Boy (Visible at the very bottom) */}
+                <div className="absolute bottom-0 w-full z-10 pointer-events-none overflow-hidden h-40">
+                    <RunningBoyPlayer />
+                </div>
             </section>
         </div>
     );
