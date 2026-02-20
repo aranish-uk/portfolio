@@ -26,10 +26,10 @@ export default function RecruiterHero() {
                         Abhinav Ranish 🚀
                     </h1>
                     <p className="mt-4 text-xl font-medium text-pink-400 tracking-wide">
-                        Code Magician &bull; Cyber Ninja &bull; AI Whisperer
+                        Software Engineer &bull; Cybersecurity Enthusiast &bull; AI Developer
                     </p>
                     <p className="mt-4 text-zinc-300 max-w-4xl leading-relaxed text-lg font-light">
-                        Welcome to the playground! I build crazy fast, highly secure, and ridiculously intelligent systems. Click around, catch the balloon kid, and let's make some magic. ✨
+                        I build high-performance, secure, and intelligent systems. Welcome to my portfolio—explore my latest projects, experience, and the technologies I work with.
                     </p>
 
                     <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
