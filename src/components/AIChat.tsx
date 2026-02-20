@@ -240,6 +240,7 @@ export function AIChat() {
   const showingOptions = showProjectOptions || showWorkOptions;
 
   const [isOpen, setIsOpen] = useState(false);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
 
   // Focus input when opened
   useEffect(() => {
@@ -249,6 +250,20 @@ export function AIChat() {
         behavior: "smooth",
       });
     }
+  }, [isOpen]);
+
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (chatWindowRef.current && !chatWindowRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
   if (!isOpen) {
@@ -275,12 +290,12 @@ export function AIChat() {
   }
 
   return (
-    <div className="relative rounded-2xl bg-neutral-900 shadow-2xl shadow-pink-500/10 flex flex-col h-[450px] w-full max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in slide-in-from-bottom-5">
+    <div ref={chatWindowRef} className="relative rounded-2xl bg-neutral-900/40 backdrop-blur-xl shadow-2xl shadow-pink-500/10 flex flex-col h-[450px] w-full max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in slide-in-from-bottom-5">
       {/* Header / Controls */}
       <div className="absolute -top-14 right-0 flex gap-2">
         <button
           onClick={() => setIsOpen(false)}
-          className="p-2 rounded-full bg-neutral-900 border border-white/10 hover:bg-neutral-800 text-gray-400 hover:text-white transition-colors shadow-lg"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-900/50 backdrop-blur-md border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white transition-colors shadow-lg"
         >
           ✕
         </button>

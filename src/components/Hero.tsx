@@ -8,7 +8,7 @@ export default function RecruiterHero() {
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col items-center md:items-start md:flex-row gap-10">
+            <div className="relative z-10 flex flex-col items-center md:items-start md:flex-row gap-16">
                 <div className="shrink-0 relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
                     <Image
@@ -28,7 +28,7 @@ export default function RecruiterHero() {
                     <p className="mt-4 text-xl font-medium text-pink-400 tracking-wide">
                         Code Magician &bull; Cyber Ninja &bull; AI Whisperer
                     </p>
-                    <p className="mt-4 text-zinc-300 max-w-2xl leading-relaxed text-lg font-light">
+                    <p className="mt-4 text-zinc-300 max-w-4xl leading-relaxed text-lg font-light">
                         Welcome to the playground! I build crazy fast, highly secure, and ridiculously intelligent systems. Click around, catch the balloon kid, and let's make some magic. ✨
                     </p>
 

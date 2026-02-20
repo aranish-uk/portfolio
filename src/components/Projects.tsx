@@ -80,7 +80,7 @@ export default function Projects() {
                         return (
                             <div
                                 key={idx}
-                                className="group relative flex flex-col h-[400px] bg-zinc-900/40 backdrop-blur-md border border-white/5 hover:border-white/20 rounded-2xl p-7 shadow-2xl transition-all duration-500"
+                                className="group relative flex flex-col h-full bg-zinc-900/40 backdrop-blur-md border border-white/5 hover:border-white/20 rounded-2xl p-7 shadow-2xl transition-all duration-500"
                             >
                                 {/* Interactive Background Glow */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-pink-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-pink-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 transition-colors duration-500 ease-out pointer-events-none rounded-2xl"></div>
