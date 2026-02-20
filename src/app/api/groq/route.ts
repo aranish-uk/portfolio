@@ -8,8 +8,8 @@ type Message = {
   content: string;
 };
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY!,
+const getGroqClient = () => new Groq({
+  apiKey: process.env.GROQ_API_KEY || "placeholder_for_build",
 });
 
 export async function POST(request: NextRequest) {
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
       },
     ] satisfies Message[];
 
-    const completion = await groq.chat.completions.create({
+    const completion = await getGroqClient().chat.completions.create({
       model: "llama-3.3-70b-versatile",
       messages,
     });

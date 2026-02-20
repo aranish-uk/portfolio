@@ -13,7 +13,6 @@ const VibeContext = createContext<VibeContextType | undefined>(undefined);
 
 export function VibeProvider({ children }: { children: React.ReactNode }) {
   const [vibe, setVibeState] = useState<Vibe>("recruiter");
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Load preference from localStorage on mount
@@ -21,7 +20,6 @@ export function VibeProvider({ children }: { children: React.ReactNode }) {
     if (savedVibe && (savedVibe === "recruiter" || savedVibe === "fun")) {
       setVibeState(savedVibe);
     }
-    setIsLoaded(true);
   }, []);
 
   const setVibe = (newVibe: Vibe) => {
@@ -29,8 +27,7 @@ export function VibeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("portfolio-vibe", newVibe);
   };
 
-  // Prevent hydration mismatch by not rendering until we know the client preference
-  if (!isLoaded) return null;
+
 
   return (
     <VibeContext.Provider value={{ vibe, setVibe }}>
