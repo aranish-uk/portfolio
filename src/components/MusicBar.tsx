@@ -11,16 +11,23 @@ export default function MusicBar() {
     <motion.div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      animate={{ width: hovered ? 280 : 64 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="fixed bottom-17 right-4 h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] flex items-center z-50 overflow-hidden"
+      animate={{
+        width: hovered ? 420 : 64,
+        height: hovered ? 100 : 64,
+        borderRadius: hovered ? 24 : 32
+      }}
+      transition={{ duration: 0.4, ease: 'backOut' }}
+      className={`fixed bottom-6 right-6 z-50 overflow-hidden flex items-center shadow-2xl transition-colors duration-300 ${hovered
+        ? 'bg-transparent border-transparent'
+        : 'bg-zinc-900/60 backdrop-blur-xl border border-white/10 cursor-pointer hover:bg-zinc-800/80 hover:border-pink-500/50'
+        }`}
     >
       {/* Persistent iframe */}
       <iframe
         src="https://music.aranish.uk/miniplayer"
         title="Music Player"
         allow="autoplay"
-        className={`h-full w-full rounded-full border-none transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        className={`absolute inset-0 h-full w-full border-none transition-opacity duration-500 ${hovered ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
       />
 

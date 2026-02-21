@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { FileText, FileDown, MoreVertical, Trash } from "lucide-react";
 import jsPDF from "jspdf";
 import Image from "next/image";
+import { motion } from "framer-motion";
 // ✅ replace these two red lines:
 import experienceData from "@/components/data/experience.json";
 import projectData from "@/components/data/projects.json";
@@ -240,6 +241,7 @@ export function AIChat() {
   const showingOptions = showProjectOptions || showWorkOptions;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const chatWindowRef = useRef<HTMLDivElement>(null);
 
   // Focus input when opened
@@ -268,46 +270,68 @@ export function AIChat() {
 
   if (!isOpen) {
     return (
-      <button
+      <motion.button
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
         onClick={() => setIsOpen(true)}
-        className="relative w-16 h-16 rounded-full bg-neutral-900 border border-white/10 shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center group"
+        animate={{
+          width: hovered ? 180 : 64,
+          height: 64,
+          borderRadius: 32
+        }}
+        transition={{ duration: 0.4, ease: 'backOut' }}
+        className="relative bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] hover:bg-zinc-800/80 hover:border-pink-500/50 flex items-center justify-start overflow-hidden group"
         aria-label="Open Chat"
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <Image
-          src="/mrrobot.png"
-          alt="Mr. Robot"
-          width={48}
-          height={48}
-          className="object-contain drop-shadow-md"
-        />
-        <span className="absolute -top-2 -right-2 flex h-4 w-4">
+        <div className="absolute left-1 w-14 h-14 flex items-center justify-center pointer-events-none">
+          <Image
+            src="/mrrobot.png"
+            alt="Mr. Robot"
+            width={48}
+            height={48}
+            className="object-contain drop-shadow-md"
+          />
+        </div>
+
+        <span className="absolute left-11 top-2 flex h-3 w-3">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-4 w-4 bg-pink-500"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
         </span>
-      </button>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute left-16 whitespace-nowrap text-sm font-semibold text-zinc-200 pointer-events-none pr-4"
+        >
+          Ask Mr. Robot ✨
+        </motion.div>
+      </motion.button>
     );
   }
 
   return (
-    <div ref={chatWindowRef} className="relative rounded-2xl bg-neutral-900/40 backdrop-blur-xl shadow-2xl shadow-pink-500/10 flex flex-col h-[450px] w-full max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in slide-in-from-bottom-5">
+    <div
+      ref={chatWindowRef}
+      className="absolute bottom-0 left-0 origin-bottom-left rounded-2xl bg-neutral-900/60 backdrop-blur-2xl shadow-2xl shadow-pink-500/20 flex flex-col h-[450px] w-[calc(100vw-48px)] max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in zoom-in-95 slide-in-from-bottom-6"
+    >
       {/* Header / Controls */}
-      <div className="absolute -top-14 right-0 flex gap-2">
+      <div className="absolute top-2 right-2 flex gap-2 z-50">
         <button
           onClick={() => setIsOpen(false)}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-neutral-900/50 backdrop-blur-md border border-white/10 hover:bg-white/10 text-gray-400 hover:text-white transition-colors shadow-lg"
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white transition-colors shadow-lg"
         >
           ✕
         </button>
       </div>
 
-      {/* 👾 Robot Avatar popping out */}
-      <div className="absolute -top-13 -left-17 w-22 h-22 z-0 animate-bounce-fade -rotate-45 pointer-events-none">
+      {/* 👾 Robot Avatar popping out from behind */}
+      <div className="absolute -top-18 -left-12 w-28 h-28 -z-10 animate-bounce-fade pointer-events-none -rotate-12 transition-transform duration-500 hover:rotate-0">
         <Image
           src="/mrrobot.png"
           alt="Mr. Robot"
           fill
-          className="object-contain opacity-50 animate-fade drop-shadow-lg"
+          className="object-contain drop-shadow-[0_10px_20px_rgba(236,72,153,0.3)] filter brightness-110"
         />
       </div>
 
