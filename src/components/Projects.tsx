@@ -45,7 +45,7 @@ export default function Projects() {
     ];
 
     return (
-        <section id="projects" className="mb-24 relative animate-fadeIn" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
+        <section id="projects" className="mb-24 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: '300ms', animationFillMode: 'both' }}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
                 <div className="flex items-center gap-4 w-full md:w-auto">
                     <h2 className="text-3xl font-bold tracking-tight text-white whitespace-nowrap">Featured Projects</h2>

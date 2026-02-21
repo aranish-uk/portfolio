@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function RecruiterHero() {
     return (
-        <header id="hero" className="mb-32 relative animate-fadeIn">
+        <header id="hero" className="mb-32 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[300px] h-[300px] bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />

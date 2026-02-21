@@ -3,7 +3,7 @@ import { Mail, Linkedin, ArrowRight } from "lucide-react";
 
 export default function RecruiterContact() {
     return (
-        <section id="contact" className="mb-32 relative animate-fadeIn" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+        <section id="contact" className="mb-32 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
             {/* Ambient Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[150%] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
 
