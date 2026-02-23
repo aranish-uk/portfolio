@@ -2,6 +2,7 @@ import React from "react"
 import "./globals.css"
 import NavBar from "@/components/NavBar"
 import MusicBar from "@/components/MusicBar"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: "Portfolio | Abhinav Ranish",
@@ -29,6 +30,7 @@ export default function RootLayout({
         <footer className="py-2 text-center text-sm text-gray-400 -mt-2">
           © {new Date().getFullYear()} Abhinav Ranish. All rights reserved.
         </footer>
+        <Analytics />
       </body>
     </html>
   )
