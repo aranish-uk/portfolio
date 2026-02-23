@@ -1,106 +1,73 @@
-"use client"
-
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import experiences from "@/components/data/experience.json"
-import { ChevronDown, ChevronUp } from "lucide-react"
-
-type Experience = {
-  title: string
-  organization: string
-  duration: string
-  description: string[]
-  image: string
-}
+import React, { useState } from "react";
+import experiences from "@/components/data/experience.json";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Experience() {
-  const [showAll, setShowAll] = useState(false)
-  const visible = showAll
-    ? (experiences as Experience[])
-    : (experiences as Experience[]).slice(0, 3)
+    const [isExpanded, setIsExpanded] = useState(false);
 
-  return (
-    <div className="min-h-screen px-6 py-16 bg-neutral-900 text-gray-100">
-      <div className="max-w-5xl mx-auto relative">
-        {/* Center timeline line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-pink-400 via-gray-700 to-pink-400 transform -translate-x-1/2" />
+    // Determine which items to show
+    const visibleExperiences = isExpanded ? experiences : experiences.slice(0, 2);
 
-        {visible.map((e, i) => {
-          const isLeft = i % 2 === 0
-          return (
-            <motion.div
-              key={i}
-              className={`mb-16 flex items-center justify-between w-full ${
-                isLeft ? "flex-row" : "flex-row-reverse"
-              }`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15 }}
-              viewport={{ once: true }}
-            >
-              {/* Card */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="bg-neutral-800 p-6 rounded-xl shadow-md hover:shadow-pink-500/20 transition-all duration-300 w-[45%] group"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-16 h-16">
-                    <Image
-                      src={e.image}
-                      alt={e.title}
-                      fill
-                      className="rounded-full object-cover border border-gray-600"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-pink-300">{e.title}</h3>
-                    <p className="text-gray-300">{e.organization}</p>
-                    <p className="text-sm text-gray-400">{e.duration}</p>
-                  </div>
+    return (
+        <section id="experience" className="mb-24 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
+            <div className="flex items-center gap-4 mb-12">
+                <h2 className="text-3xl font-bold tracking-tight text-white">Experience</h2>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-zinc-800 to-transparent"></div>
+            </div>
+
+            <div className={`space-y-12 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-800 before:to-transparent ${!isExpanded && experiences.length > 2 ? 'pb-8' : ''}`}>
+                {visibleExperiences.map((exp, idx) => (
+                    <div key={idx} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        {/* Timeline Core Icon/Dot */}
+                        <div className="flex items-center justify-center w-6 h-6 rounded-full border-4 border-[#0a0a0a] bg-zinc-700 group-hover:bg-pink-500 shadow-[0_0_0_2px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_15px_rgba(236,72,153,0.5)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 transition-colors duration-300 z-10"></div>
+
+                        {/* Experience Card */}
+                        <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] group-hover:-translate-y-1 transition-transform duration-300">
+                            <div className="relative p-6 bg-zinc-900/40 backdrop-blur-sm border border-white/5 group-hover:border-white/10 rounded-2xl shadow-xl overflow-hidden transition-colors duration-300">
+                                {/* Subtle Hover Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
+                                <div className="relative z-10">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-2 gap-2">
+                                        <h3 className="text-xl font-bold text-white tracking-tight">{exp.title}</h3>
+                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/5 text-zinc-400 border border-white/10 group-hover:text-pink-300 group-hover:border-pink-500/30 transition-colors duration-300 whitespace-nowrap">
+                                            {exp.duration}
+                                        </span>
+                                    </div>
+                                    <p className="text-pink-500 font-semibold text-sm tracking-wide uppercase mb-4">{exp.organization}</p>
+                                    <ul className="space-y-2 text-sm text-zinc-400">
+                                        {exp.description.map((desc, i) => (
+                                            <li key={i} className="flex gap-3">
+                                                <span className="text-pink-500 mt-1 flex-shrink-0">&bull;</span>
+                                                <span className="leading-relaxed">{desc}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {experiences.length > 2 && (
+                <div className="mt-8 flex justify-center relative z-20">
+                    <button
+                        onClick={() => setIsExpanded(!isExpanded)}
+                        className="group flex items-center gap-2 px-6 py-2.5 bg-zinc-900/80 backdrop-blur-md border border-white/10 hover:border-pink-500/50 rounded-full text-sm font-medium text-white transition-all duration-300 shadow-lg hover:shadow-pink-500/20"
+                    >
+                        {isExpanded ? (
+                            <>
+                                Show Less <ChevronUp className="w-4 h-4 text-pink-500 group-hover:-translate-y-0.5 transition-transform" />
+                            </>
+                        ) : (
+                            <>
+                                See All Experience ({experiences.length}) <ChevronDown className="w-4 h-4 text-pink-500 group-hover:translate-y-0.5 transition-transform" />
+                            </>
+                        )}
+                    </button>
                 </div>
-
-                {/* Description – preview by default, expand on hover */}
-                <ul
-                  className="
-                    text-gray-300 text-sm leading-relaxed 
-                    max-h-[24px] overflow-hidden group-hover:max-h-[500px] 
-                    transition-[max-height] duration-500 ease-in-out space-y-2
-                  "
-                >
-                  {e.description.map((d, j) => (
-                    <li key={j}>{d}</li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              {/* Connector dot */}
-              <div className="w-8 h-8 rounded-full bg-pink-400 border-4 border-gray-900 shadow-lg z-10" />
-
-              {/* Opposite empty side */}
-              <div className="w-[45%]" />
-            </motion.div>
-          )
-        })}
-
-        {/* Toggle Button */}
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={() => setShowAll((v) => !v)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-gray-200"
-          >
-            {showAll ? (
-              <>
-                <ChevronUp size={18} /> Show Less
-              </>
-            ) : (
-              <>
-                <ChevronDown size={18} /> Show More
-              </>
             )}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
+        </section>
+    );
 }

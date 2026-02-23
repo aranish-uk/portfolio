@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { FileText, FileDown, MoreVertical, Trash } from "lucide-react";
 import jsPDF from "jspdf";
 import Image from "next/image";
+import { motion } from "framer-motion";
 // ✅ replace these two red lines:
 import experienceData from "@/components/data/experience.json";
 import projectData from "@/components/data/projects.json";
@@ -79,19 +80,23 @@ export function AIChat() {
     "Hi, I’m Mr. Robot (Abhi's Assistant). How can I help you today?";
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    if (typeof window !== "undefined") {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
 
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved) as Message[] | unknown;
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved) as Message[] | unknown;
 
-        // Guard against bad or empty histories
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setMessages(parsed);
-        } else {
+          // Guard against bad or empty histories
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setMessages(parsed);
+          } else {
+            setMessages([{ sender: "ai", text: GREETING }]);
+          }
+        } catch {
           setMessages([{ sender: "ai", text: GREETING }]);
         }
-      } catch {
+      } else {
         setMessages([{ sender: "ai", text: GREETING }]);
       }
     } else {
@@ -104,7 +109,9 @@ export function AIChat() {
   // persist after hydrated
   useEffect(() => {
     if (!hydrated.current) return;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    }
     chatBoxRef.current?.scrollTo({
       top: chatBoxRef.current.scrollHeight,
       behavior: "smooth",
@@ -233,15 +240,98 @@ export function AIChat() {
 
   const showingOptions = showProjectOptions || showWorkOptions;
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
+
+  // Focus input when opened
+  useEffect(() => {
+    if (isOpen && chatBoxRef.current) {
+      chatBoxRef.current.scrollTo({
+        top: chatBoxRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [isOpen]);
+
+  // Click outside to close
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (chatWindowRef.current && !chatWindowRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  if (!isOpen) {
+    return (
+      <motion.button
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setIsOpen(true)}
+        animate={{
+          width: hovered ? 180 : 64,
+          height: 64,
+          borderRadius: 32
+        }}
+        transition={{ duration: 0.4, ease: 'backOut' }}
+        className="relative bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] hover:bg-zinc-800/80 hover:border-pink-500/50 flex items-center justify-start overflow-hidden group"
+        aria-label="Open Chat"
+      >
+        <div className="absolute left-1 w-14 h-14 flex items-center justify-center pointer-events-none">
+          <Image
+            src="/mrrobot.png"
+            alt="Mr. Robot"
+            width={48}
+            height={48}
+            className="object-contain drop-shadow-md"
+          />
+        </div>
+
+        <span className="absolute left-11 top-2 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+        </span>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="absolute left-16 whitespace-nowrap text-sm font-semibold text-zinc-200 pointer-events-none pr-4"
+        >
+          Ask Mr. Robot ✨
+        </motion.div>
+      </motion.button>
+    );
+  }
+
   return (
-    <div className="relative rounded-2xl bg-neutral-900 shadow-lg flex flex-col h-[450px] w-full max-w-xl overflow-visible">
-      {/* 👾 Robot Avatar popping out */}
-      <div className="absolute -top-13 -left-17 w-22 h-22 z-0 animate-bounce-fade -rotate-45">
+    <div
+      ref={chatWindowRef}
+      className="absolute bottom-0 left-0 origin-bottom-left rounded-2xl bg-neutral-900/60 backdrop-blur-2xl shadow-2xl shadow-pink-500/20 flex flex-col h-[450px] w-[calc(100vw-48px)] max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in zoom-in-95 slide-in-from-bottom-6"
+    >
+      {/* Header / Controls */}
+      <div className="absolute top-2 right-2 flex gap-2 z-50">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="w-8 h-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white transition-colors shadow-lg"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* 👾 Robot Avatar popping out from behind */}
+      <div className="absolute -top-18 -left-12 w-28 h-28 -z-10 animate-bounce-fade pointer-events-none -rotate-12 transition-transform duration-500 hover:rotate-0">
         <Image
           src="/mrrobot.png"
           alt="Mr. Robot"
           fill
-          className="object-contain opacity-50 animate-fade drop-shadow-lg"
+          className="object-contain drop-shadow-[0_10px_20px_rgba(236,72,153,0.3)] filter brightness-110"
         />
       </div>
 
@@ -254,26 +344,24 @@ export function AIChat() {
         {messages.map((m, i) => (
           <div
             key={i}
-            className={`flex ${
-              m.sender === "user" ? "justify-end" : "justify-start"
-            }`}
+            className={`flex ${m.sender === "user" ? "justify-end" : "justify-start"
+              }`}
           >
             <div
-              className={`px-4 py-2 rounded-2xl max-w-[80%] ${
-                m.sender === "user"
-                  ? "bg-pink-500 text-white rounded-br-none"
-                  : "bg-gray-700 text-gray-100 rounded-bl-none"
-              }`}
+              className={`px-4 py-2 rounded-2xl max-w-[80%] ${m.sender === "user"
+                ? "bg-pink-500 text-white rounded-br-none shadow-lg shadow-pink-500/20"
+                : "bg-white/5 backdrop-blur-md border border-white/10 text-gray-100 rounded-bl-none"
+                }`}
             >
               <span
                 dangerouslySetInnerHTML={{
-                  __html: 
-                  m.text.replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
-                  .replace(
-                    /(https?:\/\/[^\s]+)/g,
-                    `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
-                  ),
-                  
+                  __html:
+                    m.text.replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
+                      .replace(
+                        /(https?:\/\/[^\s]+)/g,
+                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
+                      ),
+
                 }}
               />
             </div>
@@ -283,14 +371,14 @@ export function AIChat() {
       </div>
 
       {/* Suggestions / Dynamic option bubbles */}
-      <div className="flex gap-2 px-3 pb-2 overflow-x-auto scrollbar-hide">
+      <div className="flex gap-2 px-3 pb-2 overflow-x-auto scrollbar-hide z-10">
         {!showingOptions &&
           suggestionActions.map((s, i) => (
             <button
               key={i}
               onClick={s.action}
               disabled={!canSend || loading}
-              className="px-2.5 py-1 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-2.5 py-1 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {s.label}
             </button>
@@ -306,7 +394,7 @@ export function AIChat() {
                 setShowProjectOptions(false);
               }}
               disabled={!canSend || loading}
-              className="px-3 py-1.5 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {o.label}
             </button>
@@ -322,7 +410,7 @@ export function AIChat() {
                 setShowWorkOptions(false);
               }}
               disabled={!canSend || loading}
-              className="px-3 py-1.5 text-xs rounded-full bg-gray-800 hover:bg-gray-700 text-gray-200 disabled:opacity-50 whitespace-nowrap"
+              className="px-3 py-1.5 text-xs rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-gray-200 disabled:opacity-50 whitespace-nowrap transition-colors"
             >
               {o.label}
             </button>
@@ -332,7 +420,7 @@ export function AIChat() {
       {/* Input */}
       <form
         onSubmit={handleSubmit}
-        className="flex items-center gap-2 border-t border-neutral-800 p-3"
+        className="flex items-center gap-2 border-t border-white/10 p-3 bg-neutral-900/50 backdrop-blur-md rounded-b-2xl z-10"
       >
         <textarea
           rows={1}
@@ -349,12 +437,12 @@ export function AIChat() {
               }
             }
           }}
-          className="flex-1 p-2 rounded-lg bg-neutral-800 text-gray-100 border border-neutral-700 resize-none h-[42px]"
+          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-pink-500/50 transition-colors placeholder:text-zinc-500"
         />
         <button
           type="submit"
           disabled={!canSend || loading || !input.trim()}
-          className="bg-pink-500 px-4 py-2 rounded-lg text-white disabled:opacity-50"
+          className="bg-pink-500 hover:bg-pink-400 px-4 py-2 rounded-lg text-white disabled:opacity-50 transition-colors shadow-lg shadow-pink-500/20"
         >
           {loading ? "…" : "Send"}
         </button>
@@ -364,27 +452,29 @@ export function AIChat() {
           <button
             type="button"
             onClick={() => setShowMenu((v) => !v)}
-            className="p-2 rounded-lg hover:bg-neutral-800"
+            className="p-2 rounded-lg hover:bg-white/10 text-zinc-400 transition-colors"
           >
             <MoreVertical size={18} />
           </button>
           {showMenu && (
-            <div className="absolute right-0 bottom-12 bg-neutral-800 rounded-lg shadow-lg overflow-hidden">
+            <div className="absolute right-0 bottom-12 bg-neutral-800 border border-white/10 rounded-lg shadow-xl overflow-hidden min-w-[120px]">
               <button
                 onClick={downloadTxt}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-neutral-700 w-full text-sm text-gray-200"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/5 w-full text-sm text-gray-200 transition-colors"
               >
                 <FileText size={16} /> TXT
               </button>
               <button
                 onClick={downloadPdf}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-neutral-700 w-full text-sm text-gray-200"
+                className="flex items-center gap-2 px-4 py-2 hover:bg-white/5 w-full text-sm text-gray-200 transition-colors"
               >
                 <FileDown size={16} /> PDF
               </button>
               <button
                 onClick={() => {
-                  localStorage.removeItem("chatHistory");
+                  if (typeof window !== "undefined") {
+                    window.localStorage.removeItem("chatHistory");
+                  }
                   setMessages([
                     {
                       sender: "ai",
@@ -393,8 +483,9 @@ export function AIChat() {
                   ]);
                   setShowProjectOptions(false);
                   setShowWorkOptions(false);
+                  setShowMenu(false);
                 }}
-                className="flex items-center gap-2 px-4 py-2 hover:bg-red-600 w-full text-sm "
+                className="flex items-center gap-2 px-4 py-2 hover:bg-red-500/20 w-full text-sm text-red-400 transition-colors"
               >
                 <Trash size={16} /> Bin
               </button>

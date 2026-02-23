@@ -1,4 +1,4 @@
-// app/layout.tsx
+import React from "react"
 import "./globals.css"
 import NavBar from "@/components/NavBar"
 import MusicBar from "@/components/MusicBar"

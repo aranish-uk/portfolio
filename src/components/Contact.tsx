@@ -1,81 +1,55 @@
-"use client";
+import React from "react";
+import { Mail, Linkedin, ArrowRight } from "lucide-react";
 
-import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin } from "lucide-react";
-import SkillsTape from "./SkillsTape";
+export default function RecruiterContact() {
+    return (
+        <section id="contact" className="mb-32 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: '400ms', animationFillMode: 'both' }}>
+            {/* Ambient Background Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[150%] bg-pink-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-export default function Contact() {
-  return (
-    <div className="min-h-screen bg-neutral-900 text-gray-100 ">
-      <div className="flex items-center justify-center px-6 py-30">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full max-w-3xl bg-black/80 backdrop-blur rounded-xl shadow-lg p-10"
-        >
-          {/* Header */}
-          <motion.h2
-            className="text-3xl font-bold text-center text-pink-300 mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            Get in Touch
-          </motion.h2>
-          <motion.p
-            className="text-center text-gray-400 mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Whether it’s about projects, opportunities, or just a chat — feel
-            free to reach out.
-          </motion.p>
+            <div className="relative z-10 p-[1px] rounded-3xl overflow-hidden bg-gradient-to-b from-white/10 to-transparent">
+                <div className="bg-[#0a0a0a] rounded-[23px] h-full p-8 md:p-12 border border-white/5 relative overflow-hidden group">
+                    {/* Animated hover gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/5 via-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-          {/* Contact Options */}
-          <div className="grid gap-6 md:grid-cols-3">
-            {/* Email */}
-            <motion.a
-              href="mailto:aranish@asu.edu"
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 transition shadow-md"
-            >
-              <Mail className="w-8 h-8 text-pink-300 mb-3" />
-              <h3 className="font-semibold text-gray-100">Email</h3>
-              <p className="text-sm text-gray-400">aranish@asu.edu</p>
-            </motion.a>
+                    <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto">
+                        <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/10 mb-6 shadow-xl">
+                            <Mail className="w-6 h-6 text-pink-400" />
+                        </div>
 
-            {/* Phone */}
-            <motion.a
-              href="tel:+16232817065"
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 transition shadow-md"
-            >
-              <Phone className="w-8 h-8 text-pink-300 mb-3" />
-              <h3 className="font-semibold text-gray-100">Phone</h3>
-              <p className="text-sm text-gray-400">+1 (623) 281-7065</p>
-            </motion.a>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+                            Let's build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">great.</span>
+                        </h2>
 
-            {/* LinkedIn */}
-            <motion.a
-              href="https://www.linkedin.com/in/abhinavranish/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 transition shadow-md"
-            >
-              <Linkedin className="w-8 h-8 text-pink-300 mb-3" />
-              <h3 className="font-semibold text-gray-100">LinkedIn</h3>
-              <p className="text-sm text-gray-400">/in/abhinavranish</p>
-            </motion.a>
-          </div>
-        </motion.div>
-      </div>
-      <div className="px-2 py-1 max-w-7xl mx-auto">
-        {" "}
-        <SkillsTape />
-      </div>
-    </div>
-  );
+                        <p className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg">
+                            Always open for new opportunities, challenging projects, and collaborative ventures. Reach out, and let's make an impact.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+                            <a
+                                href="mailto:aranish@asu.edu"
+                                className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all duration-300 ease-in-out bg-zinc-900 border border-zinc-700 rounded-xl hover:border-pink-500 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] overflow-hidden w-full sm:w-auto"
+                            >
+                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Send an Email
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </span>
+                            </a>
+
+                            <a
+                                href="https://linkedin.com/in/abhinavranish"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-zinc-300 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 ease-in-out w-full sm:w-auto"
+                            >
+                                <Linkedin className="w-4 h-4 mr-2" />
+                                Connect to Network
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 }
