@@ -12,7 +12,7 @@ export default function MusicBar() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       animate={{
-        width: hovered ? 420 : 64,
+        width: hovered ? 500 : 64,
         height: hovered ? 100 : 64,
         borderRadius: hovered ? 24 : 32
       }}

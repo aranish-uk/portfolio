@@ -13,7 +13,6 @@
         "web": "https://readflow.aranish.uk",
         "category": [
             "Frontend",
-            "Software",
             "🔥🔥"
         ]
     },
@@ -33,6 +32,24 @@
         "category": [
             "Frontend",
             "Full Stack",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Auto Class Enroller",
+        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
+        "technologies": [
+            "Python",
+            "Selenium",
+            "Smtplib",
+            "ASU",
+            "Automation"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
+        "image": "/projects/AutoClassEnroller.ico",
+        "category": [
+            "Software",
+            "Automation",
             "🔥🔥"
         ]
     },
@@ -107,7 +124,6 @@
         "category": [
             "AI/LLM",
             "Frontend",
-            "Software",
             "🔥🔥"
         ]
     },
@@ -144,8 +160,7 @@
         "visit": "https://github.com/aranish-uk/Noct",
         "web": "https://noct.aranish.uk",
         "category": [
-            "Frontend",
-            "Software"
+            "Frontend"
         ]
     },
     {
@@ -199,8 +214,7 @@
         "visit": "https://github.com/Abhinav-ranish/F1-reaction-tester",
         "web": "https://f1.aranish.uk",
         "category": [
-            "Frontend",
-            "Software"
+            "Frontend"
         ]
     },
     {
@@ -239,24 +253,6 @@
         ]
     },
     {
-        "title": "Auto Class Enroller",
-        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
-        "technologies": [
-            "Python",
-            "Selenium",
-            "Smtplib",
-            "ASU",
-            "Automation"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
-        "image": "/projects/AutoClassEnroller.ico",
-        "category": [
-            "Software",
-            "Automation",
-            "🔥🔥"
-        ]
-    },
-    {
         "title": "Market Facts MCP Server",
         "description": "A single-purpose MCP server designed to fetch, verify, normalize, and return structured market intelligence for stock tickers. It provides fundamentals, filings, insider transactions, and politician trading data in a clean, machine-readable format. Strictly factual and non-opinionated, it avoids investment advice and subjective conclusions.",
         "technologies": [
@@ -269,7 +265,7 @@
         "visit": "https://github.com/Abhinav-ranish/Market-Facts-MCP-Server",
         "category": [
             "AI/LLM",
-            "Software"
+            "Automation"
         ]
     },
     {
@@ -322,6 +318,23 @@
         ]
     },
     {
+        "title": "Contract Generator RAG",
+        "description": "Extracts contract conditions from DOCX files, generates blueprints from uploaded contracts, and creates new contracts from blueprints. Builds a searchable vector database for advanced queries, using NLP and Ollama RAG orchestration.",
+        "technologies": [
+            "Python",
+            "Ollama",
+            "RAG",
+            "Streamlit",
+            "Docx"
+        ],
+        "visit": "https://en.wikipedia.org/wiki/Non-disclosure_agreement",
+        "image": "/projects/ContractAnalyzer.jpeg",
+        "category": [
+            "AI/LLM",
+            "🔥🔥"
+        ]
+    },
+    {
         "title": "VibeCode Machine",
         "description": "Experimental AI-assisted code builder that autogenerates, tests, and fixes Python projects via Ollama + Codellama. Automatically patches failed logic and regenerates dependencies via smart retry. CLI interface for rapid prototyping.",
         "technologies": [
@@ -353,7 +366,7 @@
         "web": "https://velarith.aranish.uk",
         "category": [
             "AI/LLM",
-            "Software"
+            "Frontend"
         ]
     },
     {
@@ -369,23 +382,7 @@
         "image": "/projects/StockPredictor.jpg",
         "category": "ML"
     },
-    {
-        "title": "Contract Generator RAG",
-        "description": "Extracts contract conditions from DOCX files, generates blueprints from uploaded contracts, and creates new contracts from blueprints. Builds a searchable vector database for advanced queries, using NLP and Ollama RAG orchestration.",
-        "technologies": [
-            "Python",
-            "Ollama",
-            "RAG",
-            "Streamlit",
-            "Docx"
-        ],
-        "visit": "https://en.wikipedia.org/wiki/Non-disclosure_agreement",
-        "image": "/projects/ContractAnalyzer.jpeg",
-        "category": [
-            "AI/LLM",
-            "🔥🔥"
-        ]
-    },
+
     {
         "title": "Secure Team Password Manager",
         "description": "Deployed Passbolt Community Edition on AWS EC2 to streamline password management for ACM ASU.",
@@ -512,9 +509,7 @@
         "visit": "https://github.com/Abhinav-ranish/Internship-Website",
         "web": "https://internship.aranish.uk/",
         "image": "/projects/QFCRA.jpeg",
-        "category": [
-            "Frontend"
-        ]
+        "category": []
     },
     {
         "title": "Matrix Graph - DSA OOP Project",
