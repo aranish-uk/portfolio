@@ -13,6 +13,7 @@ type ProjectCategory =
     | "Scripts"
     | "Extensions"
     | "IOS"
+    | "Research"
     | "All";
 
 export default function Projects() {
@@ -41,6 +42,8 @@ export default function Projects() {
         "AI/LLM",
         "ML",
         "Extensions",
+        "Research",
+        "IOS",
         "All",
     ];
 

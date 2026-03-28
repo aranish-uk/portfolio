@@ -17,92 +17,22 @@
         ]
     },
     {
-        "title": "YourWall",
-        "description": "A modern, public-by-default micro-blogging platform focused on speed, privacy, and clean design. Built with Next.js 15, TypeScript, TailwindCSS, Prisma, and PostgreSQL (Neon). Features real-time posting, private accounts, image uploads, rate limiting, an Admin Console, and a premium SaaS-inspired UI with dark mode and fluid transitions.",
+        "title": "IntelliTab",
+        "description": "An AI-powered Chrome extension that intelligently organizes tabs into native Chromium tab groups, learns preferences over time, and manages workspaces. Features an adaptive learning system (passive snapshots, correction-based feedback, explicit preferences), an editable SOUL instruction set that guides AI grouping logic, workspace save/restore, auto-recovery across restarts, a rules engine for deterministic overrides, and multi-provider AI support (Groq, OpenAI, Gemini, Claude, OpenRouter).",
         "technologies": [
-            "Next.js 15",
             "TypeScript",
-            "TailwindCSS",
-            "Prisma ORM",
-            "PostgreSQL (Neon)",
-            "Auth.js"
+            "React 18",
+            "Tailwind CSS",
+            "Vite",
+            "Chrome Extension Manifest V3",
+            "Multi-Provider AI"
         ],
-        "visit": "https://github.com/Abhinav-ranish/YourWall",
-        "web": "https://yourwall.aranish.uk",
-        "category": [
-            "Frontend",
-            "Full Stack",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "Auto Class Enroller",
-        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
-        "technologies": [
-            "Python",
-            "Selenium",
-            "Smtplib",
-            "ASU",
-            "Automation"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
-        "image": "/projects/AutoClassEnroller.ico",
-        "category": [
-            "Software",
-            "Automation",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "ClawHub",
-        "description": "A lightweight, self-hosted GitHub clone optimized for autonomous agents. ClawHub provides a Git Smart HTTP server, API-first agent registration system, Personal Access Token authentication, and a web dashboard for repository management. Built with Node.js, Fastify, TypeScript, Prisma, Next.js, and PostgreSQL.",
-        "technologies": [
-            "Node.js",
-            "Fastify",
-            "TypeScript",
-            "Prisma",
-            "Next.js",
-            "PostgreSQL",
-            "Git Smart HTTP"
-        ],
-        "visit": "https://github.com/aranish-uk/ClawHub",
-        "category": [
-            "Automation",
-            "Backend",
-            "Infrastructure"
-        ]
-    },
-    {
-        "title": "CartGuessr",
-        "description": "An interactive price-guessing game where users estimate the cost of common household items to earn points. The app aggregates live pricing data from major retailers and features two modes: Normal Mode (Walmart & Target pricing) and Rich Mode (Whole Foods & Erewhon pricing). Designed to blend real-world data APIs with competitive gameplay.",
-        "technologies": [
-            "Next.js",
-            "Retail APIs",
-            "REST APIs",
-            "React",
-            "Game Logic Systems"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/CartGuessr",
-        "category": [
-            "Game",
-            "API Integration",
-            "Frontend"
-        ]
-    },
-    {
-        "title": "Focus Spoofer",
-        "description": "A Chrome extension that prevents websites from detecting when users switch tabs or minimize their browser. It overrides visibility and focus APIs by forcing document.hidden to false, document.visibilityState to 'visible', and document.hasFocus() to return true. The extension also blocks blur, visibilitychange, mouseleave, and pagehide events to maintain uninterrupted session states.",
-        "technologies": [
-            "JavaScript",
-            "Chrome Extension API",
-            "Content Scripts",
-            "Browser Events API"
-        ],
-        "visit": "https://github.com/abhinav-ranish/Focus-Spoofer",
-        "web": "https://focus.aranish.uk",
+        "visit": "https://github.com/aranish-uk/IntelliTab",
+        "web": "https://intellitab.aranish.uk",
         "category": [
             "Extensions",
-            "Cyber"
+            "AI/LLM",
+            "🔥🔥"
         ]
     },
     {
@@ -128,6 +58,102 @@
         ]
     },
     {
+        "title": "WiSpec",
+        "description": "Commodity dual-band Wi-Fi spectroscopy research for material classification and structural reconnaissance. Uses Wi-Fi signal reflections (RSSI and CSI) to characterize interior layouts, wall composition, and structural elements. Applications include building reconnaissance, search and rescue structural assessment, and smart building automation. Active research project at Arizona State University.",
+        "technologies": [
+            "Python",
+            "Scapy",
+            "PicoScenes",
+            "802.11 Frame Parsing",
+            "Machine Learning",
+            "Signal Processing"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/WiSpec",
+        "web": "https://wispec.aranish.uk",
+        "category": [
+            "Research",
+            "Cyber",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Auto Class Enroller",
+        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
+        "technologies": [
+            "Python",
+            "Selenium",
+            "Smtplib",
+            "ASU",
+            "Automation"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
+        "image": "/projects/AutoClassEnroller.ico",
+        "category": [
+            "Software",
+            "Automation",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "EatBetter",
+        "description": "An iOS app that helps users eat healthier through AI-powered food photo analysis, daily reminders, and streak-based habit building. Snap a photo of any meal and get instant calorie and macro estimates from Claude Vision API with zero manual data entry. Features supportive coaching tone, cooking method and portion size context, and habit tracking over time.",
+        "technologies": [
+            "SwiftUI",
+            "Swift",
+            "Firebase",
+            "Claude Vision API",
+            "RevenueCat",
+            "Cloud Functions"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/EatBetter",
+        "web": "https://eatbetter.aranish.uk",
+        "workinprogress": true,
+        "category": [
+            "IOS",
+            "AI/LLM",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Posta",
+        "description": "A full-featured Gmail enterprise clone for personal use. Built with Next.js 16, featuring OAuth authentication, email parsing and rendering, AWS S3 file storage with presigned URLs, email sending via AWS SES, SNS webhook processing, background job processing with Inngest, and a PostgreSQL database via Neon with Drizzle ORM.",
+        "technologies": [
+            "Next.js 16",
+            "TypeScript",
+            "Drizzle ORM",
+            "Neon PostgreSQL",
+            "AWS SES/S3/SNS",
+            "NextAuth v5",
+            "Inngest",
+            "Tailwind CSS"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/posta-email-client",
+        "workinprogress": true,
+        "category": [
+            "Full Stack",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "YourWall",
+        "description": "A modern, public-by-default micro-blogging platform focused on speed, privacy, and clean design. Built with Next.js 15, TypeScript, TailwindCSS, Prisma, and PostgreSQL (Neon). Features real-time posting, private accounts, image uploads, rate limiting, an Admin Console, and a premium SaaS-inspired UI with dark mode and fluid transitions.",
+        "technologies": [
+            "Next.js 15",
+            "TypeScript",
+            "TailwindCSS",
+            "Prisma ORM",
+            "PostgreSQL (Neon)",
+            "Auth.js"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/YourWall",
+        "web": "https://yourwall.aranish.uk",
+        "category": [
+            "Frontend",
+            "Full Stack",
+            "🔥🔥"
+        ]
+    },
+    {
         "title": "Stock AI Analyzer",
         "description": "AI-powered stock analysis tool leveraging multiple data sources such as Google Trends, News API, and yfinance. It aggregates real-time market signals, sentiment, and price data to deliver actionable insights through a sleek frontend powered by AI.",
         "technologies": [
@@ -144,22 +170,6 @@
         "category": [
             "AI/LLM",
             "🔥🔥",
-            "Frontend"
-        ]
-    },
-    {
-        "title": "Noct",
-        "description": "A focus-first study timer built with Next.js, featuring integrated Spotify controls and a \"Surprise Me\" button for instant music vibes. Designed for deep work sessions with a clean, distraction-free interface and seamless music playback control.",
-        "technologies": [
-            "Next.js",
-            "React",
-            "Spotify Web API",
-            "TypeScript",
-            "TailwindCSS"
-        ],
-        "visit": "https://github.com/aranish-uk/Noct",
-        "web": "https://noct.aranish.uk",
-        "category": [
             "Frontend"
         ]
     },
@@ -201,40 +211,6 @@
         ]
     },
     {
-        "title": "F1 Reaction Tester",
-        "description": "A high-fidelity Formula 1 start simulator that measures millisecond reaction times. Features realistic five-light gantry animation, Web Audio API synthesized race sounds, false start detection, performance categorization, and personal best tracking with localStorage. Designed with authentic F1 pacing, smooth CSS animations, and responsive design.",
-        "technologies": [
-            "JavaScript",
-            "Web Audio API",
-            "HTML5",
-            "CSS3",
-            "performance.now()",
-            "localStorage"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/F1-reaction-tester",
-        "web": "https://f1.aranish.uk",
-        "category": [
-            "Frontend"
-        ]
-    },
-    {
-        "title": "Cyber Scripts",
-        "description": "A collection of offensive security automation scripts created during PortSwigger, JWT, and CTF training. Includes Turbo Intruder templates, LLM prompt injections, JWT brute-force, exploit server hijacking, and more. Built to speed up recon and exploitation in web targets.",
-        "technologies": [
-            "Python",
-            "Turbo Intruder",
-            "Burp Suite",
-            "LLM",
-            "Bash"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/cyberscripts",
-        "image": "/projects/cyberscripts.png",
-        "category": [
-            "Cyber",
-            "Automation"
-        ]
-    },
-    {
         "title": "Net Audit Suite",
         "description": "Cyber audit tool integrating Nmap, Nikto, OpenVAS, and arp-scan to generate AI-powered summaries of discovered vulnerabilities using LLaMA + Ollama. Generates DOCX reports, maps infected IPs, and provides a dark-mode frontend in Next.js.",
         "technologies": [
@@ -253,57 +229,8 @@
         ]
     },
     {
-        "title": "Market Facts MCP Server",
-        "description": "A single-purpose MCP server designed to fetch, verify, normalize, and return structured market intelligence for stock tickers. It provides fundamentals, filings, insider transactions, and politician trading data in a clean, machine-readable format. Strictly factual and non-opinionated, it avoids investment advice and subjective conclusions.",
-        "technologies": [
-            "Node.js",
-            "TypeScript",
-            "MCP Protocol",
-            "Financial Data APIs",
-            "REST APIs"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/Market-Facts-MCP-Server",
-        "category": [
-            "AI/LLM",
-            "Automation"
-        ]
-    },
-    {
-        "title": "Educational Worm + Dashboard",
-        "description": "Python worm POC that replicates across user folders, USBs, and sends host info to a Flask-based C2 dashboard. Dashboard shows infection map, kill switch, and logs. Fully safe for sandbox testing and cyber education.",
-        "technologies": [
-            "Python",
-            "Flask",
-            "Geocoder",
-            "USB I/O",
-            "Self-replication"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/Worm",
-        "image": "/projects/worm.jpg",
-        "category": "Cyber"
-    },
-    {
-        "title": "TymeShare",
-        "description": "A global meeting link sharing platform that simplifies scheduling across time zones. Built with Next.js 16 and React 19, TymeShare provides an elegant, animated UI for generating and sharing timezone-aware meeting links worldwide.",
-        "technologies": [
-            "Next.js 16",
-            "React 19",
-            "TailwindCSS",
-            "Framer Motion",
-            "Luxon",
-            "NanoID",
-            "clsx"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/TymeShare",
-        "web": "https://tyme.aranish.uk",
-        "category": [
-            "Frontend",
-            "Software"
-        ]
-    },
-    {
         "title": "DIW387 STB Mod Toolkit",
-        "description": "Toolkit to de-bloat and customize Ooredoo’s locked DIW387 Android TV STB. Includes Wolf Launcher setup, splash screen mods, sideload tooling, and Dirty COW (CVE-2016-5195) root attempt. For education and warranty-voiding fun.",
+        "description": "Toolkit to de-bloat and customize Ooredoo's locked DIW387 Android TV STB. Includes Wolf Launcher setup, splash screen mods, sideload tooling, and Dirty COW (CVE-2016-5195) root attempt. For education and warranty-voiding fun.",
         "technologies": [
             "Bash",
             "Android TV",
@@ -351,6 +278,131 @@
         ]
     },
     {
+        "title": "Campus Hive",
+        "description": "Java platform for students to create accounts, verify via email, and collaborate on projects. Includes real-time messaging to contact professors, separate teacher and student dashboards, and an admin panel for inviting, deleting, and managing users.",
+        "technologies": [
+            "Java",
+            "JavaFX",
+            "Jakarta Mail",
+            "GitHub",
+            "Eclipse",
+            "H2 Database"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/CampusHive",
+        "image": "/projects/CampusHive.png",
+        "category": [
+            "Software",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "ClawHub",
+        "description": "A lightweight, self-hosted GitHub clone optimized for autonomous agents. ClawHub provides a Git Smart HTTP server, API-first agent registration system, Personal Access Token authentication, and a web dashboard for repository management. Built with Node.js, Fastify, TypeScript, Prisma, Next.js, and PostgreSQL.",
+        "technologies": [
+            "Node.js",
+            "Fastify",
+            "TypeScript",
+            "Prisma",
+            "Next.js",
+            "PostgreSQL",
+            "Git Smart HTTP"
+        ],
+        "visit": "https://github.com/aranish-uk/ClawHub",
+        "category": [
+            "Automation",
+            "Backend",
+            "Infrastructure"
+        ]
+    },
+    {
+        "title": "CartGuessr",
+        "description": "An interactive price-guessing game where users estimate the cost of common household items to earn points. The app aggregates live pricing data from major retailers and features two modes: Normal Mode (Walmart & Target pricing) and Rich Mode (Whole Foods & Erewhon pricing). Designed to blend real-world data APIs with competitive gameplay.",
+        "technologies": [
+            "Next.js",
+            "Retail APIs",
+            "REST APIs",
+            "React",
+            "Game Logic Systems"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/CartGuessr",
+        "web": "https://wwic.aranish.uk",
+        "category": [
+            "Game",
+            "API Integration",
+            "Frontend"
+        ]
+    },
+    {
+        "title": "VelvetUI",
+        "description": "A modern Electron-based Spotify desktop client featuring a glassmorphism UI, 10-band equalizer with Web Audio API, local playlist management, real-time lyrics integration, and Widevine DRM support. Built with React, TypeScript, and Vite, with multi-platform builds for macOS, Windows, and Linux.",
+        "technologies": [
+            "Electron",
+            "React 18",
+            "TypeScript",
+            "Vite",
+            "Tailwind CSS",
+            "Web Audio API",
+            "Spotify Web Playback SDK"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/VelvetUI",
+        "category": [
+            "Software"
+        ]
+    },
+    {
+        "title": "Resizify",
+        "description": "A privacy-first image crop and resize tool that runs entirely in the browser with zero server uploads. Features freeform and aspect-ratio-locked cropping, multiple export formats (PNG, JPEG, WebP) with quality sliders, batch processing with JSZip, and a luxury grayscale glassmorphic UI.",
+        "technologies": [
+            "React 19",
+            "TypeScript",
+            "Vite",
+            "Tailwind CSS",
+            "Canvas API",
+            "Zustand",
+            "JSZip"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/resizify",
+        "web": "https://resizify.aranish.uk",
+        "category": [
+            "Software",
+            "Extensions"
+        ]
+    },
+    {
+        "title": "Agentex",
+        "description": "AI-powered resume tailoring Chrome extension that uses multiple AI providers (Gemini, Claude, Groq, OpenRouter) to intelligently tailor LaTeX resumes to job descriptions with anti-fabrication guardrails. Contributed LinkedIn OAuth and PDF/DOCX support for datasets and document input, plus Groq and OpenRouter API key provisions and model updates.",
+        "technologies": [
+            "Chrome Extension Manifest V3",
+            "JavaScript",
+            "Google Gemini",
+            "Claude API",
+            "Groq",
+            "OpenRouter",
+            "LaTeX"
+        ],
+        "visit": "https://github.com/sbeeredd04/Agentex",
+        "collaboration": true,
+        "category": [
+            "Extensions"
+        ]
+    },
+    {
+        "title": "Focus Spoofer",
+        "description": "A Chrome extension that prevents websites from detecting when users switch tabs or minimize their browser. It overrides visibility and focus APIs by forcing document.hidden to false, document.visibilityState to 'visible', and document.hasFocus() to return true. The extension also blocks blur, visibilitychange, mouseleave, and pagehide events to maintain uninterrupted session states.",
+        "technologies": [
+            "JavaScript",
+            "Chrome Extension API",
+            "Content Scripts",
+            "Browser Events API"
+        ],
+        "visit": "https://github.com/abhinav-ranish/Focus-Spoofer",
+        "web": "https://focus.aranish.uk",
+        "category": [
+            "Extensions",
+            "Cyber"
+        ]
+    },
+    {
         "title": "Velarith",
         "description": "Enterprise-grade AI financial analytics platform powered by Claude Sonnet 4.5. Built with Next.js, TypeScript, and Python Flask, Velarith delivers real-time AI market analysis with streaming responses, 15+ technical indicators, and multi-source data fusion from Finnhub, Yahoo Finance, and Polymarket. Created during the Claude Builder Club Hackathon 2025.",
         "technologies": [
@@ -370,6 +422,105 @@
         ]
     },
     {
+        "title": "Market Facts MCP Server",
+        "description": "A single-purpose MCP server designed to fetch, verify, normalize, and return structured market intelligence for stock tickers. It provides fundamentals, filings, insider transactions, and politician trading data in a clean, machine-readable format. Strictly factual and non-opinionated, it avoids investment advice and subjective conclusions.",
+        "technologies": [
+            "Node.js",
+            "TypeScript",
+            "MCP Protocol",
+            "Financial Data APIs",
+            "REST APIs"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/Market-Facts-MCP-Server",
+        "category": [
+            "AI/LLM",
+            "Automation"
+        ]
+    },
+    {
+        "title": "Noct",
+        "description": "A focus-first study timer built with Next.js, featuring integrated Spotify controls and a \"Surprise Me\" button for instant music vibes. Designed for deep work sessions with a clean, distraction-free interface and seamless music playback control.",
+        "technologies": [
+            "Next.js",
+            "React",
+            "Spotify Web API",
+            "TypeScript",
+            "TailwindCSS"
+        ],
+        "visit": "https://github.com/aranish-uk/Noct",
+        "web": "https://noct.aranish.uk",
+        "category": [
+            "Frontend"
+        ]
+    },
+    {
+        "title": "TymeShare",
+        "description": "A global meeting link sharing platform that simplifies scheduling across time zones. Built with Next.js 16 and React 19, TymeShare provides an elegant, animated UI for generating and sharing timezone-aware meeting links worldwide.",
+        "technologies": [
+            "Next.js 16",
+            "React 19",
+            "TailwindCSS",
+            "Framer Motion",
+            "Luxon",
+            "NanoID",
+            "clsx"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/TymeShare",
+        "web": "https://tyme.aranish.uk",
+        "category": [
+            "Frontend",
+            "Software"
+        ]
+    },
+    {
+        "title": "F1 Reaction Tester",
+        "description": "A high-fidelity Formula 1 start simulator that measures millisecond reaction times. Features realistic five-light gantry animation, Web Audio API synthesized race sounds, false start detection, performance categorization, and personal best tracking with localStorage. Designed with authentic F1 pacing, smooth CSS animations, and responsive design.",
+        "technologies": [
+            "JavaScript",
+            "Web Audio API",
+            "HTML5",
+            "CSS3",
+            "performance.now()",
+            "localStorage"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/F1-reaction-tester",
+        "web": "https://f1.aranish.uk",
+        "category": [
+            "Frontend"
+        ]
+    },
+    {
+        "title": "Cyber Scripts",
+        "description": "A collection of offensive security automation scripts created during PortSwigger, JWT, and CTF training. Includes Turbo Intruder templates, LLM prompt injections, JWT brute-force, exploit server hijacking, and more. Built to speed up recon and exploitation in web targets.",
+        "technologies": [
+            "Python",
+            "Turbo Intruder",
+            "Burp Suite",
+            "LLM",
+            "Bash"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/cyberscripts",
+        "image": "/projects/cyberscripts.png",
+        "category": [
+            "Cyber",
+            "Automation"
+        ]
+    },
+    {
+        "title": "Educational Worm + Dashboard",
+        "description": "Python worm POC that replicates across user folders, USBs, and sends host info to a Flask-based C2 dashboard. Dashboard shows infection map, kill switch, and logs. Fully safe for sandbox testing and cyber education.",
+        "technologies": [
+            "Python",
+            "Flask",
+            "Geocoder",
+            "USB I/O",
+            "Self-replication"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/Worm",
+        "image": "/projects/worm.jpg",
+        "category": "Cyber"
+    },
+    {
         "title": "Stock Predictor",
         "description": "Stock prediction system using Backtesting.py to evaluate trade strategies and forecast stock movements.",
         "technologies": [
@@ -382,7 +533,6 @@
         "image": "/projects/StockPredictor.jpg",
         "category": "ML"
     },
-
     {
         "title": "Secure Team Password Manager",
         "description": "Deployed Passbolt Community Edition on AWS EC2 to streamline password management for ACM ASU.",
@@ -397,24 +547,6 @@
         "visit": "https://secure.acm-asu.org/",
         "image": "/projects/passbolt.png",
         "category": "Cyber"
-    },
-    {
-        "title": "Campus Hive",
-        "description": "Java platform for students to create accounts, verify via email, and collaborate on projects. Includes real-time messaging to contact professors, separate teacher and student dashboards, and an admin panel for inviting, deleting, and managing users.",
-        "technologies": [
-            "Java",
-            "JavaFX",
-            "Jakarta Mail",
-            "GitHub",
-            "Eclipse",
-            "H2 Database"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/CampusHive",
-        "image": "/projects/CampusHive.png",
-        "category": [
-            "Software",
-            "🔥🔥"
-        ]
     },
     {
         "title": "Spotify Wrapped Bot",
