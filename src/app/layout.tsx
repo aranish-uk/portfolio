@@ -4,10 +4,32 @@ import NavBar from "@/components/NavBar"
 import MusicBar from "@/components/MusicBar"
 import { Analytics } from "@vercel/analytics/next"
 
-export const metadata = {
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
   title: "Portfolio | Abhinav Ranish",
   description:
     "Software Engineer | Cybersecurity | AI/ML — Building secure, intelligent systems with speed, scale, and creativity.",
+  metadataBase: new URL("https://aranish.uk"),
+  openGraph: {
+    title: "Abhinav Ranish — Coder, Cyber Risk, AI Developer",
+    description:
+      "Software Engineer | Cybersecurity | AI/ML — Building secure, intelligent systems with speed, scale, and creativity.",
+    url: "https://aranish.uk",
+    siteName: "Abhinav Ranish",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abhinav Ranish — Coder, Cyber Risk, AI Developer",
+    description:
+      "Software Engineer | Cybersecurity | AI/ML — Building secure, intelligent systems with speed, scale, and creativity.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
