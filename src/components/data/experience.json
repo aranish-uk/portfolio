@@ -1,12 +1,12 @@
 [
     {
-        "title": "SWE / Cyber Intern",
+        "title": "SWE Intern (Security + Frontend)",
         "organization": "Ampcus Inc",
         "duration": "Jun 2025 - Aug 2025",
         "description": [
-            "Conducted web application penetration tests using tools like Burp Suite, focusing on vulnerabilities such as SQL injection, XSS, and broken authentication.",
+            "Built and presented an AI-powered Stock Analyzer using RAG architecture, sentiment analysis, and financial indicators—translating LLM outputs into actionable business insights for company leadership.",
+            "Shipped 10+ React components across 4 client modules; completed 150+ Burp Suite security labs and executed a live penetration test with authored findings report.",
             "Collaborated with fellow interns on simulations to improve practical offensive and defensive security skills, while advancing skills through Hack The Box and the OWASP Web Security Guide.",
-            "Developed and presented an AI-powered stock analyzer (Vibecoded) using real-time data pipelines and ML insights, delivering results directly to the board.",
             "Designed and implemented advanced UI features: dynamic dropdowns, enhanced datatables, and filtering using ShadCN, TanStack, and React, integrating REST APIs for improved UX.",
             "Managed both roles in parallel, demonstrating initiative, versatility, and strong time management."
         ],
@@ -18,20 +18,19 @@
         "duration": "Dec 2024 - May 2025",
         "image": "/work/tranzyd.jpg",
         "description": [
+            "Architected end-to-end AI contract intelligence platform processing ~25 legal contracts: built automated clause extraction, semantic comparison (FAISS + sentence-transformers), and draft generation—cutting manual review by ~40%.",
             "Joined to support AI contract automation; quickly took on core feature development responsibilities.",
-            "Built clause extraction, blueprint generation, and semantic comparison modules using sentence-transformers and Ollama.",
             "Integrated backend logic using Python, SQLite, and python-docx for contract storage and document generation.",
             "Designed clause-matching workflows for OLD/NEW comparisons with checkbox-driven contract generation UI.",
             "Prototyped an AI stock analyzer using RAG pipelines, FAISS, and sentiment models to explore LLM-based tools."
         ]
     },
     {
-        "title": "Technology Consultant",
-        "organization": "Enterprise Technology - Arizona State University",
-        "duration": "November 2024 - Present",
+        "title": "Technology Consultant (Part-time)",
+        "organization": "Enterprise Technology, Arizona State University",
+        "duration": "Nov 2024 - Present",
         "description": [
-            "Provided in-class tech support, quickly addressing issues with projectors, cameras, mics, and more to minimize class disruptions.",
-            "Managed front desk, assisting faculty and staff with real-time inquiries via phone, Slack, and in-person.",
+            "Provided real-time technical support for faculty across AV, networking, and classroom systems; managed front-desk triage via Slack/phone/in-person and performed end-of-day readiness checks.",
             "Performed end-of-day checks to confirm tech functionality and classroom security.",
             "Demonstrated adaptability and problem-solving in a fast-paced environment, ensuring a smooth tech experience."
         ],
@@ -39,11 +38,10 @@
     },
     {
         "title": "Information Technology Intern",
-        "organization": "Qatar Financial Center Regulatory Authority",
-        "duration": "May 2024 - July 2024",
+        "organization": "Qatar Financial Centre Regulatory Authority (QFCRA)",
+        "duration": "May 2024 - Jul 2024",
         "description": [
-            "Configured clients' work environments to meet corporate requirements.",
-            "Deployed over 150+ laptops with Standard Operating Environment, setting records for deployment speed.",
+            "Provisioned 150+ employee endpoints with custom SOE Windows images; created network topology diagrams for leadership presentations during the organization's on-prem to Azure migration.",
             "Created presentations on IT Infrastructure with tools like Trellix, Azure, and FortiClient.",
             "Managed sensitive and client data in compliance with company regulations."
         ],
@@ -52,7 +50,7 @@
     {
         "title": "IT Intern",
         "organization": "Mannai Corporation",
-        "duration": "July 2023 - August 2023",
+        "duration": "Jul 2023 - Aug 2023",
         "description": [
             "Contributed to the development of an ASP.NET website.",
             "Gained proficiency in switch configuration, IP addressing, subnetting, and VLAN management.",
