@@ -59,7 +59,7 @@
     },
     {
         "title": "WiSpec",
-        "description": "Commodity dual-band Wi-Fi spectroscopy research for material classification and structural reconnaissance. Uses Wi-Fi signal reflections (RSSI and CSI) to characterize interior layouts, wall composition, and structural elements. Applications include building reconnaissance, search and rescue structural assessment, and smart building automation. Active research project at Arizona State University.",
+        "description": "Commodity dual-band Wi-Fi spectroscopy research for material classification and structural reconnaissance. Uses Wi-Fi signal reflections (RSSI and CSI) to characterize interior layouts, wall composition, and structural elements. Applications include building reconnaissance, search and rescue structural assessment, and smart building automation. Independent research by a Computer Science student at ASU.",
         "technologies": [
             "Python",
             "Scapy",
