@@ -1,7 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const runtime = 'edge'
-export const alt = 'Abhinav Ranish — Software Engineer, Cybersecurity, AI/ML'
+export const alt = 'Abhinav Ranish — Software Engineer, Cybersecurity & AI'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -18,6 +17,7 @@ export default async function Image() {
           alignItems: 'center',
           background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%)',
           position: 'relative',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
         {/* Top accent line */}
@@ -57,19 +57,26 @@ export default async function Image() {
 
           <div
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px',
               fontSize: '24px',
               color: '#f472b6',
               fontWeight: 600,
               letterSpacing: '2px',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase' as const,
             }}
           >
-            Coder &bull; Cyber Risk &bull; AI Developer
+            <span>Coder</span>
+            <span style={{ color: '#a855f7' }}>{'\u2022'}</span>
+            <span>Cyber Risk</span>
+            <span style={{ color: '#a855f7' }}>{'\u2022'}</span>
+            <span>AI Developer</span>
           </div>
 
           <div
             style={{
-              fontSize: '18px',
+              fontSize: '20px',
               color: '#a1a1aa',
               maxWidth: '700px',
               textAlign: 'center',
@@ -85,12 +92,15 @@ export default async function Image() {
           style={{
             position: 'absolute',
             bottom: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
             fontSize: '16px',
-            color: '#52525b',
+            color: '#71717a',
             letterSpacing: '1px',
           }}
         >
-          aranish.uk
+          <span>aranish.uk</span>
         </div>
       </div>
     ),

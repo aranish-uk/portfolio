@@ -19,7 +19,7 @@ const aiAndMl = [
 
 export default function RecruiterSkills() {
     return (
-        <section className="mb-24 relative animate-fadeIn" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
+        <section id="skills" className="mb-24 relative animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: '100ms', animationFillMode: 'both' }}>
             <div className="flex items-center gap-4 mb-10">
                 <h2 className="text-3xl font-bold tracking-tight text-white">Technical Arsenal</h2>
                 <div className="h-[1px] flex-1 bg-gradient-to-r from-zinc-800 to-transparent"></div>
