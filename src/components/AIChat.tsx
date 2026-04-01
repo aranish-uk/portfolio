@@ -129,12 +129,19 @@ export function AIChat() {
     if (!text.trim() || !canSend) return;
     setLoading(true);
     throttle();
+
+    // Capture current messages BEFORE adding the new user message
+    // so we send prior conversation as history (exclude the greeting)
+    const priorMessages = messages.filter(
+      (m) => m.text !== GREETING
+    );
+
     setMessages((prev) => [...prev, { sender: "user", text }]);
     try {
       const res = await fetch("/api/groq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: text, context }),
+        body: JSON.stringify({ question: text, context, history: priorMessages }),
       });
       const { answer, error } = await res.json();
       setMessages((prev) => [
