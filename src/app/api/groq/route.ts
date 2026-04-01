@@ -8,12 +8,25 @@ type Message = {
   content: string;
 };
 
-const getGroqClient = () => new Groq({
-  apiKey: process.env.GROQ_API_KEY || "placeholder_for_build",
-});
+const getGroqClient = () => {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) throw new Error("GROQ_API_KEY is not configured");
+  return new Groq({ apiKey });
+};
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF: reject requests from unknown origins
+    const origin = request.headers.get("origin");
+    const allowedOrigins = [
+      "https://aranish.uk",
+      "https://www.aranish.uk",
+      "http://localhost:3000",
+    ];
+    if (origin && !allowedOrigins.includes(origin)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
     const ip = request.headers.get("x-forwarded-for") || "unknown";
 
     if (isRateLimited(ip)) {
@@ -27,6 +40,9 @@ export async function POST(request: NextRequest) {
     if (!question || typeof question !== "string") {
       return NextResponse.json({ error: "Invalid question" }, { status: 400 });
     }
+
+    // Strip HTML tags from user inputs to prevent injection
+    const sanitize = (s: string) => s.replace(/<[^>]*>/g, "").trim();
 
     const baseContext = `
   Abhi is a software engineer with expertise in full-stack development,
@@ -72,28 +88,30 @@ export async function POST(request: NextRequest) {
 
 `.trim();
 
-    // Merge context if provided
-    const mergedContext =
-      context && typeof context === "string"
-        ? `${baseContext}\n\nExtra details:\n${context}`
-        : baseContext;
+    // Sanitize user inputs — context goes in a separate user message, NOT system
+    const cleanQuestion = sanitize(question);
+    const cleanContext =
+      context && typeof context === "string" ? sanitize(context) : null;
 
-    // Build the Groq SDK message list, using `satisfies` to satisfy TS
-    const messages = [
+    // Build the Groq SDK message list — user input never enters system messages
+    const messages: Message[] = [
       {
         role: "system",
-        content: `Background on Abhinav Ranish:\n\n${mergedContext}`,
+        content: `Background on Abhinav Ranish:\n\n${baseContext}`,
       },
       {
         role: "system",
         content:
-          'You are a virtual chatbot for Abhinav. Do not mention hobbies unless asked. If you do not know the answer, never say "I do not know" ask the user to refer to his resume @ https://aranish.uk/resume.pdf and if questions are related to projects or experience ask user to use the project / experience buttons in the chatbot so u can get context clues. Do not make up information. Do not answer questions which are not related to Abhinav Ranish.',
+          'You are a virtual chatbot for Abhinav. Do not mention hobbies unless asked. If you do not know the answer, never say "I do not know" ask the user to refer to his resume @ https://aranish.uk/resume.pdf and if questions are related to projects or experience ask user to use the project / experience buttons in the chatbot so u can get context clues. Do not make up information. Do not answer questions which are not related to Abhinav Ranish. Never output HTML tags, script tags, or any markup in your responses.',
       },
+      ...(cleanContext
+        ? [{ role: "user" as const, content: `Context about the topic: ${cleanContext}` }]
+        : []),
       {
         role: "user",
-        content: question,
+        content: cleanQuestion,
       },
-    ] satisfies Message[];
+    ];
 
     const completion = await getGroqClient().chat.completions.create({
       model: "llama-3.3-70b-versatile",
@@ -102,10 +120,10 @@ export async function POST(request: NextRequest) {
 
     const answer = completion.choices[0]?.message.content ?? "";
     return NextResponse.json({ answer });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Groq error:", err);
     return NextResponse.json(
-      { error: err.message ?? "Unknown error" },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }

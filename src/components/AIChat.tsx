@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FileText, FileDown, MoreVertical, Trash } from "lucide-react";
+import DOMPurify from "dompurify";
 import jsPDF from "jspdf";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -355,13 +356,18 @@ export function AIChat() {
             >
               <span
                 dangerouslySetInnerHTML={{
-                  __html:
-                    m.text.replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
+                  __html: DOMPurify.sanitize(
+                    m.text
+                      .replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
                       .replace(
                         /(https?:\/\/[^\s]+)/g,
                         `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
                       ),
-
+                    {
+                      ALLOWED_TAGS: ['strong', 'a'],
+                      ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+                    }
+                  ),
                 }}
               />
             </div>
