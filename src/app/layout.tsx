@@ -2,6 +2,7 @@ import React from "react"
 import "./globals.css"
 import NavBar from "@/components/NavBar"
 import MusicBar from "@/components/MusicBar"
+import { AIChat } from "@/components/AIChat"
 import { Analytics } from "@vercel/analytics/next"
 
 import type { Metadata } from "next"
@@ -145,6 +146,11 @@ export default function RootLayout({
 
         {/* Persistent music bar */}
         <MusicBar />
+
+        {/* Persistent AI chat */}
+        <div className="fixed bottom-6 left-6 z-50">
+          <AIChat />
+        </div>
 
         <footer className="py-2 text-center text-sm text-gray-400 -mt-2">
           © {new Date().getFullYear()} Abhinav Ranish. All rights reserved.

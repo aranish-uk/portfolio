@@ -7,7 +7,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import InteractiveCursorGlow from "@/components/fun_animations/InteractiveCursorGlow";
-import { AIChat } from "@/components/AIChat";
+
 
 export default function HomeContent() {
   return (
@@ -24,9 +24,6 @@ export default function HomeContent() {
         </div>
       </div>
 
-      <div className="fixed bottom-6 left-6 z-50">
-        <AIChat />
-      </div>
     </div>
   );
 }
