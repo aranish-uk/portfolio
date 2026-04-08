@@ -3,6 +3,7 @@ import "./globals.css"
 import NavBar from "@/components/NavBar"
 import MusicBar from "@/components/MusicBar"
 import { AIChat } from "@/components/AIChat"
+import InteractiveCursorGlow from "@/components/fun_animations/InteractiveCursorGlow"
 import { Analytics } from "@vercel/analytics/next"
 
 import type { Metadata } from "next"
@@ -138,6 +139,9 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col bg-neutral-950 text-gray-100 font-sans">
+        {/* Cursor glow effect */}
+        <InteractiveCursorGlow />
+
         {/* Top navigation */}
         <NavBar />
 

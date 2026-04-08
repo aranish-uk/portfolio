@@ -32,7 +32,7 @@ export default function InteractiveCursorGlow() {
 
     return (
         <motion.div
-            className="pointer-events-none fixed top-0 left-0 z-0 rounded-full mix-blend-screen"
+            className="pointer-events-none fixed top-0 left-0 z-[1] rounded-full"
             animate={{
                 x: mousePosition.x - (isHovering ? 150 : 200),
                 y: mousePosition.y - (isHovering ? 150 : 200),
