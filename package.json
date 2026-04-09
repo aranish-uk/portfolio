@@ -22,11 +22,14 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250628.0",
+    "@remotion/cli": "^4.0.447",
+    "@remotion/renderer": "^4.0.447",
     "@tailwindcss/postcss": "^4",
     "@types/dompurify": "^3.0.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "remotion": "^4.0.447",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
