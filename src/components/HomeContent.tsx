@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import OpenSource from "@/components/OpenSource";
 import Contact from "@/components/Contact";
 
 export default function HomeContent() {
@@ -16,6 +17,7 @@ export default function HomeContent() {
           <Skills />
           <Experience />
           <Projects />
+          <OpenSource />
           <Contact />
         </div>
       </div>

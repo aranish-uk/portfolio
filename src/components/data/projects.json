@@ -13,7 +13,7 @@
         "web": "https://readflow.aranish.uk",
         "category": [
             "Frontend",
-            "🔥🔥"
+            "AI/LLM"
         ]
     },
     {
@@ -73,24 +73,6 @@
         "category": [
             "Research",
             "Cyber",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "Auto Class Enroller",
-        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
-        "technologies": [
-            "Python",
-            "Selenium",
-            "Smtplib",
-            "ASU",
-            "Automation"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
-        "image": "/projects/AutoClassEnroller.ico",
-        "category": [
-            "Software",
-            "Automation",
             "🔥🔥"
         ]
     },
@@ -186,6 +168,24 @@
         "workinprogress": true,
         "category": [
             "ML",
+            "🔥🔥"
+        ]
+    },
+     {
+        "title": "Auto Class Enroller",
+        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
+        "technologies": [
+            "Python",
+            "Selenium",
+            "Smtplib",
+            "ASU",
+            "Automation"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
+        "image": "/projects/AutoClassEnroller.ico",
+        "category": [
+            "Software",
+            "Automation",
             "🔥🔥"
         ]
     },
