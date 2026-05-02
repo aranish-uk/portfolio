@@ -1,22 +1,5 @@
 [
     {
-        "title": "Readflow",
-        "description": "A modern, dark-mode-first Markdown editor built for speed, aesthetics, and instant sharing. Features a split-pane live preview with syntax highlighting, one-click generation of shareable read-only links, automatic local draft persistence, and Cloudflare D1 production-ready storage support.",
-        "technologies": [
-            "Next.js 15",
-            "Cloudflare D1",
-            "@uiw/react-codemirror",
-            "CSS Modules",
-            "JavaScript"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/readflow",
-        "web": "https://readflow.aranish.uk",
-        "category": [
-            "Frontend",
-            "AI/LLM"
-        ]
-    },
-    {
         "title": "IntelliTab",
         "description": "An AI-powered Chrome extension that intelligently organizes tabs into native Chromium tab groups, learns preferences over time, and manages workspaces. Features an adaptive learning system (passive snapshots, correction-based feedback, explicit preferences), an editable SOUL instruction set that guides AI grouping logic, workspace save/restore, auto-recovery across restarts, a rules engine for deterministic overrides, and multi-provider AI support (Groq, OpenAI, Gemini, Claude, OpenRouter).",
         "technologies": [
@@ -29,6 +12,7 @@
         ],
         "visit": "https://github.com/aranish-uk/IntelliTab",
         "web": "https://intellitab.aranish.uk",
+        "image": "/projects/intellitab-preview.png",
         "category": [
             "Extensions",
             "AI/LLM",
@@ -36,7 +20,7 @@
         ]
     },
     {
-        "title": "Portfolio Maker",
+        "title": "CVfy",
         "description": "An AI-powered portfolio generator that transforms resume uploads into fully functional personal websites. Built with Next.js (App Router), TypeScript, Prisma, and PostgreSQL. Features OAuth authentication, AI resume parsing via Groq/OpenRouter into strict JSON schema, 5 built-in themes, hero image uploads, slug-based publishing, and editable onboarding flow.",
         "technologies": [
             "Next.js",
@@ -51,9 +35,83 @@
         ],
         "visit": "https://github.com/aranish-uk/Portfolio-Maker",
         "web": "https://cvfy.dev",
+        "image": "/projects/portfolio-maker-preview.png",
         "category": [
             "AI/LLM",
             "Frontend",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Readflow",
+        "description": "A modern, dark-mode-first Markdown editor built for speed, aesthetics, and instant sharing. Features a split-pane live preview with syntax highlighting, one-click generation of shareable read-only links, automatic local draft persistence, and Cloudflare D1 production-ready storage support.",
+        "technologies": [
+            "Next.js 15",
+            "Cloudflare D1",
+            "@uiw/react-codemirror",
+            "CSS Modules",
+            "JavaScript"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/readflow",
+        "web": "https://readflow.aranish.uk",
+        "image": "/projects/readflow-preview.png",
+        "category": [
+            "Frontend",
+            "AI/LLM"
+        ]
+    },
+    {
+        "title": "Stock AI Analyzer",
+        "description": "AI-powered stock analysis tool leveraging multiple data sources such as Google Trends, News API, and yfinance. It aggregates real-time market signals, sentiment, and price data to deliver actionable insights through a sleek frontend powered by AI.",
+        "technologies": [
+            "Python",
+            "Ollama",
+            "Google Trends API",
+            "News API",
+            "yfinance",
+            "React"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/AI-Stock-Algorithm",
+        "web": "https://stock.aranish.uk",
+        "image": "/projects/ai-stock-preview.png",
+        "category": [
+            "AI/LLM",
+            "Frontend"
+        ]
+    },
+    {
+        "title": "FaceTagger",
+        "description": "Offline AI tool to detect, embed, and cluster faces in 1TB+ photo libraries. UI built with Streamlit allows users to label clusters, write EXIF/JSON tags, and organize collections without cloud dependency. GPU acceleration via CUDA + InsightFace.",
+        "technologies": [
+            "Python",
+            "InsightFace",
+            "Streamlit",
+            "EXIFTool",
+            "ONNX",
+            "HDBSCAN"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/FaceMatch",
+        "image": "/projects/facetagger-preview.png",
+        "workinprogress": true,
+        "category": [
+            "ML",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Contract Generator RAG",
+        "description": "Extracts contract conditions from DOCX files, generates blueprints from uploaded contracts, and creates new contracts from blueprints. Builds a searchable vector database for advanced queries, using NLP and Ollama RAG orchestration.",
+        "technologies": [
+            "Python",
+            "Ollama",
+            "RAG",
+            "Streamlit",
+            "Docx"
+        ],
+        "visit": "https://en.wikipedia.org/wiki/Non-disclosure_agreement",
+        "image": "/projects/contract-preview.png",
+        "category": [
+            "AI/LLM",
             "🔥🔥"
         ]
     },
@@ -70,29 +128,11 @@
         ],
         "visit": "https://github.com/Abhinav-ranish/WiSpec",
         "web": "https://wispec.aranish.uk",
+        "image": "/projects/wispec-preview.png",
         "category": [
             "Research",
             "Cyber",
             "🔥🔥"
-        ]
-    },
-    {
-        "title": "EatBetter",
-        "description": "An iOS app that helps users eat healthier through AI-powered food photo analysis, daily reminders, and streak-based habit building. Snap a photo of any meal and get instant calorie and macro estimates from Claude Vision API with zero manual data entry. Features supportive coaching tone, cooking method and portion size context, and habit tracking over time.",
-        "technologies": [
-            "SwiftUI",
-            "Swift",
-            "Firebase",
-            "Claude Vision API",
-            "RevenueCat",
-            "Cloud Functions"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/EatBetter",
-        "web": "https://eatbetter.aranish.uk",
-        "workinprogress": true,
-        "category": [
-            "IOS",
-            "AI/LLM"
         ]
     },
     {
@@ -134,159 +174,22 @@
         ]
     },
     {
-        "title": "Stock AI Analyzer",
-        "description": "AI-powered stock analysis tool leveraging multiple data sources such as Google Trends, News API, and yfinance. It aggregates real-time market signals, sentiment, and price data to deliver actionable insights through a sleek frontend powered by AI.",
+        "title": "Velarith",
+        "description": "Enterprise-grade AI financial analytics platform powered by Claude Sonnet 4.5. Built with Next.js, TypeScript, and Python Flask, Velarith delivers real-time AI market analysis with streaming responses, 15+ technical indicators, and multi-source data fusion from Finnhub, Yahoo Finance, and Polymarket. Created during the Claude Builder Club Hackathon 2025.",
         "technologies": [
-            "Python",
-            "Ollama",
-            "Google Trends API",
-            "News API",
-            "yfinance",
-            "React"
+            "Next.js",
+            "TypeScript",
+            "Python Flask",
+            "Claude Sonnet 4.5",
+            "Finnhub API",
+            "Yahoo Finance API",
+            "Polymarket API"
         ],
-        "visit": "https://github.com/Abhinav-ranish/AI-Stock-Algorithm",
-        "web": "https://stock.aranish.uk",
-        "image": "/projects/StockAIAnalyzer.jpg",
+        "visit": "https://github.com/Abhinav-ranish/Velarith",
+        "web": "https://velarith.aranish.uk",
         "category": [
             "AI/LLM",
             "Frontend"
-        ]
-    },
-    {
-        "title": "FaceTagger",
-        "description": "Offline AI tool to detect, embed, and cluster faces in 1TB+ photo libraries. UI built with Streamlit allows users to label clusters, write EXIF/JSON tags, and organize collections without cloud dependency. GPU acceleration via CUDA + InsightFace.",
-        "technologies": [
-            "Python",
-            "InsightFace",
-            "Streamlit",
-            "EXIFTool",
-            "ONNX",
-            "HDBSCAN"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/FaceMatch",
-        "image": "/projects/facetagger.png",
-        "workinprogress": true,
-        "category": [
-            "ML",
-            "🔥🔥"
-        ]
-    },
-     {
-        "title": "Auto Class Enroller",
-        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
-        "technologies": [
-            "Python",
-            "Selenium",
-            "Smtplib",
-            "ASU",
-            "Automation"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
-        "image": "/projects/AutoClassEnroller.ico",
-        "category": [
-            "Software",
-            "Automation",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "BetterStreaming",
-        "description": "A media streaming platform using PirateBay+ for content, featuring a React/Next.js frontend and Rust-based WebTorrent streaming. It offers personalized browsing, advanced search, and progressive streaming.",
-        "technologies": [
-            "React",
-            "Next.js",
-            "WebTorrent",
-            "Rust",
-            "Prisma",
-            "PostgreSQL"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/BetterStreaming",
-        "image": "/projects/BetterStreaming.png",
-        "category": [
-            "Software"
-        ]
-    },
-    {
-        "title": "Net Audit Suite",
-        "description": "Cyber audit tool integrating Nmap, Nikto, OpenVAS, and arp-scan to generate AI-powered summaries of discovered vulnerabilities using LLaMA + Ollama. Generates DOCX reports, maps infected IPs, and provides a dark-mode frontend in Next.js.",
-        "technologies": [
-            "Next.js",
-            "Node.js",
-            "Ollama",
-            "OpenVAS",
-            "Nmap",
-            "Tailwind"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/Network-Vulnerability-Audit",
-        "image": "/projects/netaudit.png",
-        "category": [
-            "Cyber",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "DIW387 STB Mod Toolkit",
-        "description": "Toolkit to de-bloat and customize Ooredoo's locked DIW387 Android TV STB. Includes Wolf Launcher setup, splash screen mods, sideload tooling, and Dirty COW (CVE-2016-5195) root attempt. For education and warranty-voiding fun.",
-        "technologies": [
-            "Bash",
-            "Android TV",
-            "ADB",
-            "Dirty COW Exploit"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/ooreedoo-DIW387-mod",
-        "image": "/projects/stbmod.png",
-        "category": [
-            "Cyber"
-        ]
-    },
-    {
-        "title": "Contract Generator RAG",
-        "description": "Extracts contract conditions from DOCX files, generates blueprints from uploaded contracts, and creates new contracts from blueprints. Builds a searchable vector database for advanced queries, using NLP and Ollama RAG orchestration.",
-        "technologies": [
-            "Python",
-            "Ollama",
-            "RAG",
-            "Streamlit",
-            "Docx"
-        ],
-        "visit": "https://en.wikipedia.org/wiki/Non-disclosure_agreement",
-        "image": "/projects/ContractAnalyzer.jpeg",
-        "category": [
-            "AI/LLM",
-            "🔥🔥"
-        ]
-    },
-    {
-        "title": "VibeCode Machine",
-        "description": "Experimental AI-assisted code builder that autogenerates, tests, and fixes Python projects via Ollama + Codellama. Automatically patches failed logic and regenerates dependencies via smart retry. CLI interface for rapid prototyping.",
-        "technologies": [
-            "Python",
-            "Ollama",
-            "LLM Automation",
-            "Patch Diffing"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/The-Super-Coder",
-        "image": "/projects/vibecode.webp",
-        "category": [
-            "AI/LLM",
-            "Full Stack"
-        ]
-    },
-    {
-        "title": "Campus Hive",
-        "description": "Java platform for students to create accounts, verify via email, and collaborate on projects. Includes real-time messaging to contact professors, separate teacher and student dashboards, and an admin panel for inviting, deleting, and managing users.",
-        "technologies": [
-            "Java",
-            "JavaFX",
-            "Jakarta Mail",
-            "GitHub",
-            "Eclipse",
-            "H2 Database"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/CampusHive",
-        "image": "/projects/CampusHive.png",
-        "category": [
-            "Software"
         ]
     },
     {
@@ -327,20 +230,74 @@
         ]
     },
     {
-        "title": "VelvetUI",
-        "description": "A modern Electron-based Spotify desktop client featuring a glassmorphism UI, 10-band equalizer with Web Audio API, local playlist management, real-time lyrics integration, and Widevine DRM support. Built with React, TypeScript, and Vite, with multi-platform builds for macOS, Windows, and Linux.",
+        "title": "Net Audit Suite",
+        "description": "Cyber audit tool integrating Nmap, Nikto, OpenVAS, and arp-scan to generate AI-powered summaries of discovered vulnerabilities using LLaMA + Ollama. Generates DOCX reports, maps infected IPs, and provides a dark-mode frontend in Next.js.",
         "technologies": [
-            "Electron",
-            "React 18",
-            "TypeScript",
-            "Vite",
-            "Tailwind CSS",
-            "Web Audio API",
-            "Spotify Web Playback SDK"
+            "Next.js",
+            "Node.js",
+            "Ollama",
+            "OpenVAS",
+            "Nmap",
+            "Tailwind"
         ],
-        "visit": "https://github.com/Abhinav-ranish/VelvetUI",
+        "visit": "https://github.com/Abhinav-ranish/Network-Vulnerability-Audit",
+        "image": "/projects/netaudit.png",
         "category": [
-            "Software"
+            "Cyber",
+            "🔥🔥"
+        ]
+    },
+    {
+        "title": "Market Facts MCP Server",
+        "description": "A single-purpose MCP server designed to fetch, verify, normalize, and return structured market intelligence for stock tickers. It provides fundamentals, filings, insider transactions, and politician trading data in a clean, machine-readable format. Strictly factual and non-opinionated, it avoids investment advice and subjective conclusions.",
+        "technologies": [
+            "Node.js",
+            "TypeScript",
+            "MCP Protocol",
+            "Financial Data APIs",
+            "REST APIs"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/Market-Facts-MCP-Server",
+        "category": [
+            "AI/LLM",
+            "Automation"
+        ]
+    },
+    {
+        "title": "EatBetter",
+        "description": "An iOS app that helps users eat healthier through AI-powered food photo analysis, daily reminders, and streak-based habit building. Snap a photo of any meal and get instant calorie and macro estimates from Claude Vision API with zero manual data entry. Features supportive coaching tone, cooking method and portion size context, and habit tracking over time.",
+        "technologies": [
+            "SwiftUI",
+            "Swift",
+            "Firebase",
+            "Claude Vision API",
+            "RevenueCat",
+            "Cloud Functions"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/EatBetter",
+        "web": "https://eatbetter.aranish.uk",
+        "workinprogress": true,
+        "category": [
+            "IOS",
+            "AI/LLM"
+        ]
+    },
+    {
+        "title": "Auto Class Enroller",
+        "description": "Class Scraper and Automated student enrollment tool built with Selenium and Python. It continuously polls course availability, automatically fills in enrollment forms, and registers you as soon as a seat opens. Designed to save students hours of manual checking and ensure faster access to high-demand classes.",
+        "technologies": [
+            "Python",
+            "Selenium",
+            "Smtplib",
+            "ASU",
+            "Automation"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/ASU-ClassEnroller",
+        "image": "/projects/AutoClassEnroller.ico",
+        "category": [
+            "Software",
+            "Automation",
+            "🔥🔥"
         ]
     },
     {
@@ -363,6 +320,22 @@
         ]
     },
     {
+        "title": "VibeCode Machine",
+        "description": "Experimental AI-assisted code builder that autogenerates, tests, and fixes Python projects via Ollama + Codellama. Automatically patches failed logic and regenerates dependencies via smart retry. CLI interface for rapid prototyping.",
+        "technologies": [
+            "Python",
+            "Ollama",
+            "LLM Automation",
+            "Patch Diffing"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/The-Super-Coder",
+        "image": "/projects/vibecode.webp",
+        "category": [
+            "AI/LLM",
+            "Full Stack"
+        ]
+    },
+    {
         "title": "Agentex",
         "description": "AI-powered resume tailoring Chrome extension that uses multiple AI providers (Gemini, Claude, Groq, OpenRouter) to intelligently tailor LaTeX resumes to job descriptions with anti-fabrication guardrails. Contributed LinkedIn OAuth and PDF/DOCX support for datasets and document input, plus Groq and OpenRouter API key provisions and model updates.",
         "technologies": [
@@ -378,6 +351,23 @@
         "collaboration": true,
         "category": [
             "Extensions"
+        ]
+    },
+    {
+        "title": "BetterStreaming",
+        "description": "A media streaming platform using PirateBay+ for content, featuring a React/Next.js frontend and Rust-based WebTorrent streaming. It offers personalized browsing, advanced search, and progressive streaming.",
+        "technologies": [
+            "React",
+            "Next.js",
+            "WebTorrent",
+            "Rust",
+            "Prisma",
+            "PostgreSQL"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/BetterStreaming",
+        "image": "/projects/BetterStreaming.png",
+        "category": [
+            "Software"
         ]
     },
     {
@@ -397,38 +387,52 @@
         ]
     },
     {
-        "title": "Velarith",
-        "description": "Enterprise-grade AI financial analytics platform powered by Claude Sonnet 4.5. Built with Next.js, TypeScript, and Python Flask, Velarith delivers real-time AI market analysis with streaming responses, 15+ technical indicators, and multi-source data fusion from Finnhub, Yahoo Finance, and Polymarket. Created during the Claude Builder Club Hackathon 2025.",
+        "title": "Cyber Scripts",
+        "description": "A collection of offensive security automation scripts created during PortSwigger, JWT, and CTF training. Includes Turbo Intruder templates, LLM prompt injections, JWT brute-force, exploit server hijacking, and more. Built to speed up recon and exploitation in web targets.",
         "technologies": [
-            "Next.js",
-            "TypeScript",
-            "Python Flask",
-            "Claude Sonnet 4.5",
-            "Finnhub API",
-            "Yahoo Finance API",
-            "Polymarket API"
+            "Python",
+            "Turbo Intruder",
+            "Burp Suite",
+            "LLM",
+            "Bash"
         ],
-        "visit": "https://github.com/Abhinav-ranish/Velarith",
-        "web": "https://velarith.aranish.uk",
+        "visit": "https://github.com/Abhinav-ranish/cyberscripts",
+        "image": "/projects/cyberscripts.png",
         "category": [
-            "AI/LLM",
-            "Frontend"
+            "Cyber",
+            "Automation"
         ]
     },
     {
-        "title": "Market Facts MCP Server",
-        "description": "A single-purpose MCP server designed to fetch, verify, normalize, and return structured market intelligence for stock tickers. It provides fundamentals, filings, insider transactions, and politician trading data in a clean, machine-readable format. Strictly factual and non-opinionated, it avoids investment advice and subjective conclusions.",
+        "title": "Secure Team Password Manager",
+        "description": "Deployed Passbolt Community Edition on AWS EC2 to streamline password management for ACM ASU.",
         "technologies": [
-            "Node.js",
-            "TypeScript",
-            "MCP Protocol",
-            "Financial Data APIs",
-            "REST APIs"
+            "AWS",
+            "NGNIX",
+            "Passbolt",
+            "OpenSSL",
+            "Ubuntu",
+            "EC2"
         ],
-        "visit": "https://github.com/Abhinav-ranish/Market-Facts-MCP-Server",
+        "visit": "https://secure.acm-asu.org/",
+        "image": "/projects/passbolt.png",
+        "category": "Cyber"
+    },
+    {
+        "title": "Campus Hive",
+        "description": "Java platform for students to create accounts, verify via email, and collaborate on projects. Includes real-time messaging to contact professors, separate teacher and student dashboards, and an admin panel for inviting, deleting, and managing users.",
+        "technologies": [
+            "Java",
+            "JavaFX",
+            "Jakarta Mail",
+            "GitHub",
+            "Eclipse",
+            "H2 Database"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/CampusHive",
+        "image": "/projects/CampusHive.png",
         "category": [
-            "AI/LLM",
-            "Automation"
+            "Software"
         ]
     },
     {
@@ -467,6 +471,55 @@
         ]
     },
     {
+        "title": "VelvetUI",
+        "description": "A modern Electron-based Spotify desktop client featuring a glassmorphism UI, 10-band equalizer with Web Audio API, local playlist management, real-time lyrics integration, and Widevine DRM support. Built with React, TypeScript, and Vite, with multi-platform builds for macOS, Windows, and Linux.",
+        "technologies": [
+            "Electron",
+            "React 18",
+            "TypeScript",
+            "Vite",
+            "Tailwind CSS",
+            "Web Audio API",
+            "Spotify Web Playback SDK"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/VelvetUI",
+        "category": [
+            "Software"
+        ]
+    },
+    {
+        "title": "DIW387 STB Mod Toolkit",
+        "description": "Toolkit to de-bloat and customize Ooredoo's locked DIW387 Android TV STB. Includes Wolf Launcher setup, splash screen mods, sideload tooling, and Dirty COW (CVE-2016-5195) root attempt. For education and warranty-voiding fun.",
+        "technologies": [
+            "Bash",
+            "Android TV",
+            "ADB",
+            "Dirty COW Exploit"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/ooreedoo-DIW387-mod",
+        "image": "/projects/stbmod.png",
+        "category": [
+            "Cyber"
+        ]
+    },
+    {
+        "title": "Spotify Visualizer Website",
+        "description": "Live website using MongoDB and Three.js for dynamic visual effects.",
+        "technologies": [
+            "MongoDB",
+            "Three.js",
+            "Spotify API",
+            "Express.js",
+            "AWS"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/spotifyvisualizer",
+        "web": "https://spotify.aranish.uk",
+        "image": "/projects/Spotifyvisualizer.png",
+        "category": [
+            "Frontend"
+        ]
+    },
+    {
         "title": "F1 Reaction Tester",
         "description": "A high-fidelity Formula 1 start simulator that measures millisecond reaction times. Features realistic five-light gantry animation, Web Audio API synthesized race sounds, false start detection, performance categorization, and personal best tracking with localStorage. Designed with authentic F1 pacing, smooth CSS animations, and responsive design.",
         "technologies": [
@@ -484,20 +537,19 @@
         ]
     },
     {
-        "title": "Cyber Scripts",
-        "description": "A collection of offensive security automation scripts created during PortSwigger, JWT, and CTF training. Includes Turbo Intruder templates, LLM prompt injections, JWT brute-force, exploit server hijacking, and more. Built to speed up recon and exploitation in web targets.",
+        "title": "Personal Portfolio",
+        "description": "Personal portfolio built with Next.js, Tailwind CSS, and Framer Motion. Features categorized project showcase, animated UI, and persistent audio player across routes.",
         "technologies": [
-            "Python",
-            "Turbo Intruder",
-            "Burp Suite",
-            "LLM",
-            "Bash"
+            "Next.js",
+            "Tailwind CSS",
+            "Framer Motion",
+            "TypeScript"
         ],
-        "visit": "https://github.com/Abhinav-ranish/cyberscripts",
-        "image": "/projects/cyberscripts.png",
+        "visit": "https://github.com/Abhinav-ranish/portfolio",
+        "web": "https://aranish.uk",
+        "image": "/projects/portfolio.ico",
         "category": [
-            "Cyber",
-            "Automation"
+            "Frontend"
         ]
     },
     {
@@ -528,21 +580,6 @@
         "category": "ML"
     },
     {
-        "title": "Secure Team Password Manager",
-        "description": "Deployed Passbolt Community Edition on AWS EC2 to streamline password management for ACM ASU.",
-        "technologies": [
-            "AWS",
-            "NGNIX",
-            "Passbolt",
-            "OpenSSL",
-            "Ubuntu",
-            "EC2"
-        ],
-        "visit": "https://secure.acm-asu.org/",
-        "image": "/projects/passbolt.png",
-        "category": "Cyber"
-    },
-    {
         "title": "Spotify Wrapped Bot",
         "description": "Boost your Spotify Wrapped stats effortlessly, intelligent playback scheduling, seamless background operation, and predictive machine learning to optimize your music experience!",
         "technologies": [
@@ -561,66 +598,45 @@
         ]
     },
     {
-        "title": "Keylogger",
-        "description": "Records keystrokes and sends them to a server.",
+        "title": "Spotify Haptics Controller",
+        "description": "Haptic feedback for Spotify using Swift and Spotify API.",
         "technologies": [
-            "C",
-            "Curl",
-            "Windows API"
+            "Swift",
+            "Spotify API"
         ],
-        "visit": "https://github.com/Abhinav-ranish/keylogger",
-        "image": "/projects/Keylogger.jpeg",
+        "workinprogress": true,
+        "visit": "https://github.com/Abhinav-ranish/Spotify-Haptics",
+        "image": "/projects/SpotifyHaptics.png",
+        "category": [
+            "Software",
+            "IOS"
+        ]
+    },
+    {
+        "title": "Exploiting a Vulnerable Computer",
+        "description": "Used SQL injection and Metasploit to exploit a VM.",
+        "technologies": [
+            "Metasploit",
+            "SQL Injection"
+        ],
+        "visit": "https://bit.ly/CPT-redteam",
+        "image": "/projects/Vulnerable.png",
         "category": [
             "Cyber"
         ]
     },
     {
-        "title": "Personal Portfolio",
-        "description": "Personal portfolio built with Next.js, Tailwind CSS, and Framer Motion. Features categorized project showcase, animated UI, and persistent audio player across routes.",
+        "title": "Matrix Graph - DSA OOP Project",
+        "description": "Graph data structure with matrix representation.",
         "technologies": [
-            "Next.js",
-            "Tailwind CSS",
-            "Framer Motion",
-            "TypeScript"
+            "C++",
+            "Data Structures"
         ],
-        "visit": "https://github.com/Abhinav-ranish/portfolio",
-        "web": "https://aranish.uk",
-        "image": "/projects/portfolio.ico",
+        "visit": "https://github.com/Abhinav-ranish/MatrixGraph-DSA",
+        "image": "/projects/MatrixGraph.png",
         "category": [
-            "Frontend"
-        ]
-    },
-    {
-        "title": "Spotify Visualizer Website",
-        "description": "Live website using MongoDB and Three.js for dynamic visual effects.",
-        "technologies": [
-            "MongoDB",
-            "Three.js",
-            "Spotify API",
-            "Express.js",
-            "AWS"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/spotifyvisualizer",
-        "web": "https://spotify.aranish.uk",
-        "image": "/projects/Spotifyvisualizer.png",
-        "category": [
-            "Frontend"
-        ]
-    },
-    {
-        "title": "Simple Music Player",
-        "description": "Music player with play, pause, and skip functionality.",
-        "technologies": [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Cloudflare Pages"
-        ],
-        "visit": "https://github.com/Abhinav-ranish/Music-Player",
-        "web": "https://music.aranish.uk",
-        "image": "/projects/MusicPlayer.png",
-        "category": [
-            "Frontend"
+            "Software",
+            "DSA"
         ]
     },
     {
@@ -638,45 +654,17 @@
         "category": []
     },
     {
-        "title": "Matrix Graph - DSA OOP Project",
-        "description": "Graph data structure with matrix representation.",
+        "title": "Keylogger",
+        "description": "Records keystrokes and sends them to a server.",
         "technologies": [
-            "C++",
-            "Data Structures"
+            "C",
+            "Curl",
+            "Windows API"
         ],
-        "visit": "https://github.com/Abhinav-ranish/MatrixGraph-DSA",
-        "image": "/projects/MatrixGraph.png",
-        "category": [
-            "Software",
-            "DSA"
-        ]
-    },
-    {
-        "title": "Exploiting a Vulnerable Computer",
-        "description": "Used SQL injection and Metasploit to exploit a VM.",
-        "technologies": [
-            "Metasploit",
-            "SQL Injection"
-        ],
-        "visit": "https://bit.ly/CPT-redteam",
-        "image": "/projects/Vulnerable.png",
+        "visit": "https://github.com/Abhinav-ranish/keylogger",
+        "image": "/projects/Keylogger.jpeg",
         "category": [
             "Cyber"
-        ]
-    },
-    {
-        "title": "Spotify Haptics Controller",
-        "description": "Haptic feedback for Spotify using Swift and Spotify API.",
-        "technologies": [
-            "Swift",
-            "Spotify API"
-        ],
-        "workinprogress": true,
-        "visit": "https://github.com/Abhinav-ranish/Spotify-Haptics",
-        "image": "/projects/SpotifyHaptics.png",
-        "category": [
-            "Software",
-            "IOS"
         ]
     },
     {
@@ -703,6 +691,22 @@
         "image": "/projects/Canvas.jpg",
         "category": [
             "Extensions"
+        ]
+    },
+    {
+        "title": "Simple Music Player",
+        "description": "Music player with play, pause, and skip functionality.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Cloudflare Pages"
+        ],
+        "visit": "https://github.com/Abhinav-ranish/Music-Player",
+        "web": "https://music.aranish.uk",
+        "image": "/projects/MusicPlayer.png",
+        "category": [
+            "Frontend"
         ]
     }
 ]
