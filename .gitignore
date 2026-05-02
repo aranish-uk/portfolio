@@ -14,6 +14,11 @@
 /coverage
 
 /public/projects
+!/public/projects/
+!/public/projects/intellitab-preview.png
+!/public/projects/portfolio-maker-preview.png
+!/public/projects/wispec-preview.png
+!/public/projects/readflow-preview.png
 
 # next.js
 /.next/
