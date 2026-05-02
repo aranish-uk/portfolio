@@ -14,6 +14,11 @@
 /coverage
 
 /public/projects
+!/public/projects/
+!/public/projects/intellitab-preview.png
+!/public/projects/portfolio-maker-preview.png
+!/public/projects/wispec-preview.png
+!/public/projects/readflow-preview.png
 
 # next.js
 /.next/
@@ -44,3 +49,4 @@ next-env.d.ts
 /.agents
 docs/security-audit-2026-03-31.md
 skills-lock.json
+.claude/launch.json

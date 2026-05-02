@@ -76,7 +76,7 @@ export default function NavBar() {
         <div className="hidden md:flex space-x-8 items-center">
           {!isOldUI ? (
             <>
-              {["experience", "projects", "contact"].map((id) => (
+              {["experience", "projects", "research", "contact"].map((id) => (
                 <button
                   key={id}
                   onClick={() => scrollToId(id)}
@@ -134,7 +134,7 @@ export default function NavBar() {
             <div className="flex flex-col space-y-4 py-6 px-2 text-left">
               {!isOldUI ? (
                 <>
-                  {["experience", "projects", "contact"].map((id) => (
+                  {["experience", "projects", "research", "contact"].map((id) => (
                     <button
                       key={id}
                       onClick={() => { scrollToId(id); setMenuOpen(false); }}
