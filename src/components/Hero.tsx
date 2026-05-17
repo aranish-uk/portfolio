@@ -5,7 +5,7 @@ import { profile } from "@/content/profile";
 
 export default function Hero() {
   return (
-    <header id="hero" className="mb-28 scroll-mt-32 md:scroll-mt-40">
+    <header id="hero" className="mb-28 animate-fadeIn scroll-mt-32 md:scroll-mt-40">
       <div className="grid gap-10 border-b border-white/10 pb-16 md:grid-cols-[180px_1fr] md:items-center">
         <Image
           src={profile.image}
@@ -17,7 +17,7 @@ export default function Hero() {
         />
 
         <div>
-          <p className="mb-3 font-mono text-sm uppercase text-cyan-300">
+          <p className="mb-3 font-mono text-sm uppercase text-pink-300">
             Software Engineer / Cybersecurity / AI
           </p>
           <h1 className="text-balance text-5xl font-semibold leading-tight text-white sm:text-6xl">
@@ -31,7 +31,7 @@ export default function Hero() {
             <a
               href={profile.resume}
               target="_blank"
-              className="inline-flex items-center gap-2 border border-cyan-400/40 bg-cyan-400/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-400/15"
+              className="inline-flex items-center gap-2 border border-pink-400/40 bg-pink-400/10 px-4 py-2.5 text-sm font-semibold text-pink-100 transition duration-200 hover:-translate-y-0.5 hover:bg-pink-400/15"
             >
               <Download className="size-4" />
               Resume
@@ -40,7 +40,7 @@ export default function Hero() {
               href={profile.links.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:text-white"
+              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:text-white"
             >
               <Github className="size-4" />
               GitHub
@@ -49,14 +49,14 @@ export default function Hero() {
               href={profile.links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:text-white"
+              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:text-white"
             >
               <Linkedin className="size-4" />
               LinkedIn
             </a>
             <a
               href={profile.links.email}
-              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-white/20 hover:text-white"
+              className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-medium text-zinc-300 transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:text-white"
             >
               <Mail className="size-4" />
               Email

@@ -288,7 +288,7 @@ export function AIChat() {
           borderRadius: 32
         }}
         transition={{ duration: 0.4, ease: 'backOut' }}
-        className="relative bg-zinc-900/90 border border-white/10 shadow-xl hover:bg-zinc-900 hover:border-cyan-400/40 flex items-center justify-start overflow-hidden group"
+        className="relative bg-zinc-900/90 border border-white/10 shadow-xl hover:bg-zinc-900 hover:border-pink-400/40 flex items-center justify-start overflow-hidden group"
         aria-label="Open Chat"
       >
         <div className="absolute left-1 w-14 h-14 flex items-center justify-center pointer-events-none">
@@ -302,7 +302,7 @@ export function AIChat() {
         </div>
 
         <span className="absolute left-11 top-2 flex h-3 w-3">
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-300"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
         </span>
 
         <motion.div
@@ -356,7 +356,7 @@ export function AIChat() {
           >
             <div
               className={`px-4 py-2 rounded-2xl max-w-[80%] ${m.sender === "user"
-                ? "bg-cyan-500 text-zinc-950 rounded-br-none"
+                ? "bg-pink-500 text-zinc-950 rounded-br-none"
                 : "bg-white/5 border border-white/10 text-gray-100 rounded-bl-none"
                 }`}
             >
@@ -367,7 +367,7 @@ export function AIChat() {
                       .replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
                       .replace(
                         /(https?:\/\/[^\s]+)/g,
-                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline hover:text-cyan-200">$1</a>`
+                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-300 underline hover:text-pink-200">$1</a>`
                       ),
                     {
                       ALLOWED_TAGS: ['strong', 'a'],
@@ -449,12 +449,12 @@ export function AIChat() {
               }
             }
           }}
-          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-cyan-400/50 transition-colors placeholder:text-zinc-500"
+          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-pink-400/50 transition-colors placeholder:text-zinc-500"
         />
         <button
           type="submit"
           disabled={!canSend || loading || !input.trim()}
-          className="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg text-zinc-950 disabled:opacity-50 transition-colors"
+          className="bg-pink-500 hover:bg-pink-400 px-4 py-2 rounded-lg text-zinc-950 disabled:opacity-50 transition-colors"
         >
           {loading ? "…" : "Send"}
         </button>

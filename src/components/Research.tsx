@@ -14,7 +14,7 @@ export default function Research() {
   if (!wispec) return null;
 
   return (
-    <section id="research" className="mb-24 scroll-mt-32 md:scroll-mt-40">
+    <section id="research" className="mb-24 animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: "380ms", animationFillMode: "both" }}>
       <div className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h2 className="text-3xl font-semibold text-white">Research</h2>
@@ -25,7 +25,7 @@ export default function Research() {
         </div>
       </div>
 
-      <article className="border border-white/10 bg-white/[0.03]">
+      <article className="border border-white/10 bg-white/[0.03] transition duration-200 hover:-translate-y-1 hover:border-pink-400/40">
         <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="min-h-[320px] border-b border-white/10 bg-zinc-900 lg:border-b-0 lg:border-r lg:border-white/10">
             {wispec.image ? (
@@ -39,7 +39,7 @@ export default function Research() {
           </div>
 
           <div className="p-6 md:p-8">
-            <div className="mb-4 inline-flex items-center gap-2 border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs font-semibold text-cyan-200">
+            <div className="mb-4 inline-flex items-center gap-2 border border-pink-400/30 bg-pink-400/10 px-3 py-1 text-xs font-semibold text-pink-200">
               <RadioTower className="size-4" />
               Independent student research
             </div>
@@ -55,7 +55,7 @@ export default function Research() {
             <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {metrics.map(({ label, value, icon: Icon }) => (
                 <div key={label} className="border border-white/10 bg-zinc-950 p-4">
-                  <Icon className="mb-3 size-5 text-cyan-300" />
+                  <Icon className="mb-3 size-5 text-pink-300" />
                   <p className="text-2xl font-semibold text-white">{value}</p>
                   <p className="text-xs font-medium uppercase text-zinc-500">
                     {label}
@@ -81,7 +81,7 @@ export default function Research() {
                   href={wispec.web}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-sm font-medium text-cyan-100 transition hover:bg-cyan-400/15"
+                  className="inline-flex items-center justify-center gap-2 border border-pink-400/40 bg-pink-400/10 px-5 py-2.5 text-sm font-medium text-pink-100 transition hover:bg-pink-400/15"
                 >
                   <ExternalLink className="size-4" />
                   View research site

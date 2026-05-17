@@ -19,7 +19,7 @@ export default function MusicBar() {
       transition={{ duration: 0.4, ease: 'backOut' }}
       className={`fixed bottom-6 right-6 z-50 overflow-hidden flex items-center shadow-2xl transition-colors duration-300 ${hovered
         ? 'bg-transparent border-transparent'
-        : 'bg-zinc-900/80 border border-white/10 cursor-pointer hover:bg-zinc-900 hover:border-cyan-400/40'
+        : 'bg-zinc-900/80 border border-white/10 cursor-pointer hover:bg-zinc-900 hover:border-pink-400/40'
         }`}
     >
       {/* Persistent iframe */}
@@ -33,7 +33,7 @@ export default function MusicBar() {
 
       {/* Icon always on top */}
       {!hovered && (
-        <div className="absolute left-3 w-10 h-10 flex items-center justify-center text-cyan-300 pointer-events-none">
+        <div className="absolute left-3 w-10 h-10 flex items-center justify-center text-pink-300 pointer-events-none">
           <Music2 className="w-6 h-6" />
         </div>
       )}

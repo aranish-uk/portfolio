@@ -1,81 +1,50 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Code2, Construction, FileText } from "lucide-react";
+import { Code2, Gamepad2, UserRound } from "lucide-react";
 import { audienceModes, profile } from "@/content/profile";
 
 export default function Home() {
   return (
-    <main className="min-h-dvh bg-stone-50 text-zinc-950">
+    <main className="min-h-dvh bg-[#111] text-white">
       <div className="mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-6 py-8 md:px-8">
-        <header className="flex items-center justify-between border-b border-zinc-200 pb-5">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/favicon.ico"
-              alt=""
-              width={34}
-              height={34}
-              className="size-8 rounded-full border border-zinc-200"
-            />
-            <span className="text-sm font-semibold">{profile.name}</span>
+        <header className="flex items-center justify-between">
+          <Link href="/" className="text-2xl font-black text-red-600">
+            {profile.shortName}
           </Link>
           <Link
             href="/versions"
-            className="text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-950"
+            className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
           >
             Versions
           </Link>
         </header>
 
-        <section className="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="mb-4 text-sm font-semibold uppercase text-zinc-500">
-              Choose your view
-            </p>
-            <h1 className="max-w-3xl text-balance text-5xl font-semibold leading-tight text-zinc-950 md:text-7xl">
-              One portfolio, three ways to read it.
-            </h1>
-            <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-zinc-600">
-              {profile.headline} Pick the version that matches what you want to
-              learn first.
-            </p>
-          </div>
+        <section className="flex flex-1 flex-col items-center justify-center py-16 text-center">
+          <h1 className="text-balance text-4xl font-semibold md:text-6xl">
+            Who&apos;s visiting?
+          </h1>
+          <p className="mt-4 max-w-xl text-pretty text-base text-zinc-400">
+            Choose the version that fits what you want to see.
+          </p>
 
-          <div className="grid gap-4">
+          <div className="mt-12 grid w-full max-w-4xl gap-8 sm:grid-cols-3">
             {audienceModes.map((mode) => {
               const Icon =
                 mode.label === "Recruiters"
-                  ? FileText
+                  ? UserRound
                   : mode.label === "Developers"
                     ? Code2
-                    : Construction;
+                    : Gamepad2;
 
               return (
                 <Link
                   key={mode.href}
                   href={mode.href}
-                  className="group border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-zinc-300 hover:shadow-md"
+                  className="group flex flex-col items-center gap-4 text-zinc-400 transition duration-200 hover:-translate-y-1 hover:text-white"
                 >
-                  <div className="flex items-start justify-between gap-5">
-                    <div className="flex gap-4">
-                      <div className="flex size-11 shrink-0 items-center justify-center border border-zinc-200 bg-zinc-50 text-zinc-700">
-                        <Icon className="size-5" />
-                      </div>
-                      <div>
-                        <div className="mb-2 flex flex-wrap items-center gap-3">
-                          <h2 className="text-xl font-semibold text-zinc-950">
-                            {mode.label}
-                          </h2>
-                        </div>
-                        <p className="text-sm font-medium text-zinc-700">
-                          {mode.title}
-                        </p>
-                        <p className="mt-2 text-pretty text-sm leading-6 text-zinc-500">
-                          {mode.description}
-                        </p>
-                      </div>
-                    </div>
-                    <ArrowRight className="mt-1 size-5 shrink-0 text-zinc-400 transition group-hover:translate-x-1 group-hover:text-zinc-950" />
+                  <div className="flex aspect-square w-full max-w-[180px] items-center justify-center border-2 border-transparent bg-zinc-800 transition duration-200 group-hover:border-white group-hover:bg-zinc-700">
+                    <Icon className="size-16" />
                   </div>
+                  <span className="text-xl font-medium">{mode.label}</span>
                 </Link>
               );
             })}
