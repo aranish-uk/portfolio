@@ -14,7 +14,7 @@ export default function MoreProjects() {
     .slice(0, 6);
 
   return (
-    <section id="more-projects" className="mb-24 scroll-mt-32 md:scroll-mt-40">
+    <section id="more-projects" className="mb-24 animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: "440ms", animationFillMode: "both" }}>
       <div className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h2 className="text-3xl font-semibold text-white">More Builds</h2>
@@ -24,7 +24,7 @@ export default function MoreProjects() {
         </div>
         <Link
           href="/projects"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-pink-300 transition hover:text-pink-200"
         >
           Open full archive
           <ArrowRight className="size-4" />
@@ -33,7 +33,7 @@ export default function MoreProjects() {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {moreProjects.map((project) => (
-          <article key={project.title} className="border border-white/10 bg-white/[0.03] p-5">
+          <article key={project.title} className="border border-white/10 bg-white/[0.03] p-5 transition duration-200 hover:-translate-y-1 hover:border-pink-400/40">
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
                 <p className="mb-2 font-mono text-xs text-zinc-500">

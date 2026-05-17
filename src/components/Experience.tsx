@@ -7,7 +7,7 @@ export default function Experience() {
   const visibleExperiences = isExpanded ? experiences : experiences.slice(0, 3);
 
   return (
-    <section id="experience" className="mb-24 scroll-mt-32 md:scroll-mt-40">
+    <section id="experience" className="mb-24 animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: "180ms", animationFillMode: "both" }}>
       <div className="mb-10 flex items-end justify-between gap-6 border-b border-white/10 pb-4">
         <h2 className="text-3xl font-semibold text-white">Experience</h2>
         <p className="hidden max-w-sm text-right text-sm text-zinc-500 md:block">
@@ -19,14 +19,14 @@ export default function Experience() {
         {visibleExperiences.map((experience) => (
           <article
             key={`${experience.organization}-${experience.title}`}
-            className="border border-white/10 bg-white/[0.03] p-5"
+            className="border border-white/10 bg-white/[0.03] p-5 transition duration-200 hover:-translate-y-1 hover:border-pink-400/40"
           >
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
                 <h3 className="text-xl font-semibold text-white">
                   {experience.title}
                 </h3>
-                <p className="mt-1 font-mono text-sm text-cyan-300">
+                <p className="mt-1 font-mono text-sm text-pink-300">
                   {experience.organization}
                 </p>
               </div>
@@ -38,7 +38,7 @@ export default function Experience() {
             <ul className="mt-5 space-y-3">
               {experience.description.slice(0, isExpanded ? undefined : 2).map((item) => (
                 <li key={item} className="flex gap-3 text-sm leading-6 text-zinc-400">
-                  <span className="mt-2 size-1.5 shrink-0 bg-cyan-300" />
+                  <span className="mt-2 size-1.5 shrink-0 bg-pink-300" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -57,12 +57,12 @@ export default function Experience() {
             {isExpanded ? (
               <>
                 Show less
-                <ChevronUp className="size-4 text-cyan-300" />
+                <ChevronUp className="size-4 text-pink-300" />
               </>
             ) : (
               <>
                 See all experience
-                <ChevronDown className="size-4 text-cyan-300" />
+                <ChevronDown className="size-4 text-pink-300" />
               </>
             )}
           </button>

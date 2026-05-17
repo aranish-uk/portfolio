@@ -12,7 +12,7 @@ import Contact from "@/components/Contact";
 
 export default function HomeContent() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-300 selection:bg-cyan-400/20 selection:text-cyan-100">
+    <div className="min-h-screen bg-zinc-950 text-zinc-300 selection:bg-pink-400/20 selection:text-pink-100">
       <div className="mx-auto px-6 pt-32 pb-12 md:pt-42 max-w-6xl relative z-10">
         <div className="w-full">
           <Hero />

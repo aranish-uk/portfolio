@@ -35,7 +35,7 @@ export default function Projects() {
   const featuredProjects = getFeaturedProjects("developer", 4);
 
   return (
-    <section id="projects" className="mb-24 scroll-mt-32 md:scroll-mt-40">
+    <section id="projects" className="mb-24 animate-fadeIn scroll-mt-32 md:scroll-mt-40" style={{ animationDelay: "260ms", animationFillMode: "both" }}>
       <div className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h2 className="text-3xl font-semibold text-white">Featured Projects</h2>
@@ -45,8 +45,8 @@ export default function Projects() {
           </p>
         </div>
         <Link
-          href="/projects?sort=developer"
-          className="text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
+          href="/projects?audience=developer&sort=developer"
+          className="text-sm font-semibold text-pink-300 transition hover:text-pink-200"
         >
           View all projects
         </Link>
@@ -56,7 +56,7 @@ export default function Projects() {
         {featuredProjects.map((project) => (
           <article
             key={project.title}
-            className="flex h-full flex-col border border-white/10 bg-white/[0.03]"
+            className="flex h-full flex-col border border-white/10 bg-white/[0.03] transition duration-200 hover:-translate-y-1 hover:border-pink-400/40"
           >
             {project.image ? (
               <img
@@ -70,7 +70,7 @@ export default function Projects() {
             <div className="flex flex-1 flex-col p-5">
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div>
-                  <p className="mb-2 font-mono text-xs text-cyan-300">
+                  <p className="mb-2 font-mono text-xs text-pink-300">
                     {project.meta.impact} impact / {project.meta.complexity} complexity
                   </p>
                   <h3 className="text-2xl font-semibold text-white">
@@ -110,7 +110,7 @@ export default function Projects() {
               <ul className="mt-5 space-y-2">
                 {(proofByProject[project.title] ?? []).map((item) => (
                   <li key={item} className="flex gap-3 text-sm leading-6 text-zinc-300">
-                    <CheckCircle2 className="mt-1 size-4 shrink-0 text-cyan-300" />
+                    <CheckCircle2 className="mt-1 size-4 shrink-0 text-pink-300" />
                     <span>{item}</span>
                   </li>
                 ))}
