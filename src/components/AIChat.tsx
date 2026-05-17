@@ -288,7 +288,7 @@ export function AIChat() {
           borderRadius: 32
         }}
         transition={{ duration: 0.4, ease: 'backOut' }}
-        className="relative bg-neutral-900/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] hover:bg-zinc-800/80 hover:border-pink-500/50 flex items-center justify-start overflow-hidden group"
+        className="relative bg-zinc-900/90 border border-white/10 shadow-xl hover:bg-zinc-900 hover:border-cyan-400/40 flex items-center justify-start overflow-hidden group"
         aria-label="Open Chat"
       >
         <div className="absolute left-1 w-14 h-14 flex items-center justify-center pointer-events-none">
@@ -302,8 +302,7 @@ export function AIChat() {
         </div>
 
         <span className="absolute left-11 top-2 flex h-3 w-3">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-300"></span>
         </span>
 
         <motion.div
@@ -312,7 +311,7 @@ export function AIChat() {
           transition={{ duration: 0.3 }}
           className="absolute left-16 whitespace-nowrap text-sm font-semibold text-zinc-200 pointer-events-none pr-4"
         >
-          Ask Mr. Robot ✨
+          Ask Mr. Robot
         </motion.div>
       </motion.button>
     );
@@ -321,13 +320,13 @@ export function AIChat() {
   return (
     <div
       ref={chatWindowRef}
-      className="absolute bottom-0 left-0 origin-bottom-left rounded-2xl bg-neutral-900/60 backdrop-blur-2xl shadow-2xl shadow-pink-500/20 flex flex-col h-[450px] w-[calc(100vw-48px)] max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in zoom-in-95 slide-in-from-bottom-6"
+      className="absolute bottom-0 left-0 origin-bottom-left rounded-lg bg-zinc-950 shadow-2xl flex flex-col h-[450px] w-[calc(100vw-48px)] max-w-xl overflow-visible border border-white/10 transition-all duration-300 animate-in zoom-in-95 slide-in-from-bottom-6"
     >
       {/* Header / Controls */}
       <div className="absolute top-2 right-2 flex gap-2 z-50">
         <button
           onClick={() => setIsOpen(false)}
-          className="w-8 h-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white transition-colors shadow-lg"
+          className="w-8 h-8 flex items-center justify-center bg-black/40 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white transition-colors"
         >
           ✕
         </button>
@@ -339,7 +338,7 @@ export function AIChat() {
           src="/mrrobot.png"
           alt="Mr. Robot"
           fill
-          className="object-contain drop-shadow-[0_10px_20px_rgba(236,72,153,0.3)] filter brightness-110"
+          className="object-contain filter brightness-110"
         />
       </div>
 
@@ -357,8 +356,8 @@ export function AIChat() {
           >
             <div
               className={`px-4 py-2 rounded-2xl max-w-[80%] ${m.sender === "user"
-                ? "bg-pink-500 text-white rounded-br-none shadow-lg shadow-pink-500/20"
-                : "bg-white/5 backdrop-blur-md border border-white/10 text-gray-100 rounded-bl-none"
+                ? "bg-cyan-500 text-zinc-950 rounded-br-none"
+                : "bg-white/5 border border-white/10 text-gray-100 rounded-bl-none"
                 }`}
             >
               <span
@@ -368,7 +367,7 @@ export function AIChat() {
                       .replace(/\*\*(.*?)\*\*/g, "<strong class='font-bold'>$1</strong>")
                       .replace(
                         /(https?:\/\/[^\s]+)/g,
-                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-pink-400 underline hover:text-pink-300">$1</a>`
+                        `<a href="$1" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline hover:text-cyan-200">$1</a>`
                       ),
                     {
                       ALLOWED_TAGS: ['strong', 'a'],
@@ -433,7 +432,7 @@ export function AIChat() {
       {/* Input */}
       <form
         onSubmit={handleSubmit}
-        className="flex items-center gap-2 border-t border-white/10 p-3 bg-neutral-900/50 backdrop-blur-md rounded-b-2xl z-10"
+        className="flex items-center gap-2 border-t border-white/10 p-3 bg-zinc-950 rounded-b-lg z-10"
       >
         <textarea
           rows={1}
@@ -450,12 +449,12 @@ export function AIChat() {
               }
             }
           }}
-          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-pink-500/50 transition-colors placeholder:text-zinc-500"
+          className="flex-1 p-2 rounded-lg bg-white/5 text-gray-100 border border-white/10 resize-none h-[42px] focus:outline-none focus:border-cyan-400/50 transition-colors placeholder:text-zinc-500"
         />
         <button
           type="submit"
           disabled={!canSend || loading || !input.trim()}
-          className="bg-pink-500 hover:bg-pink-400 px-4 py-2 rounded-lg text-white disabled:opacity-50 transition-colors shadow-lg shadow-pink-500/20"
+          className="bg-cyan-500 hover:bg-cyan-400 px-4 py-2 rounded-lg text-zinc-950 disabled:opacity-50 transition-colors"
         >
           {loading ? "…" : "Send"}
         </button>
