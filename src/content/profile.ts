@@ -13,6 +13,7 @@ export const profile = {
   location: "Tempe, Arizona",
   education: "Computer Science, Arizona State University",
   image: "/me.png",
+  recruiterImage: "/newpic.png",
   resume: "/resume.pdf",
   links: {
     email: "mailto:aranish@asu.edu",
