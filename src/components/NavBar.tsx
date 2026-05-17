@@ -8,9 +8,16 @@ import { Menu, X } from "lucide-react";
 import { profile } from "@/content/profile";
 
 const developerSections = [
+  { id: "skills", label: "Skills" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Featured" },
+  { id: "projects", label: "Projects" },
   { id: "research", label: "Research" },
+  { id: "contact", label: "Contact" },
+];
+
+const recruiterSections = [
+  { id: "experience", label: "Experience" },
+  { id: "recruiter-projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -20,6 +27,8 @@ export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectSearch, setProjectSearch] = useState("");
   const isDeveloperMode = pathname.startsWith("/developers");
+  const isRecruiterMode = pathname.startsWith("/recruiters");
+  const isJourneyMode = pathname.startsWith("/journey");
   const isDeveloperArchive =
     pathname.startsWith("/projects") &&
     (projectSearch.includes("audience=developer") ||
@@ -30,35 +39,49 @@ export default function NavBar() {
     setProjectSearch(window.location.search);
   }, [pathname]);
 
-  const mainLinks = [
-    { href: "/recruiters", label: "Recruiters" },
-    { href: "/developers", label: "Developers" },
-    {
-      href: isDeveloperMode || isDeveloperArchive
-        ? "/projects?audience=developer&sort=developer"
-        : "/projects",
-      label: "Projects",
-    },
-    { href: "/journey", label: "Journey" },
-  ];
+  const archiveHref =
+    isDeveloperMode || isDeveloperArchive
+      ? "/projects?audience=developer&sort=developer"
+      : "/projects";
 
-  const scrollToDeveloperSection = (id: string) => {
+  const sectionLinks = isDeveloperMode
+    ? developerSections
+    : isRecruiterMode
+      ? recruiterSections
+      : [];
+
+  const navigateToSection = (id: string) => {
     setMenuOpen(false);
 
-    if (!isDeveloperMode) {
+    if (isDeveloperMode) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (isRecruiterMode) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (isDeveloperArchive) {
       router.push(`/developers#${id}`);
       return;
     }
 
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    router.push(`/recruiters#${id}`);
   };
 
-  const isCurrent = (href: string) => {
-    const path = href.split("?")[0];
-    return path === "/developers"
-      ? pathname.startsWith("/developers")
-      : pathname === path || pathname.startsWith(`${path}/`);
-  };
+  const contextualLinks =
+    pathname.startsWith("/projects")
+      ? [
+          {
+            href: isDeveloperArchive ? "/developers#projects" : "/recruiters#recruiter-projects",
+            label: isDeveloperArchive ? "Developer" : "Recruiter",
+          },
+        ]
+      : isJourneyMode
+        ? [{ href: "/projects", label: "All Projects" }]
+        : [{ href: archiveHref, label: "All Projects" }];
 
   return (
     <nav
@@ -81,41 +104,38 @@ export default function NavBar() {
               isDarkNav ? "border-white/10" : "border-zinc-200"
             }`}
           />
-          <span className="text-sm font-semibold">{profile.name}</span>
+          <span className="text-sm font-semibold">Selection</span>
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
-          {mainLinks.map((link) => (
+          {sectionLinks.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => navigateToSection(section.id)}
+              className={`px-3 py-2 text-sm font-medium transition-colors ${
+                isDarkNav
+                  ? "text-zinc-400 hover:text-white"
+                  : "text-zinc-500 hover:text-zinc-950"
+              }`}
+              type="button"
+            >
+              {section.label}
+            </button>
+          ))}
+
+          {contextualLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={`px-3 py-2 text-sm font-medium transition-colors ${
-                isCurrent(link.href)
-                  ? isDarkNav
-                    ? "text-white"
-                    : "text-zinc-950"
-                  : isDarkNav
-                    ? "text-zinc-400 hover:text-white"
-                    : "text-zinc-500 hover:text-zinc-950"
+                isDarkNav
+                  ? "text-zinc-400 hover:text-white"
+                  : "text-zinc-500 hover:text-zinc-950"
               }`}
             >
               {link.label}
             </Link>
           ))}
-
-          {isDeveloperMode ? (
-            <div className="ml-3 flex items-center gap-1 border-l border-white/10 pl-3">
-              {developerSections.map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => scrollToDeveloperSection(section.id)}
-                  className="px-2 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
-                >
-                  {section.label}
-                </button>
-              ))}
-            </div>
-          ) : null}
         </div>
 
         <button
@@ -137,39 +157,41 @@ export default function NavBar() {
           }`}
         >
           <div className="grid gap-1">
-            {mainLinks.map((link) => (
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className={`px-2 py-3 text-sm font-medium ${
+                isDarkNav ? "text-white" : "text-zinc-950"
+              }`}
+            >
+              Selection
+            </Link>
+
+            {sectionLinks.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => navigateToSection(section.id)}
+                className={`block w-full px-2 py-3 text-left text-sm font-medium ${
+                  isDarkNav ? "text-zinc-400" : "text-zinc-500"
+                }`}
+                type="button"
+              >
+                {section.label}
+              </button>
+            ))}
+
+            {contextualLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className={`px-2 py-3 text-sm font-medium ${
-                  isCurrent(link.href)
-                    ? isDarkNav
-                      ? "text-white"
-                      : "text-zinc-950"
-                    : isDarkNav
-                      ? "text-zinc-400"
-                      : "text-zinc-500"
+                  isDarkNav ? "text-zinc-400" : "text-zinc-500"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-
-            {isDeveloperMode ? (
-              <div className="mt-2 border-t border-white/10 pt-2">
-                {developerSections.map((section) => (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollToDeveloperSection(section.id)}
-                    className="block w-full px-2 py-3 text-left text-sm font-medium text-zinc-400"
-                    type="button"
-                  >
-                    {section.label}
-                  </button>
-                ))}
-              </div>
-            ) : null}
           </div>
         </div>
       ) : null}
