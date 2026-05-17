@@ -4,29 +4,40 @@ import { audienceModes, profile } from "@/content/profile";
 
 export default function Home() {
   return (
-    <main className="min-h-dvh bg-[#111] text-white">
-      <div className="mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-6 py-8 md:px-8">
-        <header className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-black text-red-600">
-            {profile.shortName}
+    <main className="min-h-dvh overflow-hidden bg-zinc-950 text-white">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-0 h-px w-[70vw] -translate-x-1/2 bg-pink-400/35" />
+        <div className="absolute left-1/2 top-24 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-pink-500/8 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto flex min-h-dvh w-full max-w-6xl flex-col px-6 py-6 md:px-8">
+        <header className="mx-auto flex w-full max-w-5xl items-center justify-between rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 shadow-xl shadow-black/20 backdrop-blur-xl">
+          <Link href="/" className="flex items-center gap-3">
+            <span className="size-2 rounded-full bg-pink-400" />
+            <span className="text-sm font-semibold text-zinc-100">
+              {profile.name}
+            </span>
           </Link>
           <Link
             href="/versions"
-            className="text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+            className="text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-100"
           >
             Versions
           </Link>
         </header>
 
         <section className="flex flex-1 flex-col items-center justify-center py-16 text-center">
-          <h1 className="text-balance text-4xl font-semibold md:text-6xl">
-            Who&apos;s visiting?
+          <p className="mb-4 font-mono text-xs uppercase text-pink-300">
+            Portfolio mode
+          </p>
+          <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
+            Choose your view.
           </h1>
           <p className="mt-4 max-w-xl text-pretty text-base text-zinc-400">
-            Choose the version that fits what you want to see.
+            Same work, tuned for the way you want to read it.
           </p>
 
-          <div className="mt-12 grid w-full max-w-4xl gap-8 sm:grid-cols-3">
+          <div className="mt-12 grid w-full max-w-4xl gap-4 sm:grid-cols-3">
             {audienceModes.map((mode) => {
               const Icon =
                 mode.label === "Recruiters"
@@ -39,12 +50,17 @@ export default function Home() {
                 <Link
                   key={mode.href}
                   href={mode.href}
-                  className="group flex flex-col items-center gap-4 text-zinc-400 transition duration-200 hover:-translate-y-1 hover:text-white"
+                  className="group border border-white/10 bg-white/[0.035] p-5 text-left shadow-lg shadow-black/15 backdrop-blur-sm transition duration-200 hover:-translate-y-1 hover:border-pink-400/40 hover:bg-white/[0.055]"
                 >
-                  <div className="flex aspect-square w-full max-w-[180px] items-center justify-center border-2 border-transparent bg-zinc-800 transition duration-200 group-hover:border-white group-hover:bg-zinc-700">
-                    <Icon className="size-16" />
+                  <div className="mb-10 flex size-12 items-center justify-center border border-white/10 bg-zinc-950 text-zinc-400 transition-colors group-hover:text-pink-300">
+                    <Icon className="size-6" />
                   </div>
-                  <span className="text-xl font-medium">{mode.label}</span>
+                  <h2 className="text-xl font-semibold text-zinc-100">
+                    {mode.label}
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-zinc-500">
+                    {mode.title}
+                  </p>
                 </Link>
               );
             })}
