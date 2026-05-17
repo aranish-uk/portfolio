@@ -62,13 +62,15 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-50 border-b px-4 pt-[env(safe-area-inset-top)] shadow-sm backdrop-blur-md ${
+      className={`fixed left-1/2 top-[calc(env(safe-area-inset-top)+1rem)] z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2 border px-4 shadow-xl backdrop-blur-xl transition-[border-radius] duration-200 md:px-6 ${
+        menuOpen ? "rounded-2xl" : "rounded-full"
+      } ${
         isDarkNav
-          ? "border-white/10 bg-zinc-950/90 text-zinc-100"
-          : "border-zinc-200/80 bg-white/90 text-zinc-950"
+          ? "border-white/10 bg-zinc-950/72 text-zinc-100 shadow-black/30"
+          : "border-white/70 bg-white/72 text-zinc-950 shadow-zinc-950/10"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4">
+      <div className="mx-auto flex h-14 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/favicon.ico"
@@ -118,8 +120,8 @@ export default function NavBar() {
 
         <button
           onClick={() => setMenuOpen((value) => !value)}
-          className={`inline-flex size-10 items-center justify-center border md:hidden ${
-            isDarkNav ? "border-white/10 text-zinc-200" : "border-zinc-200 text-zinc-700"
+          className={`inline-flex size-9 items-center justify-center rounded-full border md:hidden ${
+            isDarkNav ? "border-white/10 text-zinc-200 hover:bg-white/10" : "border-zinc-200 text-zinc-700 hover:bg-zinc-100"
           }`}
           aria-label="Toggle navigation"
           type="button"
@@ -130,8 +132,8 @@ export default function NavBar() {
 
       {menuOpen ? (
         <div
-          className={`mx-auto max-w-6xl border-t py-3 md:hidden ${
-            isDarkNav ? "border-white/10" : "border-zinc-200"
+          className={`mx-auto border-t py-3 md:hidden ${
+            isDarkNav ? "border-white/10" : "border-zinc-200/80"
           }`}
         >
           <div className="grid gap-1">
