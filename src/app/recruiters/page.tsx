@@ -98,7 +98,7 @@ export default function RecruitersPage() {
         </div>
       </section>
 
-      <section className="border-y border-zinc-200 bg-white">
+      <section id="recruiter-projects" className="scroll-mt-32 border-y border-zinc-200 bg-white md:scroll-mt-40">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-16 md:px-8 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="font-mono text-sm uppercase text-zinc-500">
@@ -164,7 +164,7 @@ export default function RecruitersPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <section id="experience" className="mx-auto grid max-w-6xl scroll-mt-32 gap-10 px-6 py-16 md:scroll-mt-40 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <div className="mb-8 flex items-center gap-3">
             <BriefcaseBusiness className="size-5 text-zinc-500" />
@@ -213,6 +213,33 @@ export default function RecruitersPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-32 px-6 pb-20 md:scroll-mt-40 md:px-8">
+        <div className="border border-zinc-300 bg-white p-6">
+          <h2 className="text-2xl font-semibold">Contact</h2>
+          <p className="mt-2 text-sm leading-6 text-zinc-600">
+            For roles, internships, collaborations, or technical conversations.
+          </p>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={profile.links.email}
+              className="inline-flex items-center justify-center gap-2 bg-zinc-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800"
+            >
+              <Mail className="size-4" />
+              Email
+            </a>
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-950 transition hover:border-zinc-400"
+            >
+              <Linkedin className="size-4" />
+              LinkedIn
+            </a>
           </div>
         </div>
       </section>
