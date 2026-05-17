@@ -1,165 +1,135 @@
 "use client";
+
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
-import { Menu, X, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { profile } from "@/content/profile";
+
+const mainLinks = [
+  { href: "/recruiters", label: "Recruiters" },
+  { href: "/developers", label: "Developers" },
+  { href: "/projects", label: "Projects" },
+  { href: "/journey", label: "Journey" },
+];
+
+const developerSections = [
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Featured" },
+  { id: "research", label: "Research" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function NavBar() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  const isOldUI = pathname.startsWith("/old");
+  const isDeveloperMode = pathname.startsWith("/developers");
 
-  const scrollToId = (id: string) => {
-    if (pathname !== "/") {
-      router.push(`/#${id}`);
+  const scrollToDeveloperSection = (id: string) => {
+    setMenuOpen(false);
+
+    if (!isDeveloperMode) {
+      router.push(`/developers#${id}`);
       return;
     }
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const getHeading = () => {
-    switch (pathname) {
-      case "/projects": return "Personal Projects";
-      case "/contact": return "Send Fan Mail";
-      case "/experience": return "Experience";
-      default: return "Abhinav Ranish";
-    }
-  };
+  const isCurrent = (href: string) =>
+    href === "/developers"
+      ? pathname.startsWith("/developers")
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <motion.nav
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={`
-        fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-50
-        w-[90%] md:w-[70%] max-w-5xl
-        bg-white/5 backdrop-blur-xl border border-white/10
-        shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]
-        px-6 py-4
-        ${menuOpen ? "rounded-3xl" : "rounded-full"}
-      `}
-    >
-      {/* Subtle inner glow */}
-      <div className="absolute inset-0 rounded-inherit bg-gradient-to-r from-white/5 to-transparent opacity-50 blur-md -z-10 pointer-events-none" />
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-zinc-200/80 bg-white/90 px-4 pt-[env(safe-area-inset-top)] text-zinc-950 shadow-sm backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/favicon.ico"
+            alt=""
+            width={34}
+            height={34}
+            className="size-8 rounded-full border border-zinc-200"
+          />
+          <span className="text-sm font-semibold">{profile.name}</span>
+        </Link>
 
-      {/* Desktop & Mobile Header Content */}
-      <div className="flex items-center justify-between">
+        <div className="hidden items-center gap-1 md:flex">
+          {mainLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`px-3 py-2 text-sm font-medium transition-colors ${
+                isCurrent(link.href)
+                  ? "text-zinc-950"
+                  : "text-zinc-500 hover:text-zinc-950"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
 
-        {/* Left Side: Logo & Header */}
-        <div className="flex items-center space-x-4">
-          <Link href="/" className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
-            <Image
-              src="/favicon.ico"
-              alt="logo"
-              width={36}
-              height={36}
-              className="relative rounded-full ring-2 ring-white/10"
-            />
-          </Link>
-
-          <button
-            className="font-semibold text-lg tracking-tight text-white hover:text-pink-300 transition-colors"
-            onClick={() => !isOldUI && scrollToId("hero")}
-            aria-label="Scroll to Hero"
-          >
-            {getHeading()}
-          </button>
-        </div>
-
-        {/* Desktop Links (Hidden on small screens) */}
-        <div className="hidden md:flex space-x-8 items-center">
-          {!isOldUI ? (
-            <>
-              {["experience", "projects", "research", "contact"].map((id) => (
+          {isDeveloperMode ? (
+            <div className="ml-3 flex items-center gap-1 border-l border-zinc-200 pl-3">
+              {developerSections.map((section) => (
                 <button
-                  key={id}
-                  onClick={() => scrollToId(id)}
-                  className="text-sm font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide group relative"
+                  key={section.id}
+                  onClick={() => scrollToDeveloperSection(section.id)}
+                  className="px-2 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-950"
                 >
-                  {id === "contact" ? "Connect" : id.replace("-", " ")}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all group-hover:w-full"></span>
+                  {section.label}
                 </button>
               ))}
-            </>
-          ) : (
-            <>
-              {["projects", "experience", "contact", "qa"].map((path) => (
-                <Link
-                  key={path}
-                  href={`/old/${path}`}
-                  scroll={false}
-                  className="text-sm font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide group relative"
-                >
-                  {path === "contact" ? "Connect" : path === "qa" ? "Mr Robot" : path}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all group-hover:w-full"></span>
-                </Link>
-              ))}
-              <Link
-                href="/"
-                scroll={false}
-                className="ml-4 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-300 text-sm font-medium flex items-center gap-2 text-white shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]"
-              >
-                <Sun size={16} /> New UI
-              </Link>
-            </>
-          )}
+            </div>
+          ) : null}
         </div>
 
-        {/* Mobile Toggle Button */}
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-zinc-300 p-2 hover:bg-white/10 rounded-full transition-colors focus:outline-none"
-          aria-label="Toggle Menu"
+          onClick={() => setMenuOpen((value) => !value)}
+          className="inline-flex size-10 items-center justify-center border border-zinc-200 text-zinc-700 md:hidden"
+          aria-label="Toggle navigation"
+          type="button"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </div>
 
-      {/* Mobile Links Dropdown */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden mt-6 overflow-hidden border-t border-white/10"
-          >
-            <div className="flex flex-col space-y-4 py-6 px-2 text-left">
-              {!isOldUI ? (
-                <>
-                  {["experience", "projects", "research", "contact"].map((id) => (
-                    <button
-                      key={id}
-                      onClick={() => { scrollToId(id); setMenuOpen(false); }}
-                      className="text-lg font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide w-full text-left"
-                    >
-                      {id === "contact" ? "Connect" : id}
-                    </button>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <Link href="/old" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Home</Link>
-                  <Link href="/old/projects" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Projects</Link>
-                  <Link href="/old/experience" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Experience</Link>
-                  <Link href="/old/contact" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Connect</Link>
-                  <Link href="/old/qa" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Mr Robot</Link>
-                  <Link href="/" className="mt-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold shadow-lg" onClick={() => setMenuOpen(false)}>
-                    <Sun size={20} /> New UI
-                  </Link>
-                </>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      {menuOpen ? (
+        <div className="mx-auto max-w-6xl border-t border-zinc-200 py-3 md:hidden">
+          <div className="grid gap-1">
+            {mainLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`px-2 py-3 text-sm font-medium ${
+                  isCurrent(link.href) ? "text-zinc-950" : "text-zinc-500"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {isDeveloperMode ? (
+              <div className="mt-2 border-t border-zinc-200 pt-2">
+                {developerSections.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToDeveloperSection(section.id)}
+                    className="block w-full px-2 py-3 text-left text-sm font-medium text-zinc-500"
+                    type="button"
+                  >
+                    {section.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </nav>
   );
 }
