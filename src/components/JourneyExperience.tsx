@@ -43,8 +43,8 @@ const chapters: Chapter[] = [
     scene: "scene-bangalore",
     role: "New character unlocked",
     summary:
-      "The story opens in Bangalore Baptist Hospital. A tiny protagonist enters the world with no stats, no inventory, and a future questline nobody can read yet.",
-    quest: "Begin the route from curiosity to systems builder.",
+      "The story starts at Bangalore Baptist Hospital: a newborn, a family, and a future that has not decided whether it wants to be code, security, or something bigger.",
+    quest: "Set the origin point for a life built around curiosity.",
     unlock: "Origin memory",
     stat: "+1 Life",
     tags: ["origin", "family", "first frame"],
@@ -59,8 +59,8 @@ const chapters: Chapter[] = [
     scene: "scene-flight",
     role: "World map expands",
     summary:
-      "The baby takes a flight to Qatar, a small country in the Middle East that becomes home base for the next major arc.",
-    quest: "Grow up between family, school, games, and a widening internet world.",
+      "The next frame cuts to Qatar, a small country in the Middle East that becomes home base: school, family, friends, games, and the first pull toward the wider internet.",
+    quest: "Grow up between a protected home and a world that keeps getting bigger.",
     unlock: "Qatar hub",
     stat: "+1 New world",
     tags: ["qatar", "migration", "home"],
@@ -75,9 +75,9 @@ const chapters: Chapter[] = [
     scene: "scene-router",
     role: "Curiosity versus locked gates",
     summary:
-      "His dad keeps locking down internet access out of safety concerns. The kid still wants games, friends, and the open web, so he starts treating the home network like a puzzle.",
+      "His dad locks down the internet because he is trying to keep him safe. The kid wants games, friends, and the open web, so the router slowly turns into the first puzzle box.",
     quest:
-      "Find a way around restrictions without yet understanding that this curiosity needs ethics and discipline.",
+      "Learn that every restriction has a reason, every system has rules, and curiosity needs a compass.",
     unlock: "Network curiosity",
     stat: "+2 Problem solving",
     tags: ["internet", "games", "networking"],
@@ -92,8 +92,8 @@ const chapters: Chapter[] = [
     scene: "scene-tunnel",
     role: "The first hacker feeling",
     summary:
-      "He experiments with MAC-address masks, VPN tunnels, and every weird workaround a determined kid can discover. The important part is not the method; it is the mindset: systems have rules, and rules can be studied.",
-    quest: "Turn rule-breaking curiosity into security thinking.",
+      "The experiments get stranger: spoofed MAC addresses, VPN tunnels, and late-night retry loops. The real discovery is not the bypass. It is realizing that systems are understandable if you are stubborn enough to study them.",
+    quest: "Turn the thrill of getting around a wall into respect for how walls are built.",
     unlock: "Adversarial mindset",
     stat: "+3 Pattern recognition",
     tags: ["security", "systems", "curiosity"],
@@ -108,7 +108,7 @@ const chapters: Chapter[] = [
     scene: "scene-mail",
     role: "Trust lesson acquired",
     summary:
-      "The silly prank phase arrives: fake-looking emails, social engineering jokes, and the realization that making people click is easy compared with building something people can trust.",
+      "Then comes the prank era: fake-looking emails, social-engineering jokes, and the uncomfortable lesson that tricking someone is easy. Building something people can trust is the harder skill.",
     quest: "Graduate from tricks to responsibility.",
     unlock: "Ethics checkpoint",
     stat: "+2 Judgment",
@@ -124,8 +124,8 @@ const chapters: Chapter[] = [
     scene: "scene-code",
     role: "Keyboard becomes weapon and tool",
     summary:
-      "The curiosity shifts into actual coding. Scripts, small tools, and automation become the new way to bend boring tasks into something faster.",
-    quest: "Build things that save time and prove skill.",
+      "The energy moves into code. Small scripts become tools, tools become workflows, and boring tasks start turning into systems he can control.",
+    quest: "Stop only breaking puzzles and start building useful answers.",
     unlock: "Builder class",
     stat: "+4 Coding",
     tags: ["coding", "automation", "tools"],
@@ -140,8 +140,8 @@ const chapters: Chapter[] = [
     scene: "scene-stage",
     role: "Public speaking buff",
     summary:
-      "Outside the code editor, he becomes president of Zenith Toastmasters in Qatar. The quiet hacker energy picks up a new skill: explaining ideas in front of people.",
-    quest: "Learn to lead, speak, and make technical ideas land.",
+      "Outside the code editor, he becomes president of Zenith Toastmasters in Qatar. The quiet hacker energy picks up a second language: making ideas clear in front of a room.",
+    quest: "Learn to lead, speak, and make technical work understandable.",
     unlock: "Communication buff",
     stat: "+3 Leadership",
     tags: ["toastmasters", "speaking", "leadership"],
@@ -156,7 +156,7 @@ const chapters: Chapter[] = [
     scene: "scene-asu",
     role: "New region unlocked",
     summary:
-      "High school wraps up, ASU opens, and the story moves from Qatar to Arizona. The skill tree expands into computer science, campus work, and bigger projects.",
+      "High school closes in Qatar and ASU opens in Arizona. The story moves from self-taught experiments into computer science, campus work, and projects with sharper stakes.",
     quest: "Turn curiosity into a real engineering path.",
     unlock: "ASU region",
     stat: "+5 Computer science",
@@ -172,8 +172,8 @@ const chapters: Chapter[] = [
     scene: "scene-night-code",
     role: "AutoClass Enroller forged",
     summary:
-      "While friends sleep, he builds his own class enroller. The tool watches for class openings and handles enrollment so he can win the scheduling grind with software.",
-    quest: "Automate the annoying thing nobody wants to babysit.",
+      "While friends sleep, he builds his own class enroller. It watches openings and handles enrollment, turning a stressful scheduling race into a software problem.",
+    quest: "Automate the annoying thing nobody should have to babysit.",
     unlock: "AutoClass Enroller",
     stat: "+5 Automation",
     tags: ["automation", "asu", "shipping"],
@@ -188,7 +188,7 @@ const chapters: Chapter[] = [
     scene: "scene-internship",
     role: "Field experience unlocked",
     summary:
-      "The path branches through IT internships, then a software engineering internship in Virginia, and now an AI-native internship in Phoenix. The work gets closer to real companies, real users, and real stakes.",
+      "The path branches through IT internships, a software engineering internship in Virginia, and an AI-native internship in Phoenix. The work gets closer to real teams, real users, and real consequences.",
     quest: "Bridge security, frontend, AI, and production execution.",
     unlock: "Professional XP",
     stat: "+6 Industry",
@@ -204,8 +204,8 @@ const chapters: Chapter[] = [
     scene: "scene-startup",
     role: "Hero form online",
     summary:
-      "He builds products like the resume-to-portfolio generator and works on a startup for automating tasks people send to it. The childhood hacker energy becomes a builder mindset: automate the work, secure the system, ship the tool.",
-    quest: "Build the systems that make useful work feel effortless.",
+      "Now the arc points toward products: a resume-to-portfolio builder, AI workflows, and a startup aimed at automating tasks people hand off. The childhood hacker energy becomes a builder mindset: understand the system, automate the work, ship the tool.",
+    quest: "Build systems that make useful work feel effortless.",
     unlock: "Founder quest",
     stat: "+7 Product instinct",
     tags: ["startup", "cvfy", "ai agents"],
@@ -222,6 +222,15 @@ function clampChapter(index: number) {
 function StoryStage({ chapter }: { chapter: Chapter }) {
   return (
     <div className={`journey-stage ${chapter.scene}`} aria-hidden="true">
+      <div className="journey-scene-card">
+        <span>{chapter.episode}</span>
+        <strong>{chapter.era}</strong>
+      </div>
+      <div className="journey-action-lines">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className="journey-sun" />
       <div className="journey-moon" />
       <div className="journey-cloud cloud-one" />
@@ -320,10 +329,14 @@ export default function JourneyExperience() {
         </aside>
 
         <div className="order-1 lg:order-2">
-          <StoryStage chapter={activeChapter} />
+          <StoryStage key={activeChapter.id} chapter={activeChapter} />
 
           <div className="mt-4 grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
-            <div className="journey-panel">
+            <div
+              key={`${activeChapter.id}-copy`}
+              className="journey-panel journey-copy-panel order-2 md:order-none"
+              aria-live="polite"
+            >
               <div className="mb-3 flex flex-wrap items-center gap-3">
                 <span className="border border-[#f6c453]/40 bg-[#f6c453]/10 px-2.5 py-1 font-mono text-xs font-bold text-[#f6c453]">
                   {activeChapter.episode}
@@ -334,7 +347,7 @@ export default function JourneyExperience() {
                 </span>
               </div>
 
-              <h2 className="text-balance text-4xl font-black leading-tight md:text-6xl">
+              <h2 className="text-balance text-3xl font-black leading-tight md:text-6xl">
                 {activeChapter.title}
               </h2>
               <p className="mt-4 text-pretty text-lg leading-8 text-[#f8efe4]/78">
@@ -342,7 +355,7 @@ export default function JourneyExperience() {
               </p>
             </div>
 
-            <div className="flex gap-2 md:flex-col">
+            <div className="order-1 flex gap-2 md:order-none md:flex-col">
               <button
                 type="button"
                 onClick={() => setActiveIndex((value) => clampChapter(value - 1))}
@@ -370,7 +383,7 @@ export default function JourneyExperience() {
             </div>
             <div>
               <p className="font-mono text-xs uppercase text-[#f8efe4]/50">
-                Current class
+                Current arc
               </p>
               <p className="font-bold">{activeChapter.role}</p>
             </div>
@@ -379,7 +392,7 @@ export default function JourneyExperience() {
           <div className="space-y-5">
             <div>
               <p className="mb-2 font-mono text-xs uppercase text-[#f6c453]">
-                Main quest
+                Turning point
               </p>
               <p className="text-pretty text-sm leading-6 text-[#f8efe4]/72">
                 {activeChapter.quest}
@@ -389,13 +402,13 @@ export default function JourneyExperience() {
             <div className="grid grid-cols-2 gap-3">
               <div className="journey-stat-card">
                 <p className="font-mono text-xs uppercase text-[#f8efe4]/45">
-                  Unlock
+                  Unlocked
                 </p>
                 <p className="mt-2 text-sm font-bold">{activeChapter.unlock}</p>
               </div>
               <div className="journey-stat-card">
                 <p className="font-mono text-xs uppercase text-[#f8efe4]/45">
-                  Stat
+                  Power-up
                 </p>
                 <p className="mt-2 text-sm font-bold text-[#f6c453]">
                   {activeChapter.stat}
@@ -421,9 +434,9 @@ export default function JourneyExperience() {
 
             <div className="border-t border-[#f8efe4]/10 pt-5">
               <p className="text-pretty text-xs leading-5 text-[#f8efe4]/45">
-                The security episodes are framed as story beats, not tutorials:
-                curiosity levels up into ethics, trust, and responsible systems
-                thinking.
+                The security episodes are story beats, not tutorials. The point
+                is the character arc: curiosity grows into ethics, trust, and
+                responsible systems thinking.
               </p>
             </div>
           </div>
