@@ -47,9 +47,8 @@ export const audienceModes = [
   {
     href: "/journey",
     label: "Journey",
-    title: "Animated story mode",
+    title: "Anime story mode",
     description:
-      "A future gamified version of the life story, motivations, milestones, and creative direction.",
-    status: "Under construction",
+      "A gamified, animated origin story from childhood curiosity to software, security, AI, and startups.",
   },
 ] as const;

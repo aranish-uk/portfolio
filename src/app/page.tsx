@@ -65,11 +65,6 @@ export default function Home() {
                           <h2 className="text-xl font-semibold text-zinc-950">
                             {mode.label}
                           </h2>
-                          {"status" in mode && mode.status ? (
-                            <span className="border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-800">
-                              {mode.status}
-                            </span>
-                          ) : null}
                         </div>
                         <p className="text-sm font-medium text-zinc-700">
                           {mode.title}
