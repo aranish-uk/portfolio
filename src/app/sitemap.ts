@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/recruiters', priority: 0.9 },
     { path: '/developers', priority: 0.9 },
     { path: '/projects', priority: 0.8 },
-    { path: '/journey', priority: 0.4 },
+    { path: '/journey', priority: 0.8 },
     { path: '/versions', priority: 0.3 },
     { path: '/deanslist', priority: 0.5 },
   ]
