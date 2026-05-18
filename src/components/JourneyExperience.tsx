@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -11,9 +11,12 @@ import {
   GraduationCap,
   MapPin,
   Plane,
+  Radio,
   ShieldCheck,
   Sparkles,
+  Square,
   Trophy,
+  Volume2,
   Wifi,
 } from "lucide-react";
 
@@ -213,6 +216,8 @@ const chapters: Chapter[] = [
   },
 ];
 
+const journeyMusicSrc = "/audio/tomodachi-life-mii-maker.mp3";
+
 function clampChapter(index: number) {
   if (index < 0) return chapters.length - 1;
   if (index >= chapters.length) return 0;
@@ -266,6 +271,11 @@ function StoryStage({ chapter }: { chapter: Chapter }) {
 
 export default function JourneyExperience() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isNarrating, setIsNarrating] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [musicAvailable, setMusicAvailable] = useState(true);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const narrationRequestRef = useRef(0);
   const activeChapter = chapters[activeIndex];
   const progress = useMemo(
     () => Math.round(((activeIndex + 1) / chapters.length) * 100),
@@ -273,8 +283,143 @@ export default function JourneyExperience() {
   );
   const ActiveIcon = activeChapter.icon;
 
+  const goToPreviousChapter = useCallback(() => {
+    setActiveIndex((value) => clampChapter(value - 1));
+  }, []);
+
+  const goToNextChapter = useCallback(() => {
+    setActiveIndex((value) => clampChapter(value + 1));
+  }, []);
+
+  const stopNarration = useCallback(() => {
+    narrationRequestRef.current += 1;
+
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      setIsNarrating(false);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    setIsNarrating(false);
+  }, []);
+
+  const narrateChapter = useCallback(
+    (chapter: Chapter) => {
+      if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+        setIsNarrating(false);
+        return;
+      }
+
+      const requestId = narrationRequestRef.current + 1;
+      narrationRequestRef.current = requestId;
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(
+        `${chapter.episode}. ${chapter.title}. ${chapter.summary} Turning point: ${chapter.quest}`
+      );
+      utterance.rate = 0.92;
+      utterance.pitch = 0.95;
+      utterance.volume = 0.9;
+      const finishNarration = () => {
+        if (narrationRequestRef.current === requestId) {
+          setIsNarrating(false);
+        }
+      };
+      utterance.onend = finishNarration;
+      utterance.onerror = finishNarration;
+
+      window.speechSynthesis.speak(utterance);
+    },
+    []
+  );
+
+  const toggleNarration = () => {
+    if (isNarrating) {
+      stopNarration();
+      return;
+    }
+
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      return;
+    }
+
+    setIsNarrating(true);
+  };
+
+  const toggleMusic = async () => {
+    const audio = audioRef.current;
+    if (!audio || !musicAvailable) {
+      return;
+    }
+
+    audio.volume = 0.16;
+    audio.loop = true;
+
+    if (isMusicPlaying) {
+      audio.pause();
+      setIsMusicPlaying(false);
+      return;
+    }
+
+    try {
+      await audio.play();
+      setIsMusicPlaying(true);
+    } catch {
+      setIsMusicPlaying(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isTyping =
+        target?.tagName === "INPUT" ||
+        target?.tagName === "TEXTAREA" ||
+        target?.isContentEditable;
+
+      if (isTyping) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToPreviousChapter();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToNextChapter();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goToNextChapter, goToPreviousChapter]);
+
+  useEffect(() => {
+    if (isNarrating) {
+      narrateChapter(activeChapter);
+    }
+  }, [activeChapter, isNarrating, narrateChapter]);
+
+  useEffect(() => {
+    return () => {
+      stopNarration();
+    };
+  }, [stopNarration]);
+
   return (
     <main className="journey-shell min-h-dvh text-[#f8efe4]">
+      <audio
+        ref={audioRef}
+        src={journeyMusicSrc}
+        preload="none"
+        onError={() => {
+          setMusicAvailable(false);
+          setIsMusicPlaying(false);
+        }}
+      />
       <section className="relative mx-auto grid min-h-dvh max-w-7xl gap-6 px-4 pb-8 pt-24 md:px-6 lg:grid-cols-[280px_1fr_320px] lg:pt-28">
         <aside className="journey-panel order-2 h-fit lg:order-1 lg:sticky lg:top-24">
           <Link
@@ -358,7 +503,7 @@ export default function JourneyExperience() {
             <div className="order-1 flex gap-2 md:order-none md:flex-col">
               <button
                 type="button"
-                onClick={() => setActiveIndex((value) => clampChapter(value - 1))}
+                onClick={goToPreviousChapter}
                 className="journey-nav-button"
                 aria-label="Previous chapter"
               >
@@ -366,7 +511,7 @@ export default function JourneyExperience() {
               </button>
               <button
                 type="button"
-                onClick={() => setActiveIndex((value) => clampChapter(value + 1))}
+                onClick={goToNextChapter}
                 className="journey-nav-button"
                 aria-label="Next chapter"
               >
@@ -390,6 +535,30 @@ export default function JourneyExperience() {
           </div>
 
           <div className="space-y-5">
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={toggleNarration}
+                className="journey-control-button"
+              >
+                {isNarrating ? (
+                  <Square className="size-4" />
+                ) : (
+                  <Radio className="size-4" />
+                )}
+                {isNarrating ? "Stop" : "Narrate"}
+              </button>
+              <button
+                type="button"
+                onClick={toggleMusic}
+                disabled={!musicAvailable}
+                className="journey-control-button disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                <Volume2 className="size-4" />
+                {isMusicPlaying ? "Pause" : "Music"}
+              </button>
+            </div>
+
             <div>
               <p className="mb-2 font-mono text-xs uppercase text-[#f6c453]">
                 Turning point

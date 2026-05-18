@@ -184,6 +184,31 @@ body {
   padding: 0.85rem;
 }
 
+.journey-control-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(246, 196, 83, 0.24);
+  background: rgba(246, 196, 83, 0.09);
+  color: rgba(248, 239, 228, 0.86);
+  font-size: 0.8rem;
+  font-weight: 800;
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.journey-control-button:hover {
+  border-color: rgba(246, 196, 83, 0.5);
+  background: rgba(246, 196, 83, 0.15);
+  color: var(--journey-paper);
+  transform: translateY(-1px);
+}
+
 .journey-stage {
   position: relative;
   min-height: 58vh;
