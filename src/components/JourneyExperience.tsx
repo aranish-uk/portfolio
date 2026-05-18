@@ -172,8 +172,8 @@ const chapters: Chapter[] = [
     scene: "scene-night-code",
     role: "AutoClass Enroller forged",
     summary:
-      "While friends sleep, he builds his own class enroller. It watches openings and handles enrollment, turning a stressful scheduling race into a software problem.",
-    quest: "Automate the annoying thing nobody should have to babysit.",
+      "At ASU, class enrollment turns into a 6am race. He builds an auto class enroller so he can sleep while everyone else fights the portal. The tool also keeps checking full classes, ready to grab a seat if someone drops.",
+    quest: "Turn registration stress and waitlist watching into an automated system.",
     unlock: "AutoClass Enroller",
     stat: "+5 Automation",
     tags: ["automation", "asu", "shipping"],
