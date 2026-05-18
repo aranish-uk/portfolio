@@ -44,7 +44,11 @@ export default function RecruitersPage() {
               width={377}
               height={662}
               priority
-              className="relative h-auto w-full max-w-[430px] object-contain object-bottom [filter:drop-shadow(0_28px_36px_rgba(24,24,27,0.18))_drop-shadow(0_0_1px_rgba(247,245,240,0.9))]"
+              className="relative h-auto w-full max-w-[430px] object-contain object-bottom"
+              style={{
+                filter:
+                  "drop-shadow(0 0 14px rgba(0,0,0,0.38)) drop-shadow(0 0 34px rgba(0,0,0,0.22)) drop-shadow(0 28px 36px rgba(24,24,27,0.22))",
+              }}
             />
           </div>
         </div>
