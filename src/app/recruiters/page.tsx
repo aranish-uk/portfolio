@@ -35,14 +35,16 @@ export default function RecruitersPage() {
     <main className="min-h-dvh bg-[#f7f5f0] text-zinc-950">
       <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-32 md:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
         <div className="relative order-2 lg:order-1">
-          <div className="mx-auto flex min-h-[540px] max-w-[430px] items-end justify-center overflow-hidden border border-zinc-300 bg-[#ebe7df] px-6 pt-10 shadow-[0_18px_60px_rgba(24,24,27,0.10)] sm:min-h-[620px] lg:mx-0">
+          <div className="relative mx-auto flex min-h-[520px] max-w-[520px] items-end justify-center px-2 pt-8 sm:min-h-[640px]">
+            <div className="absolute bottom-0 left-1/2 h-[58%] w-[78%] -translate-x-1/2 rounded-[50%] bg-zinc-950/[0.045] blur-2xl" />
+            <div className="absolute bottom-0 left-1/2 h-px w-[72%] -translate-x-1/2 bg-zinc-950/10" />
             <Image
               src={profile.recruiterImage}
               alt={profile.name}
               width={377}
               height={662}
               priority
-              className="h-auto w-full max-w-[360px] object-contain object-bottom"
+              className="relative h-auto w-full max-w-[430px] object-contain object-bottom [filter:drop-shadow(0_28px_36px_rgba(24,24,27,0.18))_drop-shadow(0_0_1px_rgba(247,245,240,0.9))]"
             />
           </div>
         </div>
