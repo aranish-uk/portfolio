@@ -40,30 +40,30 @@ const chapters: Chapter[] = [
   {
     id: "bangalore",
     episode: "EP 01",
-    title: "Spawn Point: Bangalore",
+    title: "Prologue: Bangalore Baptist",
     location: "Bangalore Baptist Hospital, Bangalore",
     era: "Origin",
     scene: "scene-bangalore",
-    role: "New character unlocked",
+    role: "Main character unlocked",
     summary:
-      "The story starts at Bangalore Baptist Hospital: a newborn, a family, and a future that has not decided whether it wants to be code, security, or something bigger.",
-    quest: "Set the origin point for a life built around curiosity.",
+      "The opening shot fades in at Bangalore Baptist Hospital. A baby enters the world with no inventory, no skills, and one dangerous passive ability: curiosity that refuses to stay quiet.",
+    quest: "Begin the origin story before anyone knows what class this character will choose.",
     unlock: "Origin memory",
     stat: "+1 Life",
-    tags: ["origin", "family", "first frame"],
+    tags: ["origin", "bangalore", "first frame"],
     icon: Sparkles,
   },
   {
     id: "qatar-flight",
     episode: "EP 02",
-    title: "The Flight To Qatar",
+    title: "Tiny Hero, Bigger World",
     location: "Bangalore -> Qatar",
     era: "Early childhood",
     scene: "scene-flight",
     role: "World map expands",
     summary:
-      "The next frame cuts to Qatar, a small country in the Middle East that becomes home base: school, family, friends, games, and the first pull toward the wider internet.",
-    quest: "Grow up between a protected home and a world that keeps getting bigger.",
+      "The camera jumps to a flight bound for Qatar, a tiny country that becomes the first open-world map: school corridors, family rules, game lobbies, and the distant glow of the internet.",
+    quest: "Grow up between a protected home base and a world that keeps getting bigger.",
     unlock: "Qatar hub",
     stat: "+1 New world",
     tags: ["qatar", "migration", "home"],
@@ -76,9 +76,9 @@ const chapters: Chapter[] = [
     location: "Qatar, family home",
     era: "Kid arc",
     scene: "scene-router",
-    role: "Curiosity versus locked gates",
+    role: "First boss encounter",
     summary:
-      "His dad locks down the internet because he is trying to keep him safe. The kid wants games, friends, and the open web, so the router slowly turns into the first puzzle box.",
+      "Dad locks down the internet to keep him safe. To everyone else, the router is just a blinking box. To this kid, it becomes the first boss fight between bedtime rules and the need to game, explore, and talk to friends.",
     quest:
       "Learn that every restriction has a reason, every system has rules, and curiosity needs a compass.",
     unlock: "Network curiosity",
@@ -89,13 +89,13 @@ const chapters: Chapter[] = [
   {
     id: "bypass-arc",
     episode: "EP 04",
-    title: "Mask, Tunnel, Retry",
+    title: "MAC Mask, VPN Tunnel",
     location: "Qatar, after bedtime",
     era: "Tinkerer arc",
     scene: "scene-tunnel",
     role: "The first hacker feeling",
     summary:
-      "The experiments get stranger: spoofed MAC addresses, VPN tunnels, and late-night retry loops. The real discovery is not the bypass. It is realizing that systems are understandable if you are stubborn enough to study them.",
+      "Night falls, the Wi-Fi lights blink, and the experiments begin: MAC spoofing, VPN tunnels, retry loops, and the rush of realizing that locked systems still have patterns if you study them long enough.",
     quest: "Turn the thrill of getting around a wall into respect for how walls are built.",
     unlock: "Adversarial mindset",
     stat: "+3 Pattern recognition",
@@ -105,14 +105,14 @@ const chapters: Chapter[] = [
   {
     id: "pranks",
     episode: "EP 05",
-    title: "The Prank Mail Era",
+    title: "The Prank Mail Training Arc",
     location: "School friend group",
     era: "Mischief arc",
     scene: "scene-mail",
     role: "Trust lesson acquired",
     summary:
-      "Then comes the prank era: fake-looking emails, social-engineering jokes, and the uncomfortable lesson that tricking someone is easy. Building something people can trust is the harder skill.",
-    quest: "Graduate from tricks to responsibility.",
+      "The mischief arc arrives with fake-looking prank emails and social-engineering jokes among friends. It is funny for a minute, then the lesson lands: tricking people is easy. Building things people can trust is the real power-up.",
+    quest: "Graduate from cheap tricks into responsibility, judgment, and security instincts.",
     unlock: "Ethics checkpoint",
     stat: "+2 Judgment",
     tags: ["security", "trust", "growing up"],
@@ -121,14 +121,14 @@ const chapters: Chapter[] = [
   {
     id: "first-code",
     episode: "EP 06",
-    title: "Automation Awakening",
+    title: "Keyboard Awakening",
     location: "Bedroom desk, Qatar",
     era: "Coder arc",
     scene: "scene-code",
-    role: "Keyboard becomes weapon and tool",
+    role: "Builder class selected",
     summary:
-      "The energy moves into code. Small scripts become tools, tools become workflows, and boring tasks start turning into systems he can control.",
-    quest: "Stop only breaking puzzles and start building useful answers.",
+      "The keyboard stops being a way to sneak around limits and becomes a weapon for building. Tiny scripts become tools, tools become workflows, and boring tasks start disappearing like defeated side quests.",
+    quest: "Stop only breaking puzzles and start building answers that save time.",
     unlock: "Builder class",
     stat: "+4 Coding",
     tags: ["coding", "automation", "tools"],
@@ -137,14 +137,14 @@ const chapters: Chapter[] = [
   {
     id: "toastmasters",
     episode: "EP 07",
-    title: "Voice Stat: President",
+    title: "Voice Stat: President Arc",
     location: "Zenith Toastmasters, Qatar",
     era: "Leadership arc",
     scene: "scene-stage",
     role: "Public speaking buff",
     summary:
-      "Outside the code editor, he becomes president of Zenith Toastmasters in Qatar. The quiet hacker energy picks up a second language: making ideas clear in front of a room.",
-    quest: "Learn to lead, speak, and make technical work understandable.",
+      "Away from the code editor, a new stat tree opens. He becomes president of Zenith Toastmasters in Qatar and learns that ideas need more than clever engineering. They need a voice people can follow.",
+    quest: "Learn to lead, speak, and make technical work understandable in a room full of people.",
     unlock: "Communication buff",
     stat: "+3 Leadership",
     tags: ["toastmasters", "speaking", "leadership"],
@@ -153,14 +153,14 @@ const chapters: Chapter[] = [
   {
     id: "asu",
     episode: "EP 08",
-    title: "ASU Acceptance Arc",
+    title: "The ASU Portal Opens",
     location: "Arizona State University",
     era: "College arc",
     scene: "scene-asu",
     role: "New region unlocked",
     summary:
-      "High school closes in Qatar and ASU opens in Arizona. The story moves from self-taught experiments into computer science, campus work, and projects with sharper stakes.",
-    quest: "Turn curiosity into a real engineering path.",
+      "High school in Qatar fades out, and Arizona State University loads in like a new region. The self-taught experiments now collide with computer science, campus work, and projects with sharper stakes.",
+    quest: "Turn raw curiosity into a real engineering path with deadlines, teams, and consequences.",
     unlock: "ASU region",
     stat: "+5 Computer science",
     tags: ["asu", "college", "computer science"],
@@ -169,14 +169,14 @@ const chapters: Chapter[] = [
   {
     id: "class-enroller",
     episode: "EP 09",
-    title: "The Night Build",
+    title: "The 6AM Enrollment Heist",
     location: "ASU, late night",
     era: "Builder arc",
     scene: "scene-night-code",
     role: "AutoClass Enroller forged",
     summary:
-      "At ASU, class enrollment turns into a 6am race. He builds an auto class enroller so he can sleep while everyone else fights the portal. The tool also keeps checking full classes, ready to grab a seat if someone drops.",
-    quest: "Turn registration stress and waitlist watching into an automated system.",
+      "At ASU, class enrollment becomes a brutal 6am raid. While everyone else prepares to fight the portal half-awake, he builds an auto class enroller that watches openings, catches dropped seats, and lets him sleep through the chaos.",
+    quest: "Turn registration stress and waitlist watching into an automated system that actually ships.",
     unlock: "AutoClass Enroller",
     stat: "+5 Automation",
     tags: ["automation", "asu", "shipping"],
@@ -191,8 +191,8 @@ const chapters: Chapter[] = [
     scene: "scene-internship",
     role: "Field experience unlocked",
     summary:
-      "The path branches through IT internships, a software engineering internship in Virginia, and an AI-native internship in Phoenix. The work gets closer to real teams, real users, and real consequences.",
-    quest: "Bridge security, frontend, AI, and production execution.",
+      "Cue the montage: IT internships, a software engineering internship in Virginia, and an AI-native internship in Phoenix. The quests get less theoretical and more real: users, teammates, production bugs, and deadlines.",
+    quest: "Bridge security, frontend, AI, and production execution without losing the builder instinct.",
     unlock: "Professional XP",
     stat: "+6 Industry",
     tags: ["internships", "software", "ai"],
@@ -201,14 +201,14 @@ const chapters: Chapter[] = [
   {
     id: "startup",
     episode: "EP 11",
-    title: "The Builder Hero",
+    title: "Hero Form: Builder Mode",
     location: "Current questline",
     era: "Now",
     scene: "scene-startup",
     role: "Hero form online",
     summary:
-      "Now the arc points toward products: a resume-to-portfolio builder, AI workflows, and a startup aimed at automating tasks people hand off. The childhood hacker energy becomes a builder mindset: understand the system, automate the work, ship the tool.",
-    quest: "Build systems that make useful work feel effortless.",
+      "Now the arc points toward products: a resume-to-portfolio builder, AI workflows, and a startup built around automating tasks people hand off. The kid who challenged the router becomes the builder who studies systems, automates work, and ships the tool.",
+    quest: "Build systems that make useful work feel effortless for other people.",
     unlock: "Founder quest",
     stat: "+7 Product instinct",
     tags: ["startup", "cvfy", "ai agents"],
@@ -438,8 +438,8 @@ export default function JourneyExperience() {
               Abhinav: Origin Quest
             </h1>
             <p className="mt-3 text-pretty text-sm leading-6 text-[#f8efe4]/68">
-              Anime-style life map from curious kid to coder, security thinker,
-              AI builder, and startup founder.
+              An episode-by-episode story mode about a curious kid, a locked
+              router, and the long road from hacker energy to builder instinct.
             </p>
           </div>
 
