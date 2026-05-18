@@ -225,6 +225,8 @@ const chapters: Chapter[] = [
 
 const journeyMusicSrc = "/audio/tomodachi-life-mii-maker.mp3";
 const journeyMusicVolume = 0.045;
+const journeyMusicNarrationVolume = 0.018;
+const journeyNarrationVolume = 0.9;
 
 function clampChapter(index: number) {
   if (index < 0) return chapters.length - 1;
@@ -287,9 +289,10 @@ export default function JourneyExperience() {
   const [musicAvailable, setMusicAvailable] = useState(true);
   const [sfxEnabled, setSfxEnabled] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const narrationRequestRef = useRef(0);
+  const narrationAudioRef = useRef<HTMLAudioElement | null>(null);
   const sfxContextRef = useRef<AudioContext | null>(null);
   const activeChapter = chapters[activeIndex];
+  const activeNarrationSrc = `/audio/journey-narration/${activeChapter.id}.mp3`;
   const progress = useMemo(
     () => Math.round(((activeIndex + 1) / chapters.length) * 100),
     [activeIndex]
@@ -351,7 +354,9 @@ export default function JourneyExperience() {
       return false;
     }
 
-    audio.volume = journeyMusicVolume;
+    audio.volume = isNarrating
+      ? journeyMusicNarrationVolume
+      : journeyMusicVolume;
     audio.loop = true;
 
     try {
@@ -362,50 +367,36 @@ export default function JourneyExperience() {
       setIsMusicPlaying(false);
       return false;
     }
-  }, [musicAvailable]);
+  }, [isNarrating, musicAvailable]);
 
   const stopNarration = useCallback(() => {
-    narrationRequestRef.current += 1;
-
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setIsNarrating(false);
-      return;
+    const audio = narrationAudioRef.current;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
     }
 
-    window.speechSynthesis.cancel();
     setIsNarrating(false);
   }, []);
 
-  const narrateChapter = useCallback(
-    (chapter: Chapter) => {
-      if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-        setIsNarrating(false);
-        return;
-      }
+  const playNarration = useCallback(async () => {
+    const audio = narrationAudioRef.current;
+    if (!audio) {
+      return false;
+    }
 
-      const requestId = narrationRequestRef.current + 1;
-      narrationRequestRef.current = requestId;
-      window.speechSynthesis.cancel();
+    audio.volume = journeyNarrationVolume;
+    audio.currentTime = 0;
+
+    try {
+      await audio.play();
       setIsNarrating(true);
-
-      const utterance = new SpeechSynthesisUtterance(
-        `${chapter.episode}. ${chapter.title}. ${chapter.summary} Turning point: ${chapter.quest}`
-      );
-      utterance.rate = 0.92;
-      utterance.pitch = 0.95;
-      utterance.volume = 0.9;
-      const finishNarration = () => {
-        if (narrationRequestRef.current === requestId) {
-          setIsNarrating(false);
-        }
-      };
-      utterance.onend = finishNarration;
-      utterance.onerror = finishNarration;
-
-      window.speechSynthesis.speak(utterance);
-    },
-    []
-  );
+      return true;
+    } catch {
+      setIsNarrating(false);
+      return false;
+    }
+  }, []);
 
   const toggleNarration = () => {
     playSfx();
@@ -416,11 +407,8 @@ export default function JourneyExperience() {
       return;
     }
 
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      return;
-    }
-
     setNarrationEnabled(true);
+    void playNarration();
   };
 
   const toggleMusic = () => {
@@ -476,9 +464,9 @@ export default function JourneyExperience() {
 
   useEffect(() => {
     if (narrationEnabled) {
-      narrateChapter(activeChapter);
+      void playNarration();
     }
-  }, [activeChapter, narrationEnabled, narrateChapter]);
+  }, [activeChapter.id, narrationEnabled, playNarration]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -486,7 +474,9 @@ export default function JourneyExperience() {
       return;
     }
 
-    audio.volume = journeyMusicVolume;
+    audio.volume = isNarrating
+      ? journeyMusicNarrationVolume
+      : journeyMusicVolume;
     audio.loop = true;
 
     if (musicEnabled) {
@@ -496,7 +486,7 @@ export default function JourneyExperience() {
 
     audio.pause();
     setIsMusicPlaying(false);
-  }, [musicEnabled, playMusic]);
+  }, [isNarrating, musicEnabled, playMusic]);
 
   useEffect(() => {
     if (!musicEnabled || isMusicPlaying) {
@@ -535,6 +525,16 @@ export default function JourneyExperience() {
         onError={() => {
           setMusicAvailable(false);
           setIsMusicPlaying(false);
+        }}
+      />
+      <audio
+        ref={narrationAudioRef}
+        src={activeNarrationSrc}
+        preload="auto"
+        onEnded={() => setIsNarrating(false)}
+        onError={() => {
+          setIsNarrating(false);
+          setNarrationEnabled(false);
         }}
       />
       <div className="journey-audio-hud">
