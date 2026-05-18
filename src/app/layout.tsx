@@ -1,6 +1,7 @@
 import React from "react"
 import "./globals.css"
 import SiteChrome from "@/components/SiteChrome"
+import SiteFooter from "@/components/SiteFooter"
 import { Analytics } from "@vercel/analytics/next"
 
 import type { Metadata } from "next"
@@ -141,9 +142,7 @@ export default function RootLayout({
         {/* Page content */}
         <div className="flex-1">{children}</div>
 
-        <footer className="py-2 text-center text-sm text-gray-400 -mt-2">
-          © {new Date().getFullYear()} Abhinav Ranish. All rights reserved.
-        </footer>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>
