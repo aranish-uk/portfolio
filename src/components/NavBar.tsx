@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { profile } from "@/content/profile";
 
 const developerSections = [
   { id: "skills", label: "Skills" },
@@ -21,11 +20,21 @@ const recruiterSections = [
   { id: "contact", label: "Contact" },
 ];
 
+const brandNames = [
+  "Abhinav Ranish",
+  "अभिनव रनीश",
+  "Abhinav Ranish",
+  "ಅಭಿನವ್ ರನೀಶ್",
+  "Abhinav Ranish",
+  "アビナヴ ラニシュ",
+];
+
 export default function NavBar() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectSearch, setProjectSearch] = useState("");
+  const [brandIndex, setBrandIndex] = useState(0);
   const isDeveloperMode = pathname.startsWith("/developers");
   const isRecruiterMode = pathname.startsWith("/recruiters");
   const isJourneyMode = pathname.startsWith("/journey");
@@ -40,6 +49,14 @@ export default function NavBar() {
   useEffect(() => {
     setProjectSearch(window.location.search);
   }, [pathname]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setBrandIndex((value) => (value + 1) % brandNames.length);
+    }, 1800);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   const archiveHref =
     isDeveloperMode || isDeveloperArchive
@@ -113,8 +130,17 @@ export default function NavBar() {
                   : "border-zinc-200"
             }`}
           />
-          <span className="text-sm font-semibold">
-            {isJourneyMode ? "Back to selection" : "Selection"}
+          <span
+            key={brandNames[brandIndex]}
+            className={`brand-name-swap w-36 overflow-hidden whitespace-nowrap font-mono text-sm font-semibold md:w-44 ${
+              isJourneyMode
+                ? "text-[#a8ff3e]"
+                : isDarkNav
+                  ? "text-zinc-100"
+                  : "text-zinc-950"
+            }`}
+          >
+            {brandNames[brandIndex]}
           </span>
         </Link>
 
