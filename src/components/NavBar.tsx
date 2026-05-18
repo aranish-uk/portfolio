@@ -29,11 +29,13 @@ export default function NavBar() {
   const isDeveloperMode = pathname.startsWith("/developers");
   const isRecruiterMode = pathname.startsWith("/recruiters");
   const isJourneyMode = pathname.startsWith("/journey");
+  const isVersionsMode = pathname.startsWith("/versions");
   const isDeveloperArchive =
     pathname.startsWith("/projects") &&
     (projectSearch.includes("audience=developer") ||
       projectSearch.includes("sort=developer"));
-  const isDarkNav = isDeveloperMode || isDeveloperArchive || isJourneyMode;
+  const isDarkNav =
+    isDeveloperMode || isDeveloperArchive || isJourneyMode || isVersionsMode;
 
   useEffect(() => {
     setProjectSearch(window.location.search);
@@ -88,12 +90,12 @@ export default function NavBar() {
     <nav
       className={`fixed left-1/2 top-[calc(env(safe-area-inset-top)+1rem)] z-50 w-[calc(100%-2rem)] -translate-x-1/2 border px-4 shadow-xl backdrop-blur-xl transition-[border-radius] duration-200 md:px-6 ${
         menuOpen ? "rounded-2xl" : "rounded-full"
-      } ${isJourneyMode ? "max-w-3xl border-[#f6c453]/25 bg-[#17131f]/82 text-[#f8efe4] shadow-black/35" : "max-w-5xl"} ${
-        !isJourneyMode && isDarkNav
+      } max-w-5xl ${
+        isJourneyMode
+          ? "border-[#f6c453]/20 bg-[#17131f]/70 text-[#f8efe4] shadow-black/35"
+          : isDarkNav
           ? "border-white/10 bg-zinc-950/72 text-zinc-100 shadow-black/30"
-          : !isJourneyMode
-            ? "border-white/70 bg-white/72 text-zinc-950 shadow-zinc-950/10"
-            : ""
+          : "border-white/70 bg-white/72 text-zinc-950 shadow-zinc-950/10"
       }`}
     >
       <div className="mx-auto flex h-14 items-center justify-between gap-4">
