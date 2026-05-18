@@ -21,12 +21,11 @@ const recruiterSections = [
 ];
 
 const brandNames = [
+  "അഭിനവ് റനീഷ്",
   "Abhinav Ranish",
-  "अभिनव रनीश",
+  "阿比纳夫 拉尼什",
+  "أبهيناف رانيش",
   "Abhinav Ranish",
-  "ಅಭಿನವ್ ರನೀಶ್",
-  "Abhinav Ranish",
-  "アビナヴ ラニシュ",
 ];
 
 export default function NavBar() {
@@ -132,6 +131,7 @@ export default function NavBar() {
           />
           <span
             key={brandNames[brandIndex]}
+            dir="auto"
             className={`brand-name-swap w-36 overflow-hidden whitespace-nowrap font-mono text-sm font-semibold md:w-44 ${
               isJourneyMode
                 ? "text-[#a8ff3e]"
