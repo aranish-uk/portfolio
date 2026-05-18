@@ -184,17 +184,29 @@ body {
   padding: 0.85rem;
 }
 
-.journey-control-button {
+.journey-audio-hud {
+  position: fixed;
+  left: calc(env(safe-area-inset-left) + 4.75rem);
+  bottom: calc(env(safe-area-inset-bottom) + 1rem);
+  z-index: 80;
+  display: grid;
+  justify-items: start;
+  gap: 0.65rem;
+}
+
+.journey-audio-orb {
   display: inline-flex;
-  min-height: 2.75rem;
+  width: 3.5rem;
+  height: 3.5rem;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border: 1px solid rgba(246, 196, 83, 0.24);
-  background: rgba(246, 196, 83, 0.09);
-  color: rgba(248, 239, 228, 0.86);
-  font-size: 0.8rem;
-  font-weight: 800;
+  gap: 0.15rem;
+  border: 2px solid rgba(248, 239, 228, 0.16);
+  border-radius: 999px;
+  background: rgba(23, 19, 31, 0.86);
+  color: var(--journey-paper);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(16px);
   transition:
     transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 160ms ease,
@@ -202,11 +214,67 @@ body {
     color 160ms ease;
 }
 
-.journey-control-button:hover {
+.journey-audio-orb:hover,
+.journey-audio-orb.is-open {
+  border-color: rgba(246, 196, 83, 0.58);
+  background: rgba(246, 196, 83, 0.16);
+  color: #f6c453;
+  transform: translateY(-2px);
+}
+
+.journey-audio-menu {
+  width: min(18rem, calc(100vw - 2rem));
+  border: 2px solid rgba(246, 196, 83, 0.25);
+  background: rgba(23, 19, 31, 0.9);
+  box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.34);
+  padding: 0.85rem;
+  backdrop-filter: blur(18px);
+  animation: journey-audio-menu 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left bottom;
+}
+
+.journey-audio-row {
+  display: grid;
+  width: 100%;
+  min-height: 2.55rem;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(248, 239, 228, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(248, 239, 228, 0.78);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  font-size: 0.86rem;
+  font-weight: 800;
+  transition:
+    transform 140ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.journey-audio-row + .journey-audio-row {
+  margin-top: 0.45rem;
+}
+
+.journey-audio-row:hover {
   border-color: rgba(246, 196, 83, 0.5);
-  background: rgba(246, 196, 83, 0.15);
+  background: rgba(246, 196, 83, 0.12);
   color: var(--journey-paper);
-  transform: translateY(-1px);
+  transform: translateX(2px);
+}
+
+.journey-audio-row:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
+}
+
+.journey-audio-row strong {
+  color: #f6c453;
+  font-family: var(--font-geist-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
 }
 
 .journey-stage {
@@ -954,6 +1022,18 @@ body {
   to {
     opacity: 1;
     translate: 0 0;
+  }
+}
+
+@keyframes journey-audio-menu {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
