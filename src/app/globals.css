@@ -9,6 +9,30 @@ body {
   height: 100%;
 }
 
+.site-footer-recruiter {
+  border-color: rgb(228, 228, 231);
+  background: #f7f5f0;
+  color: rgb(113, 113, 122);
+}
+
+.site-footer-journey {
+  border-color: rgba(248, 239, 228, 0.1);
+  background: #17131f;
+  color: rgba(248, 239, 228, 0.45);
+}
+
+.site-footer-versions {
+  border-color: rgba(255, 255, 255, 0.06);
+  background: #0a0a0a;
+  color: rgb(82, 82, 91);
+}
+
+.site-footer-dark {
+  border-color: rgba(255, 255, 255, 0.05);
+  background: rgb(9, 9, 11);
+  color: rgb(113, 113, 122);
+}
+
 /* globals.css */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
