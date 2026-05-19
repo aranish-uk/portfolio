@@ -38,13 +38,27 @@ function ModePreview({ type }: { type: string }) {
   if (type === "hiring") {
     return (
       <div className="mode-preview mode-preview-hiring" aria-hidden="true">
-        <div className="mode-preview-bar" />
-        <div className="mode-preview-title" />
-        <div className="mode-preview-line is-wide" />
-        <div className="mode-preview-line" />
-        <div className="mode-preview-stats">
-          <span />
-          <span />
+        <div className="mode-preview-recruiter-hero">
+          <div className="mode-preview-person" />
+          <div className="mode-preview-recruiter-copy">
+            <span>Software Engineer / AI</span>
+            <strong>Abhinav</strong>
+            <p>ASU CS student building production-minded tools.</p>
+            <div>
+              <span>Resume</span>
+              <span>LinkedIn</span>
+            </div>
+          </div>
+        </div>
+        <div className="mode-preview-proof-row">
+          <span>
+            <strong>4+</strong>
+            Internships
+          </span>
+          <span>
+            <strong>10+</strong>
+            Builds
+          </span>
           <span />
         </div>
       </div>
@@ -54,25 +68,48 @@ function ModePreview({ type }: { type: string }) {
   if (type === "story") {
     return (
       <div className="mode-preview mode-preview-story" aria-hidden="true">
-        <div className="mode-preview-sun" />
-        <div className="mode-preview-hero" />
-        <div className="mode-preview-ground" />
-        <div className="mode-preview-dialogue" />
+        <div className="mode-preview-story-card">
+          <span>EP 03</span>
+          <strong>The Router Boss Fight</strong>
+        </div>
+        <div className="mode-preview-stage">
+          <div className="mode-preview-sun" />
+          <div className="mode-preview-router">
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="mode-preview-hero" />
+          <div className="mode-preview-ground" />
+          <div className="mode-preview-dialogue">Quest updated</div>
+        </div>
+        <div className="mode-preview-audio-row">
+          <span>Music</span>
+          <span>Narration</span>
+          <span>SFX</span>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="mode-preview mode-preview-developer" aria-hidden="true">
-      <div className="mode-preview-terminal-dot-row">
+      <div className="mode-preview-terminal-bar">
         <span />
         <span />
         <span />
+        <strong>~/portfolio</strong>
       </div>
-      <div className="mode-preview-code is-pink" />
-      <div className="mode-preview-code is-wide" />
-      <div className="mode-preview-code" />
-      <div className="mode-preview-code is-gold" />
+      <div className="mode-preview-terminal-body">
+        <code>npm run ship</code>
+        <code className="is-pink">AutoClass Enroller online</code>
+        <code>Rust PRs merged: 7</code>
+      </div>
+      <div className="mode-preview-project-grid">
+        <span>Security</span>
+        <span>AI Tools</span>
+        <span>Automation</span>
+      </div>
     </div>
   );
 }
