@@ -11,6 +11,10 @@ export default function SiteFooter() {
     setSearch(window.location.search);
   }, [pathname]);
 
+  if (pathname === "/") {
+    return null;
+  }
+
   const isRecruiterTheme =
     pathname.startsWith("/recruiters") ||
     (pathname.startsWith("/projects") && !search.includes("audience=developer"));

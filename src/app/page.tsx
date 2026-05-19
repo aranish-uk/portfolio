@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, Code2, Gamepad2, UserRound } from "lucide-react";
-import { profile } from "@/content/profile";
 
 const modes = [
   {
@@ -11,6 +10,7 @@ const modes = [
     description: "Experience, proof points, featured work, resume, and contact.",
     icon: UserRound,
     className: "mode-slice-hiring",
+    preview: "hiring",
   },
   {
     href: "/journey",
@@ -20,6 +20,7 @@ const modes = [
     description: "A narrated, game-like path through the moments that shaped the work.",
     icon: Gamepad2,
     className: "mode-slice-story",
+    preview: "story",
   },
   {
     href: "/developers",
@@ -29,30 +30,62 @@ const modes = [
     description: "Projects, architecture, open source, research, and build details.",
     icon: Code2,
     className: "mode-slice-developer",
+    preview: "developer",
   },
 ];
 
+function ModePreview({ type }: { type: string }) {
+  if (type === "hiring") {
+    return (
+      <div className="mode-preview mode-preview-hiring" aria-hidden="true">
+        <div className="mode-preview-bar" />
+        <div className="mode-preview-title" />
+        <div className="mode-preview-line is-wide" />
+        <div className="mode-preview-line" />
+        <div className="mode-preview-stats">
+          <span />
+          <span />
+          <span />
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "story") {
+    return (
+      <div className="mode-preview mode-preview-story" aria-hidden="true">
+        <div className="mode-preview-sun" />
+        <div className="mode-preview-hero" />
+        <div className="mode-preview-ground" />
+        <div className="mode-preview-dialogue" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mode-preview mode-preview-developer" aria-hidden="true">
+      <div className="mode-preview-terminal-dot-row">
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className="mode-preview-code is-pink" />
+      <div className="mode-preview-code is-wide" />
+      <div className="mode-preview-code" />
+      <div className="mode-preview-code is-gold" />
+    </div>
+  );
+}
+
 export default function Home() {
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-[#09090d] text-white">
+    <main className="mode-switcher-shell relative min-h-dvh overflow-hidden bg-[#09090d] text-white">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:64px_64px] opacity-30" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-pink-400/25" />
       <div className="pointer-events-none absolute left-1/2 top-8 h-72 w-[44rem] -translate-x-1/2 bg-pink-500/8 blur-3xl" />
 
-      <section className="relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-4 pb-8 pt-20 md:px-8 md:pt-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.24em] text-pink-300">
-              {profile.shortName} / portfolio modes
-          </p>
-          <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-5xl">
-            Pick the version that fits the visit.
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-pretty text-base leading-7 text-zinc-400">
-            Same work, split into the read that makes sense right now.
-          </p>
-        </div>
-
-        <div className="mode-slice-grid mt-9">
+      <section className="relative min-h-dvh">
+        <div className="mode-slice-grid">
           {modes.map((mode) => {
             const Icon = mode.icon;
 
@@ -74,7 +107,9 @@ export default function Home() {
                     <Icon className="size-5" />
                   </div>
 
-                  <div>
+                  <ModePreview type={mode.preview} />
+
+                  <div className="mode-slice-copy">
                     <h2 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
                       {mode.label}
                     </h2>
@@ -93,7 +128,7 @@ export default function Home() {
 
         <Link
           href="/versions"
-          className="mx-auto mt-8 inline-flex items-center gap-2 text-sm font-medium text-zinc-500 transition-colors hover:text-pink-300"
+          className="absolute bottom-7 left-1/2 z-20 inline-flex -translate-x-1/2 items-center gap-2 text-sm font-medium text-zinc-500 transition-colors hover:text-pink-300"
         >
           View legacy version
           <ArrowRight className="size-4" />
