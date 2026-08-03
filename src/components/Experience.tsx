@@ -2,6 +2,25 @@ import React, { useState } from "react";
 import experiences from "@/components/data/experience.json";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
+// Hidden from the public site. experience.json is read by this component, by
+// AIChat.tsx, and by the Groq system prompt, so the entry was pulled from the
+// JSON rather than filtered here. To restore, paste it back into
+// experience.json directly after the Ampcus entry:
+//
+// {
+//   "title": "AI / SWE Intern",
+//   "organization": "TRANZYD",
+//   "duration": "Dec 2024 - May 2025",
+//   "image": "/work/tranzyd.jpg",
+//   "description": [
+//     "Architected end-to-end AI contract intelligence platform processing ~25 legal contracts: built automated clause extraction, semantic comparison (FAISS + sentence-transformers), and draft generation—cutting manual review by ~40%.",
+//     "Joined to support AI contract automation; quickly took on core feature development responsibilities.",
+//     "Integrated backend logic using Python, SQLite, and python-docx for contract storage and document generation.",
+//     "Designed clause-matching workflows for OLD/NEW comparisons with checkbox-driven contract generation UI.",
+//     "Prototyped an AI stock analyzer using RAG pipelines, FAISS, and sentiment models to explore LLM-based tools."
+//   ]
+// }
+
 export default function Experience() {
     const [isExpanded, setIsExpanded] = useState(false);
 
