@@ -4,17 +4,18 @@ import { ExternalLink, Info } from "lucide-react";
 
 const versions = [
   {
-    version: "V1",
-    period: "Early 2024",
-    url: "https://3a09416c.portfolio-27c.pages.dev/",
-    description: "The first iteration. Where it all started.",
-    active: false,
+    version: "V5",
+    period: "2026",
+    url: "https://aranish.uk",
+    description:
+      "Current. Audience-specific portfolio modes for recruiters, developers, and the animated journey experience.",
+    active: true,
   },
   {
-    version: "V2",
-    period: "Early 2025",
-    url: "https://9c5d9aea.portfolio-27c.pages.dev/",
-    description: "Refined design with improved layout and components.",
+    version: "V4",
+    period: "2026",
+    url: "",
+    description: "Previous portfolio direction. Archive link coming later.",
     active: false,
   },
   {
@@ -25,11 +26,18 @@ const versions = [
     active: false,
   },
   {
-    version: "V4",
-    period: "2026",
-    url: "https://aranish.uk",
-    description: "Current. AI chat, music, animations, and more.",
-    active: true,
+    version: "V2",
+    period: "Early 2025",
+    url: "https://9c5d9aea.portfolio-27c.pages.dev/",
+    description: "Refined design with improved layout and components.",
+    active: false,
+  },
+  {
+    version: "V1",
+    period: "Early 2024",
+    url: "https://3a09416c.portfolio-27c.pages.dev/",
+    description: "The first iteration. Where it all started.",
+    active: false,
   },
 ];
 
@@ -86,11 +94,10 @@ export default function VersionsPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 * i, duration: 0.5 }}
               >
-                <a
-                  href={v.url}
-                  target={v.active ? "_self" : "_blank"}
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-5 pl-0 py-5 rounded-xl transition-colors hover:bg-white/[0.02]"
+                <div
+                  className={`group flex items-start gap-5 rounded-xl py-5 pl-0 transition-colors ${
+                    v.url ? "hover:bg-white/[0.02]" : "cursor-default opacity-75"
+                  }`}
                 >
                   {/* Dot */}
                   <div className="relative mt-2 flex-shrink-0">
@@ -114,6 +121,11 @@ export default function VersionsPage() {
                           Live
                         </span>
                       )}
+                      {!v.url && (
+                        <span className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+                          Link later
+                        </span>
+                      )}
                     </div>
 
                     <p className="text-sm text-zinc-500 mb-2">{v.period}</p>
@@ -123,12 +135,22 @@ export default function VersionsPage() {
                     </p>
                   </div>
 
-                  {/* Arrow */}
-                  <ExternalLink
-                    size={16}
-                    className="mt-2 flex-shrink-0 text-zinc-600 group-hover:text-zinc-300 transition-colors"
-                  />
-                </a>
+                  {v.url ? (
+                    <a
+                      href={v.url}
+                      target={v.active ? "_self" : "_blank"}
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${v.version}`}
+                      className="mt-2 flex-shrink-0 text-zinc-600 transition-colors group-hover:text-zinc-300"
+                    >
+                      <ExternalLink size={16} />
+                    </a>
+                  ) : (
+                    <span className="mt-2 flex-shrink-0 text-zinc-700">
+                      <ExternalLink size={16} />
+                    </span>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>

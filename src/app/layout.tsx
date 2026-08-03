@@ -1,9 +1,7 @@
 import React from "react"
 import "./globals.css"
-import NavBar from "@/components/NavBar"
-import MusicBar from "@/components/MusicBar"
-import { AIChat } from "@/components/AIChat"
-import InteractiveCursorGlow from "@/components/fun_animations/InteractiveCursorGlow"
+import SiteChrome from "@/components/SiteChrome"
+import SiteFooter from "@/components/SiteFooter"
 import { Analytics } from "@vercel/analytics/next"
 
 import type { Metadata } from "next"
@@ -139,26 +137,12 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col bg-neutral-950 text-gray-100 font-sans">
-        {/* Cursor glow effect */}
-        <InteractiveCursorGlow />
-
-        {/* Top navigation */}
-        <NavBar />
+        <SiteChrome />
 
         {/* Page content */}
-        <main className="flex-1">{children}</main>
+        <div className="flex-1">{children}</div>
 
-        {/* Persistent music bar */}
-        <MusicBar />
-
-        {/* Persistent AI chat */}
-        <div className="fixed bottom-6 left-6 z-50">
-          <AIChat />
-        </div>
-
-        <footer className="py-2 text-center text-sm text-gray-400 -mt-2">
-          © {new Date().getFullYear()} Abhinav Ranish. All rights reserved.
-        </footer>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

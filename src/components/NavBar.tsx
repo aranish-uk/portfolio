@@ -1,165 +1,251 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import Image from "next/image";
-import { Menu, X, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
+
+const developerSections = [
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "research", label: "Research" },
+  { id: "contact", label: "Contact" },
+];
+
+const recruiterSections = [
+  { id: "experience", label: "Experience" },
+  { id: "recruiter-projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
+
+const brandNames = [
+  "അഭിനവ് റനീഷ്",
+  "Abhinav Ranish",
+  "阿比纳夫 拉尼什",
+  "أبهيناف رانيش",
+  "Abhinav Ranish",
+];
 
 export default function NavBar() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
-  const isOldUI = pathname.startsWith("/old");
+  const [projectSearch, setProjectSearch] = useState("");
+  const [brandIndex, setBrandIndex] = useState(0);
+  const isDeveloperMode = pathname.startsWith("/developers");
+  const isRecruiterMode = pathname.startsWith("/recruiters");
+  const isJourneyMode = pathname.startsWith("/journey");
+  const isVersionsMode = pathname.startsWith("/versions");
+  const isDeveloperArchive =
+    pathname.startsWith("/projects") &&
+    (projectSearch.includes("audience=developer") ||
+      projectSearch.includes("sort=developer"));
+  const isDarkNav =
+    isDeveloperMode || isDeveloperArchive || isJourneyMode || isVersionsMode;
 
-  const scrollToId = (id: string) => {
-    if (pathname !== "/") {
-      router.push(`/#${id}`);
+  useEffect(() => {
+    setProjectSearch(window.location.search);
+  }, [pathname]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setBrandIndex((value) => (value + 1) % brandNames.length);
+    }, 1800);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const archiveHref =
+    isDeveloperMode || isDeveloperArchive
+      ? "/projects?audience=developer&sort=developer"
+      : "/projects";
+
+  const sectionLinks = isDeveloperMode
+    ? developerSections
+    : isRecruiterMode
+      ? recruiterSections
+      : [];
+
+  const navigateToSection = (id: string) => {
+    setMenuOpen(false);
+
+    if (isDeveloperMode) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       return;
     }
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+
+    if (isRecruiterMode) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    if (isDeveloperArchive) {
+      router.push(`/developers#${id}`);
+      return;
+    }
+
+    router.push(`/recruiters#${id}`);
   };
 
-  const getHeading = () => {
-    switch (pathname) {
-      case "/projects": return "Personal Projects";
-      case "/contact": return "Send Fan Mail";
-      case "/experience": return "Experience";
-      default: return "Abhinav Ranish";
-    }
-  };
+  const contextualLinks =
+    pathname.startsWith("/projects")
+      ? [
+          {
+            href: isDeveloperArchive ? "/developers#projects" : "/recruiters#recruiter-projects",
+            label: isDeveloperArchive ? "Developer" : "Recruiter",
+          },
+        ]
+      : isJourneyMode
+        ? []
+        : [{ href: archiveHref, label: "All Projects" }];
+  const showMobileMenu = sectionLinks.length > 0 || contextualLinks.length > 0;
 
   return (
-    <motion.nav
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className={`
-        fixed top-6 md:top-8 left-1/2 -translate-x-1/2 z-50
-        w-[90%] md:w-[70%] max-w-5xl
-        bg-white/5 backdrop-blur-xl border border-white/10
-        shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]
-        px-6 py-4
-        ${menuOpen ? "rounded-3xl" : "rounded-full"}
-      `}
+    <nav
+      className={`fixed left-1/2 top-[calc(env(safe-area-inset-top)+1rem)] z-50 w-[calc(100%-2rem)] -translate-x-1/2 border px-4 shadow-xl backdrop-blur-xl transition-[border-radius] duration-200 md:px-6 ${
+        menuOpen ? "rounded-2xl" : "rounded-full"
+      } max-w-5xl ${
+        isJourneyMode
+          ? "border-[#f6c453]/20 bg-[#17131f]/70 text-[#f8efe4] shadow-black/35"
+          : isDarkNav
+          ? "border-white/10 bg-zinc-950/72 text-zinc-100 shadow-black/30"
+          : "border-white/70 bg-white/72 text-zinc-950 shadow-zinc-950/10"
+      }`}
     >
-      {/* Subtle inner glow */}
-      <div className="absolute inset-0 rounded-inherit bg-gradient-to-r from-white/5 to-transparent opacity-50 blur-md -z-10 pointer-events-none" />
-
-      {/* Desktop & Mobile Header Content */}
-      <div className="flex items-center justify-between">
-
-        {/* Left Side: Logo & Header */}
-        <div className="flex items-center space-x-4">
-          <Link href="/" className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
-            <Image
-              src="/favicon.ico"
-              alt="logo"
-              width={36}
-              height={36}
-              className="relative rounded-full ring-2 ring-white/10"
-            />
-          </Link>
-
-          <button
-            className="font-semibold text-lg tracking-tight text-white hover:text-pink-300 transition-colors"
-            onClick={() => !isOldUI && scrollToId("hero")}
-            aria-label="Scroll to Hero"
+      <div className="mx-auto flex h-14 items-center justify-between gap-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/favicon.ico"
+            alt=""
+            width={34}
+            height={34}
+            className={`size-8 rounded-full border ${
+              isJourneyMode
+                ? "border-[#f6c453]/35 bg-black/30"
+                : isDarkNav
+                  ? "border-white/10"
+                  : "border-zinc-200"
+            }`}
+          />
+          <span
+            key={brandNames[brandIndex]}
+            dir="auto"
+            className={`brand-name-swap w-36 overflow-hidden whitespace-nowrap font-mono text-sm font-semibold md:w-44 ${
+              isJourneyMode
+                ? "text-[#a8ff3e]"
+                : isDarkNav
+                  ? "text-zinc-100"
+                  : "text-zinc-950"
+            }`}
           >
-            {getHeading()}
+            {brandNames[brandIndex]}
+          </span>
+        </Link>
+
+        <div className="hidden items-center gap-1 md:flex">
+          {sectionLinks.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => navigateToSection(section.id)}
+              className={`px-3 py-2 text-sm font-medium transition-colors ${
+                isJourneyMode
+                  ? "text-[#f8efe4]/58 hover:text-[#f6c453]"
+                  : isDarkNav
+                  ? "text-zinc-400 hover:text-white"
+                  : "text-zinc-500 hover:text-zinc-950"
+              }`}
+              type="button"
+            >
+              {section.label}
+            </button>
+          ))}
+
+          {contextualLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`px-3 py-2 text-sm font-medium transition-colors ${
+                isJourneyMode
+                  ? "text-[#f8efe4]/58 hover:text-[#f6c453]"
+                  : isDarkNav
+                  ? "text-zinc-400 hover:text-white"
+                  : "text-zinc-500 hover:text-zinc-950"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
+        {showMobileMenu ? (
+          <button
+            onClick={() => setMenuOpen((value) => !value)}
+            className={`inline-flex size-9 items-center justify-center rounded-full border md:hidden ${
+              isJourneyMode
+                ? "border-[#f6c453]/25 text-[#f8efe4] hover:bg-[#f6c453]/10"
+                : isDarkNav ? "border-white/10 text-zinc-200 hover:bg-white/10" : "border-zinc-200 text-zinc-700 hover:bg-zinc-100"
+            }`}
+            aria-label="Toggle navigation"
+            type="button"
+          >
+            {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
-        </div>
-
-        {/* Desktop Links (Hidden on small screens) */}
-        <div className="hidden md:flex space-x-8 items-center">
-          {!isOldUI ? (
-            <>
-              {["experience", "projects", "research", "contact"].map((id) => (
-                <button
-                  key={id}
-                  onClick={() => scrollToId(id)}
-                  className="text-sm font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide group relative"
-                >
-                  {id === "contact" ? "Connect" : id.replace("-", " ")}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all group-hover:w-full"></span>
-                </button>
-              ))}
-            </>
-          ) : (
-            <>
-              {["projects", "experience", "contact", "qa"].map((path) => (
-                <Link
-                  key={path}
-                  href={`/old/${path}`}
-                  scroll={false}
-                  className="text-sm font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide group relative"
-                >
-                  {path === "contact" ? "Connect" : path === "qa" ? "Mr Robot" : path}
-                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-purple-500 transition-all group-hover:w-full"></span>
-                </Link>
-              ))}
-              <Link
-                href="/"
-                scroll={false}
-                className="ml-4 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition-all duration-300 text-sm font-medium flex items-center gap-2 text-white shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]"
-              >
-                <Sun size={16} /> New UI
-              </Link>
-            </>
-          )}
-        </div>
-
-        {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-zinc-300 p-2 hover:bg-white/10 rounded-full transition-colors focus:outline-none"
-          aria-label="Toggle Menu"
-        >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        ) : null}
       </div>
 
-      {/* Mobile Links Dropdown */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden mt-6 overflow-hidden border-t border-white/10"
-          >
-            <div className="flex flex-col space-y-4 py-6 px-2 text-left">
-              {!isOldUI ? (
-                <>
-                  {["experience", "projects", "research", "contact"].map((id) => (
-                    <button
-                      key={id}
-                      onClick={() => { scrollToId(id); setMenuOpen(false); }}
-                      className="text-lg font-medium text-zinc-300 hover:text-white transition-colors capitalize tracking-wide w-full text-left"
-                    >
-                      {id === "contact" ? "Connect" : id}
-                    </button>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <Link href="/old" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Home</Link>
-                  <Link href="/old/projects" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Projects</Link>
-                  <Link href="/old/experience" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Experience</Link>
-                  <Link href="/old/contact" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Connect</Link>
-                  <Link href="/old/qa" className="text-lg font-medium text-zinc-300 hover:text-white transition-colors w-full" onClick={() => setMenuOpen(false)}>Mr Robot</Link>
-                  <Link href="/" className="mt-4 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold shadow-lg" onClick={() => setMenuOpen(false)}>
-                    <Sun size={20} /> New UI
-                  </Link>
-                </>
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      {menuOpen ? (
+        <div
+          className={`mx-auto border-t py-3 md:hidden ${
+            isJourneyMode
+              ? "border-[#f6c453]/15"
+              : isDarkNav ? "border-white/10" : "border-zinc-200/80"
+          }`}
+        >
+          <div className="grid gap-1">
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className={`px-2 py-3 text-sm font-medium ${
+                isDarkNav ? "text-white" : "text-zinc-950"
+              }`}
+            >
+              {isJourneyMode ? "Story Mode" : "Selection"}
+            </Link>
+
+            {sectionLinks.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => navigateToSection(section.id)}
+                className={`block w-full px-2 py-3 text-left text-sm font-medium ${
+                  isJourneyMode
+                    ? "text-[#f8efe4]/60"
+                    : isDarkNav ? "text-zinc-400" : "text-zinc-500"
+                }`}
+                type="button"
+              >
+                {section.label}
+              </button>
+            ))}
+
+            {contextualLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`px-2 py-3 text-sm font-medium ${
+                  isJourneyMode
+                    ? "text-[#f6c453]"
+                    : isDarkNav ? "text-zinc-400" : "text-zinc-500"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </nav>
   );
 }
