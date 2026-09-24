@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/resume.pdf",
+        destination: "https://cvfy.dev",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
